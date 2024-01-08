@@ -8,7 +8,7 @@ public partial class VisualNovelPlugin : EditorPlugin
 {
     private const string BasePath = "res://addons/Valos.VisualNovel/";
 
-    private const string VisualNovelEditorName = "VisualNovelEditor";
+    private const string MainPanelName = "Visual Novel Editor";
     private const string IconName = "Icon";
 
     private MainPanel mainPanel;
@@ -47,7 +47,7 @@ public partial class VisualNovelPlugin : EditorPlugin
 
     public override string _GetPluginName()
     {
-        return VisualNovelEditorName;
+        return MainPanelName;
     }
 
     public override Texture2D _GetPluginIcon()
@@ -92,7 +92,7 @@ public partial class VisualNovelPlugin : EditorPlugin
 
     private void RemoveCustomTypes()
     {
-        RemoveCustomType(VisualNovelEditorName);
+        // RemoveCustomType(VisualNovelEditorName);
     }
 
     private static string GetPath(string sceneName, string extension)
