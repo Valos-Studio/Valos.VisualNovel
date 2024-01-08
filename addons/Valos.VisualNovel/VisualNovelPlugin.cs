@@ -1,19 +1,18 @@
 #if TOOLS
-using System.IO;
 using Godot;
 
-namespace Valos.Dialogue;
+namespace Valos.VisualNovel;
 
 [Tool]
-public partial class ValosDialoguePlugin : EditorPlugin
+public partial class VisualNovelPlugin : EditorPlugin
 {
-    private const string BasePath = "res://addons/Valos.Dialogue/";
+    private const string BasePath = "res://addons/Valos.VisualNovel/";
 
     private const string VisualNovelEditorName = "VisualNovelEditor";
     private const string IconName = "Icon";
 
+    private MainPanel mainPanel;
     private Texture2D icon;
-    private EngineNode engineNode;
 
     public override void _EnterTree()
     {
@@ -40,9 +39,9 @@ public partial class ValosDialoguePlugin : EditorPlugin
 
     public override void _MakeVisible(bool visible)
     {
-        if (engineNode != null)
+        if (mainPanel != null)
         {
-            engineNode.Visible = visible;
+            mainPanel.Visible = visible;
         }
     }
 
@@ -59,7 +58,7 @@ public partial class ValosDialoguePlugin : EditorPlugin
 
     private void AddEditorToEngine()
     {
-        string mainScenePath = GetPath(nameof(EngineNode), Extensions.Scene);
+        string mainScenePath = GetPath(nameof(MainPanel), Extensions.Scene);
 
         string iconPath = GetPath(IconName, Extensions.Icon);
 
@@ -67,28 +66,28 @@ public partial class ValosDialoguePlugin : EditorPlugin
 
         PackedScene mainScene = GD.Load<PackedScene>(mainScenePath);
 
-        engineNode = mainScene.Instantiate<EngineNode>();
+        mainPanel = mainScene.Instantiate<MainPanel>();
 
-        EditorInterface.Singleton.GetEditorMainScreen().AddChild(engineNode);
+        EditorInterface.Singleton.GetEditorMainScreen().AddChild(mainPanel);
     }
 
     private void RemoveEditorFromEngine()
     {
-        if (engineNode != null && IsInstanceValid(engineNode) && !engineNode.IsQueuedForDeletion())
+        if (mainPanel != null && IsInstanceValid(mainPanel) && !mainPanel.IsQueuedForDeletion())
         {
-            engineNode.QueueFree();
+            mainPanel.QueueFree();
         }
     }
 
     private void AddCustomTypes()
     {
-        string scriptPath = GetPath(nameof(VisualNovelEditor), Extensions.ScriptCs);
-        string iconPath = GetPath(IconName, Extensions.Icon);
-
-        Script script = GD.Load<Script>(scriptPath);
-        Texture2D texture = GD.Load<Texture2D>(iconPath);
-
-        AddCustomType(VisualNovelEditorName, "Node", script, texture);
+        // string scriptPath = GetPath(nameof(VisualNovelEditor), Extensions.ScriptCs);
+        // string iconPath = GetPath(IconName, Extensions.Icon);
+        //
+        // Script script = GD.Load<Script>(scriptPath);
+        // Texture2D texture = GD.Load<Texture2D>(iconPath);
+        //
+        // AddCustomType(VisualNovelEditorName, "Node", script, texture);
     }
 
     private void RemoveCustomTypes()

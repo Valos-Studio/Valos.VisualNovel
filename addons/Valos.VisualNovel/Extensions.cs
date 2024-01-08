@@ -1,4 +1,4 @@
-namespace Valos.Dialogue;
+namespace Valos.VisualNovel;
 
 internal class Extensions
 {

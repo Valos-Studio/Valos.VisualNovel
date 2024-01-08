@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7o1ve8jje0b2"
-path="res://.godot/imported/Icon.png-aed21bac9093665b2d3aed4435db58f5.ctex"
+uid="uid://bji511s7a7yts"
+path="res://.godot/imported/Node.png-c87a6972bee178c1f5d67d1e96f22e74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/Valos.Dialogue/Icon.png"
-dest_files=["res://.godot/imported/Icon.png-aed21bac9093665b2d3aed4435db58f5.ctex"]
+source_file="res://addons/Valos.VisualNovel/EditorAssets/TreeNode/Node.png"
+dest_files=["res://.godot/imported/Node.png-c87a6972bee178c1f5d67d1e96f22e74.ctex"]
 
 [params]
 

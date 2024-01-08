@@ -20,4 +20,4 @@ project/assembly_name="Valos.Dialogue"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Valos.Dialogue/plugin.cfg")
+enabled=PackedStringArray("res://addons/Valos.VisualNovel/plugin.cfg")

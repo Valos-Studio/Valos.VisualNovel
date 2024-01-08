@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://karltsg3c42w"
-path="res://.godot/imported/BackgroundPixel.png-c264276a393d6ec89e50be7cc0f6fe22.ctex"
+path="res://.godot/imported/BackgroundPixel.png-1062967ebb9f39e09529ff206ee4d1fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/Valos.Dialogue/EditorAssets/DialogueRoot/BackgroundPixel.png"
-dest_files=["res://.godot/imported/BackgroundPixel.png-c264276a393d6ec89e50be7cc0f6fe22.ctex"]
+source_file="res://addons/Valos.VisualNovel/EditorAssets/DialogueRoot/BackgroundPixel.png"
+dest_files=["res://.godot/imported/BackgroundPixel.png-1062967ebb9f39e09529ff206ee4d1fc.ctex"]
 
 [params]
 

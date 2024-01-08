@@ -1,2 +1,2 @@
-# Valos.Dialogue
-Valos Studio library with dialogue system
+# Valos.VisualNovel
+Valos Studio plugin for creating Visual Novels

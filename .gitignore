@@ -1,6 +1,8 @@
 # Godot 4+ specific ignores
+
 .godot/
 
-addons/Valos.Dialogue/.idea/.idea.Valos.Dialogue.dir/.idea/
+.idea/*
 
-.idea/.idea.Valos.Dialogue/.idea/
+addons/Valos.VisualNovel/.idea/*
+
