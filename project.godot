@@ -10,13 +10,13 @@ config_version=5
 
 [application]
 
-config/name="Valos.Dialogue"
+config/name="Valos.VisualNovel"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
 
-project/assembly_name="Valos.Dialogue"
+project/assembly_name="Valos.VisualNovel"
 
 [editor_plugins]
 
