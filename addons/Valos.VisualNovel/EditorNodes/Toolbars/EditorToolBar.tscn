@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bb4x5qtxlr8op"]
+[gd_scene format=3 uid="uid://jtq6e22ci5rs"]
 
 [node name="EditorToolBar" type="MarginContainer"]
 anchors_preset = -1

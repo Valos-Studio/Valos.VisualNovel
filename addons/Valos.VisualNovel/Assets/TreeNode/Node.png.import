@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://karltsg3c42w"
-path="res://.godot/imported/BackgroundPixel.png-1062967ebb9f39e09529ff206ee4d1fc.ctex"
+uid="uid://bji511s7a7yts"
+path="res://.godot/imported/Node.png-c967ebba494b0c45f74b381c7ba33e59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/Valos.VisualNovel/EditorAssets/DialogueRoot/BackgroundPixel.png"
-dest_files=["res://.godot/imported/BackgroundPixel.png-1062967ebb9f39e09529ff206ee4d1fc.ctex"]
+source_file="res://addons/Valos.VisualNovel/Assets/TreeNode/Node.png"
+dest_files=["res://.godot/imported/Node.png-c967ebba494b0c45f74b381c7ba33e59.ctex"]
 
 [params]
 
