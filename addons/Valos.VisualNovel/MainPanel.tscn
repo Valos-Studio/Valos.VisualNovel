@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhdfvytb3vtdr"]
+[gd_scene load_steps=4 format=3 uid="uid://bhdfvytb3vtdr"]
 
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/MainPanel.cs" id="1_n4bpp"]
 [ext_resource type="Texture2D" uid="uid://karltsg3c42w" path="res://addons/Valos.VisualNovel/EditorAssets/DialogueRoot/BackgroundPixel.png" id="2_lpsi1"]
 [ext_resource type="PackedScene" uid="uid://bb4x5qtxlr8op" path="res://addons/Valos.VisualNovel/EditorNodes/ToolNodes/Toolbars/EditorToolBar.tscn" id="3_bk56m"]
 
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_n4bpp")
 
 [node name="BackgroundNodes" type="TextureRect" parent="."]
 layout_mode = 1
