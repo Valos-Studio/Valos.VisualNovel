@@ -1,5 +1,6 @@
 #if TOOLS
 using Godot;
+using Valos.VisualNovel.GameNodes;
 
 namespace Valos.VisualNovel;
 
@@ -16,20 +17,18 @@ public partial class VisualNovelPlugin : EditorPlugin
 
     public override void _EnterTree()
     {
-        // AddCustomTypes();
+        AddCustomTypes();
 
         AddEditorToEngine();
 
-        _MakeVisible(true);
+        _MakeVisible(false);
     }
 
     public override void _ExitTree()
     {
-        // RemoveCustomTypes();
+        RemoveCustomTypes();
 
         RemoveEditorFromEngine();
-
-        _MakeVisible(false);
     }
 
     public override bool _HasMainScreen()
@@ -55,12 +54,11 @@ public partial class VisualNovelPlugin : EditorPlugin
         return icon;
     }
 
-
     private void AddEditorToEngine()
     {
-        string mainScenePath = GetPath(nameof(MainPanel), Extensions.Scene);
+        string mainScenePath = GetBasePath(nameof(MainPanel), Extensions.Scene);
 
-        string iconPath = GetPath(IconName, Extensions.Icon);
+        string iconPath = GetBasePath(IconName, Extensions.Icon);
 
         icon = GD.Load<Texture2D>(iconPath);
 
@@ -81,21 +79,21 @@ public partial class VisualNovelPlugin : EditorPlugin
 
     private void AddCustomTypes()
     {
-        // string scriptPath = GetPath(nameof(VisualNovelEditor), Extensions.ScriptCs);
-        // string iconPath = GetPath(IconName, Extensions.Icon);
-        //
-        // Script script = GD.Load<Script>(scriptPath);
-        // Texture2D texture = GD.Load<Texture2D>(iconPath);
-        //
-        // AddCustomType(VisualNovelEditorName, "Node", script, texture);
+        string scriptPath = GetBasePath("GameNodes/" +nameof(NovelPanel), Extensions.ScriptCs);
+        string iconPath = GetBasePath(IconName, Extensions.Icon);
+        
+        Script script = GD.Load<Script>(scriptPath);
+        Texture2D texture = GD.Load<Texture2D>(iconPath);
+        
+        AddCustomType(nameof(NovelPanel), "Node", script, texture);
     }
 
     private void RemoveCustomTypes()
     {
-        // RemoveCustomType(VisualNovelEditorName);
+        RemoveCustomType(nameof(NovelPanel));
     }
 
-    private static string GetPath(string sceneName, string extension)
+    private static string GetBasePath(string sceneName, string extension)
     {
         return BasePath + sceneName + extension;
     }
