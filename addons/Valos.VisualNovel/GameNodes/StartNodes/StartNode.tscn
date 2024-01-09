@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://b0duvs34lg6w1"]
 
 [node name="StartNode" type="GraphNode"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_right = 0.087
+anchor_bottom = 0.085
+offset_right = -0.224007
+offset_bottom = -0.0800018
 grow_horizontal = 2
 grow_vertical = 2
 title = "Start"
