@@ -17,9 +17,9 @@ public partial class VisualNovelPlugin : EditorPlugin
 
     public override void _EnterTree()
     {
-        AddCustomTypes();
-
         AddEditorToEngine();
+        
+        AddCustomTypes();
 
         _MakeVisible(false);
     }
@@ -29,6 +29,11 @@ public partial class VisualNovelPlugin : EditorPlugin
         RemoveCustomTypes();
 
         RemoveEditorFromEngine();
+    }
+
+    public override bool _Handles(GodotObject @object)
+    {
+        return @object.GetClass() == nameof(MainPanel);
     }
 
     public override bool _HasMainScreen()
