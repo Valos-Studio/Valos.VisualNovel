@@ -18,7 +18,7 @@ public partial class VisualNovelPlugin : EditorPlugin
     public override void _EnterTree()
     {
         AddEditorToEngine();
-        
+
         AddCustomTypes();
 
         _MakeVisible(false);
@@ -26,15 +26,15 @@ public partial class VisualNovelPlugin : EditorPlugin
 
     public override void _ExitTree()
     {
-        RemoveCustomTypes();
-
         RemoveEditorFromEngine();
+
+        RemoveCustomTypes();
     }
 
-    public override bool _Handles(GodotObject @object)
-    {
-        return @object.GetClass() == nameof(MainPanel);
-    }
+    // public override bool _Handles(GodotObject @object)
+    // {
+    //     return @object.GetClass() == nameof(NovelPanel);
+    // }
 
     public override bool _HasMainScreen()
     {
@@ -84,12 +84,12 @@ public partial class VisualNovelPlugin : EditorPlugin
 
     private void AddCustomTypes()
     {
-        string scriptPath = GetBasePath("GameNodes/" +nameof(NovelPanel), Extensions.ScriptCs);
+        string scriptPath = GetBasePath("GameNodes/" + nameof(NovelPanel), Extensions.ScriptCs);
         string iconPath = GetBasePath(IconName, Extensions.Icon);
-        
+
         Script script = GD.Load<Script>(scriptPath);
         Texture2D texture = GD.Load<Texture2D>(iconPath);
-        
+
         AddCustomType(nameof(NovelPanel), "Node", script, texture);
     }
 
