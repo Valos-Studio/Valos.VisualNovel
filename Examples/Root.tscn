@@ -1,8 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://xkkred7brbsm"]
 
-[ext_resource type="Script" path="res://addons/Valos.VisualNovel/GameNodes/NovelPanel.cs" id="1_1r50t"]
+[ext_resource type="PackedScene" uid="uid://en2urt7fk551" path="res://Examples/MyGame.tscn" id="1_fmkby"]
 
 [node name="Root" type="Node"]
 
-[node name="NovelPanel" type="Node" parent="."]
-script = ExtResource("1_1r50t")
+[node name="MyGame" parent="." instance=ExtResource("1_fmkby")]
