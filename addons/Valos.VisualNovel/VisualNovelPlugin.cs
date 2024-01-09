@@ -31,10 +31,10 @@ public partial class VisualNovelPlugin : EditorPlugin
         RemoveCustomTypes();
     }
 
-    // public override bool _Handles(GodotObject @object)
-    // {
-    //     return @object.GetClass() == nameof(NovelPanel);
-    // }
+    public override bool _Handles(GodotObject @object)
+    {
+        return @object.GetClass() == nameof(NovelPanel);
+    }
 
     public override bool _HasMainScreen()
     {
