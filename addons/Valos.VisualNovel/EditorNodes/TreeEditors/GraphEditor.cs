@@ -26,7 +26,7 @@ public partial class GraphEditor : GraphEdit
         ShowPopup(position);
     }
 
-    public void OnAddNode(BaseNode node, Vector2 gridPosition)
+    public void OnAddNode(GraphNode node, Vector2 gridPosition)
     {
         AddChild(node);
 
