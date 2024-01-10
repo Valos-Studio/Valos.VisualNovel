@@ -33,7 +33,7 @@ public partial class GraphEditor : GraphEdit
         
         Callable callable = Callable.From(() => BaseNodeOnDeleteRequest(node));
         
-        node.Connect(GraphElement.SignalName.DeleteRequest, callable);
+        // node.Connect(GraphElement.SignalName.DeleteRequest, callable);
     }
 
     public void BaseNodeOnDeleteRequest(GraphNode node)

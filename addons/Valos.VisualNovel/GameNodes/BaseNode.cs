@@ -2,6 +2,7 @@ using Godot;
 
 namespace Valos.VisualNovel.GameNodes;
 
+[Tool]
 public partial class BaseNode : GraphNode
 {
     public override void _Ready()
@@ -11,9 +12,6 @@ public partial class BaseNode : GraphNode
 
     public void OnGuiInput(InputEvent @event)
     {
-        if (Input.IsKeyPressed(Key.Delete) == true)
-        {
-            EmitSignal(nameof(DeleteRequest), this);
-        }
+        
     }
 }
