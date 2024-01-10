@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhdfvytb3vtdr"]
+[gd_scene load_steps=3 format=3 uid="uid://bhdfvytb3vtdr"]
 
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/MainPanel.cs" id="1_ds45j"]
-[ext_resource type="PackedScene" uid="uid://bu0m8i60ltqlx" path="res://addons/Valos.VisualNovel/EditorNodes/TreeEditor.tscn" id="2_fgy6b"]
-[ext_resource type="PackedScene" uid="uid://ufy5loqddveh" path="res://addons/Valos.VisualNovel/EditorNodes/DialogueEditor.tscn" id="3_kxkwf"]
+[ext_resource type="PackedScene" uid="uid://bu0m8i60ltqlx" path="res://addons/Valos.VisualNovel/EditorNodes/TreeEditors/TreeEditor.tscn" id="2_gcron"]
 
 [node name="MainPanel" type="Panel"]
 anchors_preset = 15
@@ -22,8 +21,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TreeEditor" parent="HSplitContainer" instance=ExtResource("2_fgy6b")]
-layout_mode = 2
-
-[node name="DialogueEditor" parent="HSplitContainer" instance=ExtResource("3_kxkwf")]
+[node name="TreeEditor" parent="HSplitContainer" instance=ExtResource("2_gcron")]
 layout_mode = 2

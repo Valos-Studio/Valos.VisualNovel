@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Valos.VisualNovel.EditorNodes;
+namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
 public partial class TreeEditor : Control
 {

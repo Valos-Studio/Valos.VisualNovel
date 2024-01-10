@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bu0m8i60ltqlx"]
 
-[ext_resource type="Script" path="res://addons/Valos.VisualNovel/EditorNodes/TreeEditor.cs" id="1_36ex1"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/EditorNodes/TreeEditors/TreeEditor.cs" id="1_36ex1"]
 [ext_resource type="PackedScene" uid="uid://b0duvs34lg6w1" path="res://addons/Valos.VisualNovel/GameNodes/StartNodes/StartNode.tscn" id="2_0v6rk"]
-[ext_resource type="Script" path="res://addons/Valos.VisualNovel/EditorNodes/GraphEditor.cs" id="2_crp73"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/EditorNodes/TreeEditors/GraphEditor.cs" id="2_rq7cl"]
 [ext_resource type="PackedScene" uid="uid://cydum0boj06aq" path="res://addons/Valos.VisualNovel/EditorNodes/Menus/GraphMenu.tscn" id="3_g7wyo"]
 
 [node name="TreeEditor" type="Control" node_paths=PackedStringArray("Graph")]
@@ -28,7 +28,7 @@ grow_vertical = 2
 [node name="GraphEditor" type="GraphEdit" parent="Container" node_paths=PackedStringArray("GraphMenu")]
 layout_mode = 2
 size_flags_vertical = 3
-script = ExtResource("2_crp73")
+script = ExtResource("2_rq7cl")
 GraphMenu = NodePath("GraphMenu")
 
 [node name="GraphMenu" parent="Container/GraphEditor" instance=ExtResource("3_g7wyo")]
