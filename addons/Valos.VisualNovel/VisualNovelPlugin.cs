@@ -31,12 +31,13 @@ public partial class VisualNovelPlugin : EditorPlugin
         RemoveCustomTypes();
     }
 
-    public override bool _Handles(GodotObject @object)
+    public override bool _Handles(GodotObject godotObject)
     {
-        if (@object is NovelPanel)
+        if (godotObject.GetType() == typeof(NovelPanel))
         {
             return true;
         }
+
         return false;
     }
 
