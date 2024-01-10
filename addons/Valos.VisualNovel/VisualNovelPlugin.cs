@@ -47,9 +47,13 @@ public partial class VisualNovelPlugin : EditorPlugin
 
     public override void _MakeVisible(bool visible)
     {
-        if (mainPanel != null)
+        if (visible)
         {
-            mainPanel.Visible = visible;
+            mainPanel.Show();
+        }
+        else
+        {
+            mainPanel.Hide();
         }
     }
 
