@@ -1,5 +1,7 @@
+using Godot;
+
 namespace Valos.VisualNovel.GameNodes.StartNodes;
 
-public partial class StartNode : BaseNode
+public partial class StartNode : GraphNode
 {
 }
