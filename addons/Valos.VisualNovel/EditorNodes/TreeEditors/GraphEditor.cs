@@ -1,6 +1,5 @@
 using Godot;
 using Valos.VisualNovel.EditorNodes.Menus;
-using Valos.VisualNovel.GameNodes;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
@@ -31,6 +30,17 @@ public partial class GraphEditor : GraphEdit
         AddChild(node);
 
         node.Position = gridPosition;
+        
+        Callable callable = Callable.From(() => BaseNodeOnDeleteRequest(node));
+        
+        node.Connect(GraphElement.SignalName.DeleteRequest, callable);
+    }
+
+    public void BaseNodeOnDeleteRequest(GraphNode node)
+    {
+        this.RemoveChild(node);
+        
+        node.QueueFree();
     }
 
     private void ShowPopup(Vector2 gridPosition)
