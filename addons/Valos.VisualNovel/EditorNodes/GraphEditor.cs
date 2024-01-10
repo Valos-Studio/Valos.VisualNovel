@@ -10,9 +10,21 @@ public partial class GraphEditor : GraphEdit
     public override void _Ready()
     {
         PopupRequest += OnPopupRequest;
+
+        ConnectionToEmpty += OnConnectionToEmpty;
+    }
+
+    public void OnConnectionToEmpty(StringName fromNode, long fromPort, Vector2 releasePosition)
+    {
+        ShowPopup();
     }
 
     public void OnPopupRequest(Vector2 position)
+    {
+        ShowPopup();
+    }
+
+    private void ShowPopup()
     {
         GraphMenu.Position = (Vector2I)GetGlobalMousePosition() + GetWindow().Position;
 
