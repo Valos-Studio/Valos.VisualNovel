@@ -1,5 +1,6 @@
-[gd_scene format=3 uid="uid://b40vgacg6oiwr"]
+[gd_scene load_steps=2 format=3 uid="uid://b40vgacg6oiwr"]
 
-[node name="ResponseNode" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/GameNodes/ResponseNodes/ResponseNode.cs" id="1_4s1x8"]
+
+[node name="ResponseNode" type="GraphNode"]
+script = ExtResource("1_4s1x8")

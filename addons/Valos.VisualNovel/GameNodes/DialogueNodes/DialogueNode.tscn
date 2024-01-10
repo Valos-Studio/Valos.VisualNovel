@@ -1,5 +1,6 @@
-[gd_scene format=3 uid="uid://cvxhwi57wmaff"]
+[gd_scene load_steps=2 format=3 uid="uid://cvxhwi57wmaff"]
 
-[node name="DialogueNode" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/GameNodes/DialogueNodes/DialogueNode.cs" id="1_ol3jw"]
+
+[node name="DialogueNode" type="GraphNode"]
+script = ExtResource("1_ol3jw")
