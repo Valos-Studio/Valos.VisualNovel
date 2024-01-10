@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Valos.VisualNovel.addons.Valos.VisualNovel.EditorNodes;
+namespace Valos.VisualNovel.EditorNodes;
 
 [Tool]
 public partial class GraphEditor : GraphEdit
@@ -9,19 +9,13 @@ public partial class GraphEditor : GraphEdit
 
     public override void _Ready()
     {
-        GuiInput += OnGuiInput;
+        PopupRequest += OnPopupRequest;
     }
 
-    public void OnGuiInput(InputEvent @event)
+    public void OnPopupRequest(Vector2 position)
     {
-        if (@event is InputEventMouse eventMouse)
-        {
-            if (eventMouse.ButtonMask == MouseButtonMask.Right)
-            {
-                GraphMenu.Position = (Vector2I)GetGlobalMousePosition() + GetWindow().Position;
+        GraphMenu.Position = (Vector2I)GetGlobalMousePosition() + GetWindow().Position;
 
-                GraphMenu.Show();
-            }
-        }
+        GraphMenu.Show();
     }
 }

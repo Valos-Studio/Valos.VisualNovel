@@ -7,6 +7,5 @@ public partial class GraphMenu : PopupMenu
 {
     public override void _Ready()
     {
-        
     }
 }
