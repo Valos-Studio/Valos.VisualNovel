@@ -3,10 +3,24 @@
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/GameNodes/LocationNodes/LocationNode.cs" id="1_0vtri"]
 
 [node name="LocationNode" type="GraphNode"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_right = 0.174
+anchor_bottom = 0.309
+offset_right = -0.448013
+offset_bottom = -0.23201
 grow_horizontal = 2
 grow_vertical = 2
-selected = true
+title = "Location Node"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
 script = ExtResource("1_0vtri")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2

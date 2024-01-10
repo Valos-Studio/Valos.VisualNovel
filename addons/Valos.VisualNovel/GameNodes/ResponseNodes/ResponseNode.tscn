@@ -3,4 +3,22 @@
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/GameNodes/ResponseNodes/ResponseNode.cs" id="1_4s1x8"]
 
 [node name="ResponseNode" type="GraphNode"]
+anchors_preset = -1
+anchor_right = 0.13
+anchor_bottom = 0.154
+offset_right = 0.23999
+offset_bottom = 0.207993
+title = "Response Node"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
 script = ExtResource("1_4s1x8")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2

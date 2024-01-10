@@ -1,5 +1,4 @@
 using Godot;
-using Valos.VisualNovel.GameNodes;
 
 namespace Valos.VisualNovel.EditorNodes.Menus;
 
@@ -24,13 +23,13 @@ public partial class GraphMenu : PopupMenu
     {
         switch (id)
         {
-            case 1:
+            case 0:
                 SendNode(DialogueNode);
                 break;
-            case 2:
+            case 1:
                 SendNode(ResponseNode);
                 break;
-            default:
+            case 2:
                 SendNode(LocationNode);
                 break;
         }
