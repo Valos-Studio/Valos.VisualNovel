@@ -33,7 +33,11 @@ public partial class VisualNovelPlugin : EditorPlugin
 
     public override bool _Handles(GodotObject @object)
     {
-        return @object.GetClass() == nameof(NovelPanel);
+        if (@object is NovelPanel)
+        {
+            return true;
+        }
+        return false;
     }
 
     public override bool _HasMainScreen()
