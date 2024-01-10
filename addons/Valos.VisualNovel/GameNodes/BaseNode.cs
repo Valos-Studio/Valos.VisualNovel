@@ -12,6 +12,10 @@ public partial class BaseNode : GraphNode
 
     public void OnGuiInput(InputEvent @event)
     {
-        
+        if (Input.IsKeyPressed(Key.Delete) == true)
+        {
+            // EmitSignal(GraphElement.SignalName.DeleteRequest, this);
+            GD.PrintErr("Delete pressed");
+        }
     }
 }
