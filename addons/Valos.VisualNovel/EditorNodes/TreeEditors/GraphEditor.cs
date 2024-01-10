@@ -30,9 +30,11 @@ public partial class GraphEditor : GraphEdit
 
     public void OnAddNode(GraphNode node, Vector2 gridPosition)
     {
-        node.Owner = EditorInterface.Singleton.GetEditedSceneRoot();
-        
+        // node.Owner = EditorInterface.Singleton.GetEditedSceneRoot();
+        node.Owner = this;
+
         this.AddChild(node, true);
+
 
         node.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
     }
