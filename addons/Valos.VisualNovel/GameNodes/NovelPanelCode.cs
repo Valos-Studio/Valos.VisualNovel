@@ -4,7 +4,6 @@ namespace Valos.VisualNovel.GameNodes;
 
 [Tool]
 [GlobalClass]
-public partial class NovelPanel : NovelPanelCode
+public partial class NovelPanelCode : Node
 {
-
 }
