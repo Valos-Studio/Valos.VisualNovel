@@ -5,9 +5,9 @@
 [node name="StartNode" type="GraphNode"]
 anchors_preset = -1
 anchor_right = 0.087
-anchor_bottom = 0.085
+anchor_bottom = 0.093
 offset_right = -0.224007
-offset_bottom = -0.0800018
+offset_bottom = -0.264
 grow_horizontal = 2
 grow_vertical = 2
 title = "Start"

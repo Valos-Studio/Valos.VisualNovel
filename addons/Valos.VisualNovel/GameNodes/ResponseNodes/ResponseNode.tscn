@@ -4,9 +4,9 @@
 
 [node name="ResponseNode" type="GraphNode"]
 anchors_preset = -1
-anchor_right = 0.13
+anchor_right = 0.139
 anchor_bottom = 0.154
-offset_right = 0.23999
+offset_right = -0.128021
 offset_bottom = 0.207993
 title = "Response Node"
 slot/0/left_enabled = true
