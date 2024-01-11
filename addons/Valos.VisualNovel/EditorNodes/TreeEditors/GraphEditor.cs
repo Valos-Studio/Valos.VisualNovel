@@ -16,6 +16,13 @@ public partial class GraphEditor : GraphEdit
         ConnectionToEmpty += OnConnectionToEmpty;
 
         DeleteNodesRequest += OnDeleteNodesRequest;
+        
+        ConnectionRequest += OnConnectionRequest;
+    }
+
+    public void OnConnectionRequest(StringName fromNode, long fromPort, StringName toNode, long toPort)
+    {
+        this.ConnectNode(fromNode, (int)fromPort, toNode, (int)fromPort);
     }
 
     public void OnConnectionToEmpty(StringName fromNode, long fromPort, Vector2 releasePosition)
