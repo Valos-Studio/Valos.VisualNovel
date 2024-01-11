@@ -27,6 +27,7 @@ grow_vertical = 2
 [node name="GraphEditor" type="GraphEdit" parent="Container" node_paths=PackedStringArray("GraphMenu")]
 layout_mode = 2
 size_flags_vertical = 3
+right_disconnects = true
 script = ExtResource("2_rq7cl")
 GraphMenu = NodePath("GraphMenu")
 

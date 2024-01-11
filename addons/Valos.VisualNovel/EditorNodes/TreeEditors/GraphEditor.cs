@@ -18,6 +18,13 @@ public partial class GraphEditor : GraphEdit
         DeleteNodesRequest += OnDeleteNodesRequest;
         
         ConnectionRequest += OnConnectionRequest;
+        
+        DisconnectionRequest += OnDisconnectionRequest;
+    }
+
+    public void OnDisconnectionRequest(StringName fromNode, long fromPort, StringName toNode, long toPort)
+    {
+        this.DisconnectNode(fromNode, (int)fromPort, toNode, (int)fromPort);
     }
 
     public void OnConnectionRequest(StringName fromNode, long fromPort, StringName toNode, long toPort)
