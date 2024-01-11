@@ -26,9 +26,7 @@ public partial class NovelPanelCode : Node
 
     private void InitStartData()
     {
-        PackedScene node = GD.Load<PackedScene>("res://addons/Valos.VisualNovel/DataNodes/StartData.tscn");
-
-        StartData = node.Instantiate<StartData>();
+        StartData = new StartData();
 
         AddChildDeferred(StartData, nameof(StartData));
     }
