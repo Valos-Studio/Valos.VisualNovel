@@ -1,7 +1,6 @@
 using System;
 using Godot;
 using Valos.VisualNovel.EditorNodes.Menus;
-using Valos.VisualNovel.GameNodes.DialogueNodes;
 using Array = Godot.Collections.Array;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
@@ -10,7 +9,6 @@ namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 public partial class GraphEditor : GraphEdit
 {
     [Export()] public GraphMenu GraphMenu { get; set; }
-    [Export()] public TabContainer TabContainer { get; set; }
 
     public override void _Ready()
     {
@@ -23,23 +21,6 @@ public partial class GraphEditor : GraphEdit
         ConnectionRequest += OnConnectionRequest;
 
         DisconnectionRequest += OnDisconnectionRequest;
-
-        NodeSelected += OnNodeSelected;
-    }
-
-    public void OnNodeSelected(Node node)
-    {
-        String type = node.GetType().Name;
-
-        switch (type)
-        {
-            case nameof(DialogueNode):
-                TabContainer.CurrentTab = 1;
-                break;
-            default:
-                TabContainer.CurrentTab = 0;
-                break;
-        }
     }
 
     public void OnDisconnectionRequest(StringName fromNode, long fromPort, StringName toNode, long toPort)
@@ -64,10 +45,9 @@ public partial class GraphEditor : GraphEdit
 
     public void OnAddNode(GraphNode node, Vector2 gridPosition)
     {
-        node.Owner = EditorInterface.Singleton.GetEditedSceneRoot();
+        // node.Owner = EditorInterface.Singleton.GetEditedSceneRoot();
 
         this.AddChild(node, true);
-
 
         node.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
     }

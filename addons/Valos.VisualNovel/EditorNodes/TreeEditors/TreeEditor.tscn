@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bu0m8i60ltqlx"]
+[gd_scene load_steps=4 format=3 uid="uid://bu0m8i60ltqlx"]
 
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/EditorNodes/TreeEditors/TreeEditor.cs" id="1_36ex1"]
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/EditorNodes/TreeEditors/GraphEditor.cs" id="2_rq7cl"]
 [ext_resource type="PackedScene" uid="uid://cydum0boj06aq" path="res://addons/Valos.VisualNovel/EditorNodes/Menus/GraphMenu.tscn" id="3_g7wyo"]
-[ext_resource type="PackedScene" uid="uid://ufy5loqddveh" path="res://addons/Valos.VisualNovel/EditorNodes/NodeEditors/DialogueEditor.tscn" id="4_28edy"]
 
 [node name="TreeEditor" type="Control" node_paths=PackedStringArray("Graph")]
 layout_mode = 3
@@ -35,22 +34,8 @@ size_flags_vertical = 3
 right_disconnects = true
 script = ExtResource("2_rq7cl")
 GraphMenu = NodePath("GraphMenu")
-TabContainer = NodePath("../../TabContainer")
+TabContainer = NodePath("")
 
 [node name="GraphMenu" parent="HSplitContainer/Container/GraphEditor" instance=ExtResource("3_g7wyo")]
-
-[node name="TabContainer" type="TabContainer" parent="HSplitContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-current_tab = 1
-tabs_visible = false
-
-[node name="Control" type="Control" parent="HSplitContainer/TabContainer"]
-visible = false
-layout_mode = 2
-
-[node name="DialogueEditor" parent="HSplitContainer/TabContainer" instance=ExtResource("4_28edy")]
-layout_mode = 2
 
 [connection signal="AddNode" from="HSplitContainer/Container/GraphEditor/GraphMenu" to="HSplitContainer/Container/GraphEditor" method="OnAddNode"]
