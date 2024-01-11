@@ -1,12 +1,12 @@
 using Godot;
-using Valos.VisualNovel.GameNodes.StartNodes;
+using Valos.VisualNovel.DataNodes;
 
 namespace Valos.VisualNovel.GameNodes;
 
 [Tool]
 public partial class NovelPanelCode : Node
 {
-    public StartNode StartNode { get; set; }
+    public StartData StartData { get; set; }
     public Node DialogueNodes { get; set; }
     public Node ResponseNodes { get; set; }
     public Node LocationNodes { get; set; }
