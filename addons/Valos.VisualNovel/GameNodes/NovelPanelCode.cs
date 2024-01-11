@@ -15,6 +15,8 @@ public partial class NovelPanelCode : Node
     {
         base._Ready();
 
+        InitStartData();
+
         DialogueNodes = InitNode(nameof(DialogueNodes));
 
         ResponseNodes = InitNode(nameof(ResponseNodes));
@@ -22,20 +24,30 @@ public partial class NovelPanelCode : Node
         LocationNodes = InitNode(nameof(LocationNodes));
     }
 
-    // private StartNode InitStartNode()
-    // {
-    // }
+    private void InitStartData()
+    {
+        PackedScene node = GD.Load<PackedScene>("res://addons/Valos.VisualNovel/DataNodes/StartData.tscn");
+
+        StartData = node.Instantiate<StartData>();
+
+        AddChildDeferred(StartData, nameof(StartData));
+    }
 
     private Node InitNode(string name)
     {
         Node property = new Node();
 
-        CallDeferred(Node.MethodName.AddChild, property);
-
-        property.SetDeferred(Node.PropertyName.Owner, this);
-
-        property.SetDeferred(Node.PropertyName.Name, name);
+        AddChildDeferred(property, name);
 
         return property;
+    }
+
+    private void AddChildDeferred(Node node, string name)
+    {
+        CallDeferred(Node.MethodName.AddChild, node);
+
+        node.SetDeferred(Node.PropertyName.Owner, this);
+
+        node.SetDeferred(Node.PropertyName.Name, name);
     }
 }
