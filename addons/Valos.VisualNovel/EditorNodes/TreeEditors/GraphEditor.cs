@@ -71,8 +71,6 @@ public partial class GraphEditor : GraphEdit
 
     public void ClearNodes()
     {
-        GD.PrintErr(nodeList.Count);
-        
         foreach (Node node in nodeList)
         {
             RemoveChild(node);

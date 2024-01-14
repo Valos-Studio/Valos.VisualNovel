@@ -3,6 +3,7 @@ using Godot;
 using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.EditorNodes.NodeEditors;
 using Valos.VisualNovel.GameNodes.DialogueNodes;
+using Valos.VisualNovel.GameNodes.StartNodes;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
@@ -19,7 +20,11 @@ public partial class TreeEditor : Control
 
     public void AddStartNode(StartData data)
     {
-        
+        StartNode node = new StartNode();
+
+        node.Model = data;
+
+        Graph.OnAddNode(node, data.Location);
     }
 
     public void OnNodeSelected(Node node)
