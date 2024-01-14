@@ -13,23 +13,24 @@ public partial class NovelPanelCode : Node
 
     public override void _Ready()
     {
-        base._Ready();
+        if (Engine.IsEditorHint())
+        {
+            InitStartData();
 
-        InitStartData();
-
-        if (Validator.IsValid(DialogueNodes) == false)
-        {
-            DialogueNodes = InitNode(nameof(DialogueNodes));
-        }
+            if (Validator.IsValid(DialogueNodes) == false)
+            {
+                DialogueNodes = InitNode(nameof(DialogueNodes));
+            }
         
-        if (Validator.IsValid(ResponseNodes) == false)
-        {
-            ResponseNodes = InitNode(nameof(ResponseNodes));
-        }
+            if (Validator.IsValid(ResponseNodes) == false)
+            {
+                ResponseNodes = InitNode(nameof(ResponseNodes));
+            }
         
-        if (Validator.IsValid(LocationNodes) == false)
-        {
-            LocationNodes = InitNode(nameof(LocationNodes));
+            if (Validator.IsValid(LocationNodes) == false)
+            {
+                LocationNodes = InitNode(nameof(LocationNodes));
+            }
         }
     }
 
