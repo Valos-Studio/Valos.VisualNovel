@@ -51,6 +51,8 @@ public partial class VisualNovelPlugin : EditorPlugin
         if (IsSelectedNodeTypeNovelPanel())
         {
             mainPanel.Show();
+
+            mainPanel.LoadNodes();
         }
         else
         {
@@ -70,6 +72,8 @@ public partial class VisualNovelPlugin : EditorPlugin
 
     public void OnSelectionChanged()
     {
+        mainPanel.ClearNodes();
+        
         _MakeVisible(true);
     }
 }

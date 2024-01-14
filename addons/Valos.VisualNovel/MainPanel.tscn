@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bu0m8i60ltqlx" path="res://addons/Valos.VisualNovel/EditorNodes/TreeEditors/TreeEditor.tscn" id="2_gcron"]
 [ext_resource type="PackedScene" uid="uid://cj3py6ycxy3ro" path="res://addons/Valos.VisualNovel/EditorNodes/NodeEditors/NodeEditor.tscn" id="3_yfelp"]
 
-[node name="MainPanel" type="Panel"]
+[node name="MainPanel" type="Panel" node_paths=PackedStringArray("TreeEditor")]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_ds45j")
+TreeEditor = NodePath("HSplitContainer/TreeEditor")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
 layout_mode = 1

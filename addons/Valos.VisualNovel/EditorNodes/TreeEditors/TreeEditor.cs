@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.EditorNodes.NodeEditors;
 using Valos.VisualNovel.GameNodes.DialogueNodes;
 
@@ -8,12 +9,17 @@ namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 [Tool]
 public partial class TreeEditor : Control
 {
-    [Export()] public GraphEdit Graph { get; set; }
+    [Export()] public GraphEditor Graph { get; set; }
     [Export()] public NodeEditor Panels { get; set; }
 
     public override void _Ready()
     {
         Graph.NodeSelected += OnNodeSelected;
+    }
+
+    public void AddStartNode(StartData data)
+    {
+        
     }
 
     public void OnNodeSelected(Node node)
@@ -29,5 +35,10 @@ public partial class TreeEditor : Control
                 Panels.CurrentTab = 0;
                 break;
         }
+    }
+
+    public void ClearNodes()
+    {
+        Graph.ClearNodes();
     }
 }

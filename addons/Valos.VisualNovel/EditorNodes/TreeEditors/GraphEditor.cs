@@ -10,6 +10,13 @@ public partial class GraphEditor : GraphEdit
 {
     [Export()] public GraphMenu GraphMenu { get; set; }
 
+    private Array<Node> nodeList;
+
+    public GraphEditor()
+    {
+        nodeList = new Array<Node>();
+    }
+
     public override void _Ready()
     {
         PopupRequest += OnPopupRequest;
@@ -58,6 +65,20 @@ public partial class GraphEditor : GraphEdit
         {
             DeleteNode(name);
         }
+    }
+
+    public void ClearNodes()
+    {
+        GD.PrintErr(nodeList.Count);
+        
+        foreach (Node node in nodeList)
+        {
+            RemoveChild(node);
+            
+            node.QueueFree();
+        }
+
+        nodeList.Clear();
     }
 
     private void DeleteNode(StringName nodeName)
