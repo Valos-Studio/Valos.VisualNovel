@@ -57,6 +57,8 @@ public partial class GraphEditor : GraphEdit
         node.Owner = Owner;
 
         node.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
+        
+        nodeList.Add(node);
     }
 
     public void OnDeleteNodesRequest(Array nodeNames)
