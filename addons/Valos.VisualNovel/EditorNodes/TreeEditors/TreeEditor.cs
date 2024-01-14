@@ -12,6 +12,7 @@ public partial class TreeEditor : Control
 {
     [Export()] public GraphEditor Graph { get; set; }
     [Export()] public NodeEditor Panels { get; set; }
+    [Export()] public PackedScene StartPackedScene { get; set; }
 
     public override void _Ready()
     {
@@ -20,7 +21,7 @@ public partial class TreeEditor : Control
 
     public void AddStartNode(StartData data)
     {
-        StartNode node = new StartNode();
+        StartNode node = StartPackedScene.Instantiate<StartNode>();
 
         node.Model = data;
 
