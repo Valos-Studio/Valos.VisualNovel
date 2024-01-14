@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv6m0aceqf2ns"]
+
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/GameNodes/NovelPanel.cs" id="1_kl6nm"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/DataNodes/StartData.cs" id="2_pcom0"]
+
+[node name="NovelPanel" type="Node"]
+script = ExtResource("1_kl6nm")
+
+[node name="StartData" type="Node" parent="."]
+script = ExtResource("2_pcom0")
+
+[node name="DialogueNodes" type="Node" parent="."]
+
+[node name="ResponseNodes" type="Node" parent="."]
+
+[node name="LocationNodes" type="Node" parent="."]

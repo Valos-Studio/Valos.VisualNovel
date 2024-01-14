@@ -17,18 +17,30 @@ public partial class NovelPanelCode : Node
 
         InitStartData();
 
-        DialogueNodes = InitNode(nameof(DialogueNodes));
-
-        ResponseNodes = InitNode(nameof(ResponseNodes));
-
-        LocationNodes = InitNode(nameof(LocationNodes));
+        if (Validator.IsValid(DialogueNodes) == false)
+        {
+            DialogueNodes = InitNode(nameof(DialogueNodes));
+        }
+        
+        if (Validator.IsValid(ResponseNodes) == false)
+        {
+            ResponseNodes = InitNode(nameof(ResponseNodes));
+        }
+        
+        if (Validator.IsValid(LocationNodes) == false)
+        {
+            LocationNodes = InitNode(nameof(LocationNodes));
+        }
     }
 
     private void InitStartData()
     {
-        StartData = new StartData();
-
-        AddChildDeferred(StartData, nameof(StartData));
+        if (Validator.IsValid(StartData) == false)
+        {
+            StartData = new StartData();
+            
+            AddChildDeferred(StartData, nameof(StartData));
+        }
     }
 
     private Node InitNode(string name)

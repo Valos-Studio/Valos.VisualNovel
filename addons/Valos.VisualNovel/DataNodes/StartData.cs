@@ -6,10 +6,10 @@ namespace Valos.VisualNovel.DataNodes;
 [GodotClassName(nameof(StartData))]
 public partial class StartData : Node
 {
-    public Vector2 Location { get; set; }
+    [Export()]public Vector2 GridLocation { get; set; }
 
     public StartData()
     {
-        Location = Vector2.Zero;
+        GridLocation = Vector2.Zero;
     }
 }

@@ -15,6 +15,10 @@ public partial class StartNode : GraphNode
 
     public void OnDragged(Vector2 from, Vector2 to)
     {
-        Model.Location = to;
+        GD.PrintErr("Draging this shit");
+        
+        GD.PrintErr(Model.Name);
+        
+        Model.GridLocation = to;
     }
 }
