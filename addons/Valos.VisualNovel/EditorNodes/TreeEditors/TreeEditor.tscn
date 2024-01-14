@@ -28,13 +28,12 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GraphEditor" type="GraphEdit" parent="HSplitContainer/Container" node_paths=PackedStringArray("GraphMenu", "TabContainer")]
+[node name="GraphEditor" type="GraphEdit" parent="HSplitContainer/Container" node_paths=PackedStringArray("GraphMenu")]
 layout_mode = 2
 size_flags_vertical = 3
 right_disconnects = true
 script = ExtResource("2_rq7cl")
 GraphMenu = NodePath("GraphMenu")
-TabContainer = NodePath("")
 
 [node name="GraphMenu" parent="HSplitContainer/Container/GraphEditor" instance=ExtResource("3_g7wyo")]
 
