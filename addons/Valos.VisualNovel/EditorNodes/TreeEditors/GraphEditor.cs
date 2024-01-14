@@ -1,7 +1,9 @@
+using System;
 using Godot;
 using Godot.Collections;
 using Valos.VisualNovel.EditorNodes.Menus;
 using Valos.VisualNovel.GameNodes;
+using Array = Godot.Collections.Array;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
@@ -83,12 +85,20 @@ public partial class GraphEditor : GraphEdit
 
     private void DeleteNode(StringName nodeName)
     {
-        BaseNode node = GetNode<BaseNode>(nodeName.ToString());
-
-        if (Validator.IsValid(node) == true)
+        try
         {
-            RemoveChild(node);
+            BaseNode node = GetNode<BaseNode>(nodeName.ToString());
+            
+            if (Validator.IsValid(node) == true)
+            {
+                RemoveChild(node);
+            }
         }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+        
     }
 
     private void ShowPopup(Vector2 gridPosition)
