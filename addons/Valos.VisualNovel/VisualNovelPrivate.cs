@@ -32,7 +32,7 @@ public partial class VisualNovelPlugin
 
     private void RemoveEditorFromEngine()
     {
-        if (mainPanel != null && IsInstanceValid(mainPanel) && !mainPanel.IsQueuedForDeletion())
+        if (Validator.IsValid(mainPanel) == true)
         {
             mainPanel.QueueFree();
         }

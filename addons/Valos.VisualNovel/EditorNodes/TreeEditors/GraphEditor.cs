@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using Valos.VisualNovel.EditorNodes.Menus;
+using Valos.VisualNovel.GameNodes;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
@@ -44,36 +45,29 @@ public partial class GraphEditor : GraphEdit
 
     public void OnAddNode(GraphNode node, Vector2 gridPosition)
     {
-        var root = EditorInterface.Singleton.GetEditedSceneRoot();
-        
-        // EditorSelection
-        GD.PrintErr(root.Name);
-
         this.AddChild(node, true);
 
-        node.SetDeferred(Node.PropertyName.Owner, EditorInterface.Singleton.GetEditedSceneRoot());
-
-        // node.Owner =;
-
+        node.Owner = Owner;
 
         node.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
     }
 
-    public void OnDeleteNodesRequest(Array nodes)
+    public void OnDeleteNodesRequest(Array nodeNames)
     {
-        foreach (Node node in nodes)
+        foreach (StringName name in nodeNames)
         {
-            DeleteNode(node);
+            DeleteNode(name);
         }
     }
 
-    private void DeleteNode(Node node)
+    private void DeleteNode(StringName nodeName)
     {
-        // if(node.IsClass(nameof(StartNode)) == true) return;
+        BaseNode node = GetNode<BaseNode>(nodeName.ToString());
 
-        this.RemoveChild(node);
-
-        // node.QueueFree();
+        if (Validator.IsValid(node) == true)
+        {
+            RemoveChild(node);
+        }
     }
 
     private void ShowPopup(Vector2 gridPosition)
