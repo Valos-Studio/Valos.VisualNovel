@@ -21,7 +21,7 @@ public partial class VisualNovelPlugin : EditorPlugin
     public override void _ExitTree()
     {
         RemoveNodeSelector();
-        
+
         RemoveEditorFromEngine();
 
         RemoveCustomTypes();
@@ -42,9 +42,13 @@ public partial class VisualNovelPlugin : EditorPlugin
         return true;
     }
 
+    /// <summary>
+    /// Block users from seeing this view if they select wrong stuff
+    /// </summary>
+    /// <param name="visible">Does nothing, plugin decides when you can see main panel</param>
     public override void _MakeVisible(bool visible)
     {
-        if (visible)
+        if (IsSelectedNodeTypeNovelPanel())
         {
             mainPanel.Show();
         }
@@ -66,7 +70,7 @@ public partial class VisualNovelPlugin : EditorPlugin
 
     public void OnSelectionChanged()
     {
-        _MakeVisible(IsSelectedNodeTypeNovelPanel());
+        _MakeVisible(true);
     }
 }
 #endif
