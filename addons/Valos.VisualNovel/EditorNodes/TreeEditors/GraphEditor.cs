@@ -91,6 +91,8 @@ public partial class GraphEditor : GraphEdit
 
             if (Validator.IsValid(node) == true)
             {
+                node.OnDeleteRequest();
+
                 RemoveChild(node);
             }
         }
