@@ -15,18 +15,29 @@ public partial class NovelPanelCode : Node
     {
         if (Engine.IsEditorHint())
         {
-            InitStartData();
+            StartData = GetNode<StartData>("StartData");
+            
+            if (Validator.IsValid(StartData) == false)
+            {
+                InitStartData();
+            }
+
+            DialogueNodes = GetNode<Node>(nameof(DialogueNodes));
 
             if (Validator.IsValid(DialogueNodes) == false)
             {
                 DialogueNodes = InitNode(nameof(DialogueNodes));
             }
-        
+            
+            ResponseNodes = GetNode<Node>(nameof(ResponseNodes));
+
             if (Validator.IsValid(ResponseNodes) == false)
             {
                 ResponseNodes = InitNode(nameof(ResponseNodes));
             }
-        
+            
+            LocationNodes = GetNode<Node>(nameof(LocationNodes));
+
             if (Validator.IsValid(LocationNodes) == false)
             {
                 LocationNodes = InitNode(nameof(LocationNodes));
@@ -36,12 +47,9 @@ public partial class NovelPanelCode : Node
 
     private void InitStartData()
     {
-        if (Validator.IsValid(StartData) == false)
-        {
-            StartData = new StartData();
-            
-            AddChildDeferred(StartData, nameof(StartData));
-        }
+        StartData = new StartData();
+
+        AddChildDeferred(StartData, nameof(StartData));
     }
 
     private Node InitNode(string name)

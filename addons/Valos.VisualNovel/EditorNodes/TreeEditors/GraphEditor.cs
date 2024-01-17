@@ -59,7 +59,7 @@ public partial class GraphEditor : GraphEdit
         node.Owner = Owner;
 
         node.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
-        
+
         nodeList.Add(node);
     }
 
@@ -76,7 +76,7 @@ public partial class GraphEditor : GraphEdit
         foreach (Node node in nodeList)
         {
             RemoveChild(node);
-            
+
             node.QueueFree();
         }
 
@@ -88,7 +88,7 @@ public partial class GraphEditor : GraphEdit
         try
         {
             BaseNode node = GetNode<BaseNode>(nodeName.ToString());
-            
+
             if (Validator.IsValid(node) == true)
             {
                 RemoveChild(node);
@@ -96,9 +96,8 @@ public partial class GraphEditor : GraphEdit
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            GD.PrintErr(e);
         }
-        
     }
 
     private void ShowPopup(Vector2 gridPosition)
