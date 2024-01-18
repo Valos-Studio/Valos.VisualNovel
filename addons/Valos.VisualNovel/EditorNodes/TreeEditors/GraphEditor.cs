@@ -1,6 +1,5 @@
 using System;
 using Godot;
-using Godot.Collections;
 using Valos.VisualNovel.EditorNodes.Menus;
 using Valos.VisualNovel.GameNodes;
 using Array = Godot.Collections.Array;
@@ -11,13 +10,6 @@ namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 public partial class GraphEditor : GraphEdit
 {
     [Export()] public GraphMenu GraphMenu { get; set; }
-
-    private Array<Node> nodeList;
-
-    public GraphEditor()
-    {
-        nodeList = new Array<Node>();
-    }
 
     public override void _Ready()
     {
@@ -62,14 +54,7 @@ public partial class GraphEditor : GraphEdit
 
     public void ClearNodes()
     {
-        foreach (Node node in nodeList)
-        {
-            RemoveChild(node);
 
-            node.QueueFree();
-        }
-
-        nodeList.Clear();
     }
 
     private void DeleteNode(StringName nodeName)
@@ -93,25 +78,27 @@ public partial class GraphEditor : GraphEdit
 
     private async void ShowPopup(Vector2 gridPosition)
     {
-        GraphMenu.Position = (Vector2I)GetGlobalMousePosition() + GetWindow().Position;
+        this.GraphMenu.Position = (Vector2I)GetGlobalMousePosition() + GetWindow().Position;
 
-        GraphMenu.Show();
-        
-        Variant[] result = await ToSignal(GraphMenu, nameof(GraphMenu.AddNode));
-        
-        GD.PrintErr($"awaited result {result}");
+        this.GraphMenu.Show();
 
-        // if (node != null)
-        // {
-        //     this.AddChild(node, true);
-        //
-        //     node.Owner = Owner;
-        //
-        //     node.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
-        //
-        //     nodeList.Add(node);
-        // }
+        Variant[] result = await ToSignal(this.GraphMenu, nameof(GraphMenu.AddNode));
+
+        if (result.Length > 0)
+        {
+            
+            AddNewNode((GraphMenuSelection)result[0].Obj, gridPosition);
+        }
     }
-    
-    // public void AddNode()
+
+    public void AddNewNode(GraphMenuSelection selection, Vector2 gridPosition)
+    {
+        GraphNode node = this.GraphMenu.GetGraphNode(selection);
+
+        this.AddChild(node, true);
+
+        node.Owner = this.Owner;
+
+        node.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
+    }
 }
