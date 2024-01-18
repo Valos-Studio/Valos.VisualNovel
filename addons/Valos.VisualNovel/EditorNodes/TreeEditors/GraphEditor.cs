@@ -87,13 +87,13 @@ public partial class GraphEditor : GraphEdit
         if (result.Length > 0)
         {
             
-            AddNewNode((GraphMenuSelection)result[0].Obj, gridPosition);
+            AddNewNode((long)result[0].Obj, gridPosition);
         }
     }
 
-    public void AddNewNode(GraphMenuSelection selection, Vector2 gridPosition)
+    public void AddNewNode(long selection, Vector2 gridPosition)
     {
-        GraphNode node = this.GraphMenu.GetGraphNode(selection);
+        GraphNode node = this.GraphMenu.GetGraphNode((GraphMenuSelection)selection);
 
         this.AddChild(node, true);
 
