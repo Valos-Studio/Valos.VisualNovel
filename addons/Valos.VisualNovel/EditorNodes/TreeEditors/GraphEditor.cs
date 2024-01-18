@@ -52,17 +52,6 @@ public partial class GraphEditor : GraphEdit
         ShowPopup(position);
     }
 
-    public void OnAddNode(GraphNode node, Vector2 gridPosition)
-    {
-        this.AddChild(node, true);
-
-        node.Owner = Owner;
-
-        node.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
-
-        nodeList.Add(node);
-    }
-
     public void OnDeleteNodesRequest(Array nodeNames)
     {
         foreach (StringName name in nodeNames)
@@ -102,10 +91,27 @@ public partial class GraphEditor : GraphEdit
         }
     }
 
-    private void ShowPopup(Vector2 gridPosition)
+    private async void ShowPopup(Vector2 gridPosition)
     {
         GraphMenu.Position = (Vector2I)GetGlobalMousePosition() + GetWindow().Position;
 
-        GraphMenu.StartSelection(gridPosition);
+        GraphMenu.Show();
+        
+        Variant[] result = await ToSignal(GraphMenu, nameof(GraphMenu.AddNode));
+        
+        GD.PrintErr($"awaited result {result}");
+
+        // if (node != null)
+        // {
+        //     this.AddChild(node, true);
+        //
+        //     node.Owner = Owner;
+        //
+        //     node.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
+        //
+        //     nodeList.Add(node);
+        // }
     }
+    
+    // public void AddNode()
 }

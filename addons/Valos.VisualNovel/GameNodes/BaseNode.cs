@@ -11,6 +11,6 @@ public partial class BaseNode : GraphNode
 
     public void OnDeleteRequest()
     {
-        ClearAllSlots();
+        
     }
 }

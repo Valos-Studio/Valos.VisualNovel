@@ -6,13 +6,12 @@ namespace Valos.VisualNovel.EditorNodes.Menus;
 public partial class GraphMenu : PopupMenu
 {
     [Signal]
-    public delegate void AddNodeEventHandler(GraphNode node, Vector2 gridPosition);
+    public delegate void AddNodeEventHandler(GraphMenuSelection selection);
 
     [Export()] public PackedScene DialogueNode { get; set; }
     [Export()] public PackedScene ResponseNode { get; set; }
     [Export()] public PackedScene LocationNode { get; set; }
 
-    private Vector2 gridPosition;
 
     public override void _Ready()
     {
@@ -21,31 +20,21 @@ public partial class GraphMenu : PopupMenu
 
     public void OnIdPressed(long id)
     {
-        switch (id)
+        EmitSignal(nameof(AddNode), id);
+    }
+
+    public GraphNode GetGraphNode(GraphMenuSelection selection)
+    {
+        switch (selection)
         {
-            case 0:
-                SendNode(DialogueNode);
-                break;
-            case 1:
-                SendNode(ResponseNode);
-                break;
-            case 2:
-                SendNode(LocationNode);
-                break;
+            case GraphMenuSelection.DialogueNode:
+                return DialogueNode.Instantiate<GraphNode>();
+            case GraphMenuSelection.ResponseNode:
+                return ResponseNode.Instantiate<GraphNode>();
+            case GraphMenuSelection.LocationNode:
+                return LocationNode.Instantiate<GraphNode>();
+            default:
+                return null;
         }
-    }
-
-    public void StartSelection(Vector2 gridPosition)
-    {
-        this.gridPosition = gridPosition;
-
-        this.Show();
-    }
-
-    private void SendNode(PackedScene packedScene)
-    {
-        GraphNode node = packedScene.Instantiate<GraphNode>();
-
-        EmitSignal(nameof(AddNode), node, gridPosition);
     }
 }

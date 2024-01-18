@@ -7,6 +7,7 @@
 
 [node name="GraphMenu" type="PopupMenu"]
 size = Vector2i(183, 100)
+visible = true
 item_count = 3
 item_0/text = "Add Dialogue"
 item_0/id = 0
