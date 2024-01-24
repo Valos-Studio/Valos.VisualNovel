@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Godot;
 using Valos.VisualNovel.EditorNodes.Menus;
-using Valos.VisualNovel.GameNodes;
+using Valos.VisualNovel.GameNodes.BaseNodes;
 using Array = Godot.Collections.Array;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;

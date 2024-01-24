@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Valos.VisualNovel.GameNodes;
+namespace Valos.VisualNovel.GameNodes.BaseNodes;
 
 [Tool]
 public partial class BaseNode : GraphNode
@@ -11,6 +11,5 @@ public partial class BaseNode : GraphNode
 
     public void OnDeleteRequest()
     {
-        
     }
 }

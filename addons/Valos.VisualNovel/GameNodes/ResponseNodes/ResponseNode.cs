@@ -1,4 +1,5 @@
 using Godot;
+using Valos.VisualNovel.GameNodes.BaseNodes;
 
 namespace Valos.VisualNovel.GameNodes.ResponseNodes;
 
