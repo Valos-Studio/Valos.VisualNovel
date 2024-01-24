@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Godot;
 using Valos.VisualNovel.EditorNodes.Menus;
 using Valos.VisualNovel.GameNodes;
@@ -34,14 +35,19 @@ public partial class GraphEditor : GraphEdit
         this.ConnectNode(fromNode, (int)fromPort, toNode, (int)fromPort);
     }
 
-    public void OnConnectionToEmpty(StringName fromNode, long fromPort, Vector2 releasePosition)
+    public async void OnConnectionToEmpty(StringName fromNode, long fromPort, Vector2 releasePosition)
     {
-        ShowPopup(releasePosition);
+        GraphNode result = await ShowPopup(releasePosition);
+        
+        if (result != null)
+        {
+            OnConnectionRequest(fromNode, fromPort, result.Name, result.GetInputPortSlot(0));
+        }
     }
 
-    public void OnPopupRequest(Vector2 position)
+    public async void OnPopupRequest(Vector2 position)
     {
-        ShowPopup(position);
+        await ShowPopup(position);
     }
 
     public void OnDeleteNodesRequest(Array nodeNames)
@@ -75,7 +81,7 @@ public partial class GraphEditor : GraphEdit
         }
     }
 
-    private async void ShowPopup(Vector2 gridPosition)
+    private async Task<GraphNode> ShowPopup(Vector2 gridPosition)
     {
         this.GraphMenu.Position = (Vector2I)GetGlobalMousePosition() + GetWindow().Position;
 
@@ -85,15 +91,19 @@ public partial class GraphEditor : GraphEdit
 
         if (result.Length > 0)
         {
-            AddSelectionNode((long)result[0].Obj, gridPosition);
+            return AddSelectionNode((long)result[0].Obj, gridPosition);
         }
+
+        return null;
     }
 
-    private void AddSelectionNode(long selection, Vector2 gridPosition)
+    private GraphNode AddSelectionNode(long selection, Vector2 gridPosition)
     {
         GraphNode node = this.GraphMenu.GetGraphNode((GraphMenuSelection)selection);
 
         AddNewGraphNode(node, gridPosition);
+
+        return node;
     }
 
     public void AddNewGraphNode(GraphNode graphNode, Vector2 gridPosition)
