@@ -54,7 +54,6 @@ public partial class GraphEditor : GraphEdit
 
     public void ClearNodes()
     {
-
     }
 
     private void DeleteNode(StringName nodeName)
@@ -86,19 +85,23 @@ public partial class GraphEditor : GraphEdit
 
         if (result.Length > 0)
         {
-            
-            AddNewNode((long)result[0].Obj, gridPosition);
+            AddSelectionNode((long)result[0].Obj, gridPosition);
         }
     }
 
-    public void AddNewNode(long selection, Vector2 gridPosition)
+    private void AddSelectionNode(long selection, Vector2 gridPosition)
     {
         GraphNode node = this.GraphMenu.GetGraphNode((GraphMenuSelection)selection);
 
-        this.AddChild(node, true);
+        AddNewGraphNode(node, gridPosition);
+    }
 
-        node.Owner = this.Owner;
+    public void AddNewGraphNode(GraphNode graphNode, Vector2 gridPosition)
+    {
+        this.AddChild(graphNode, true);
 
-        node.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
+        graphNode.Owner = this.Owner;
+
+        graphNode.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
     }
 }

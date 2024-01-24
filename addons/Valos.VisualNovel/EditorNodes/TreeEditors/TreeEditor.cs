@@ -25,7 +25,7 @@ public partial class TreeEditor : Control
 
         node.Model = data;
 
-        // Graph.OnAddNode(node, data.GridLocation);
+        Graph.AddNewGraphNode(node, data.GridLocation);
     }
 
     public void OnNodeSelected(Node node)

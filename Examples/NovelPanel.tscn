@@ -8,7 +8,7 @@ script = ExtResource("1_kl6nm")
 
 [node name="StartData" type="Node" parent="."]
 script = ExtResource("2_pcom0")
-GridLocation = Vector2(280, -220)
+GridLocation = Vector2(120, -400)
 
 [node name="DialogueNodes" type="Node" parent="."]
 
