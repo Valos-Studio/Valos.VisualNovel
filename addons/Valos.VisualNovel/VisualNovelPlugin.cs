@@ -52,7 +52,7 @@ public partial class VisualNovelPlugin : EditorPlugin
         {
             mainPanel.Show();
 
-            mainPanel.LoadNodes();
+            mainPanel.InitializePanel();
         }
         else
         {
@@ -72,7 +72,7 @@ public partial class VisualNovelPlugin : EditorPlugin
 
     public void OnSelectionChanged()
     {
-        mainPanel.ClearNodes();
+        mainPanel.FinalizePanel();
         
         _MakeVisible(true);
     }

@@ -1,4 +1,5 @@
 ﻿using Godot;
+using Godot.Collections;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
@@ -8,24 +9,29 @@ public partial class GraphEditor
     private void InitializeSignals()
     {
         PopupRequest += OnPopupRequest;
-        
-        ConnectionToEmpty += OnConnectionToEmpty;
-
-        DeleteNodesRequest += OnDeleteNodesRequest;
 
         ConnectionRequest += OnConnectionRequest;
 
         DisconnectionRequest += OnDisconnectionRequest;
-    }
+        
+        ConnectionToEmpty += OnConnectionToEmpty;
 
-    public void OnDisconnectionRequest(StringName fromNode, long fromPort, StringName toNode, long toPort)
+        DeleteNodesRequest += OnDeleteNodesRequest;
+    }
+    
+    public async void OnPopupRequest(Vector2 position)
     {
-        this.DisconnectNode(fromNode, (int)fromPort, toNode, (int)fromPort);
+        await this.ShowPopup(position);
     }
 
     public void OnConnectionRequest(StringName fromNode, long fromPort, StringName toNode, long toPort)
     {
         this.ConnectNode(fromNode, (int)fromPort, toNode, (int)fromPort);
+    }
+    
+    public void OnDisconnectionRequest(StringName fromNode, long fromPort, StringName toNode, long toPort)
+    {
+        this.DisconnectNode(fromNode, (int)fromPort, toNode, (int)fromPort);
     }
 
     public async void OnConnectionToEmpty(StringName fromNode, long fromPort, Vector2 releasePosition)
@@ -34,12 +40,15 @@ public partial class GraphEditor
         
         if (result != null)
         {
-            OnConnectionRequest(fromNode, fromPort, result.Name, result.GetInputPortSlot(0));
+            this.OnConnectionRequest(fromNode, fromPort, result.Name, result.GetInputPortSlot(0));
         }
     }
 
-    public async void OnPopupRequest(Vector2 position)
+    public void OnDeleteNodesRequest(Array nodeNames)
     {
-        await ShowPopup(position);
+        foreach (StringName name in nodeNames)
+        {
+            this.DeleteNode(name);
+        }
     }
 }

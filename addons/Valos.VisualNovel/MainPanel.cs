@@ -9,18 +9,18 @@ public partial class MainPanel : Panel
 {
     [Export()] public TreeEditor TreeEditor { get; set; }
     
-    public void LoadNodes()
+    public void InitializePanel()
     {
         NovelPanel panel = EditorInterface.Singleton.GetEditedSceneRoot() as NovelPanel;
 
         if (Validator.IsValid(panel) == true)
         {
-            TreeEditor.AddStartNode(panel.StartData);
+            TreeEditor.InitializeEditor();
         }
     }
 
-    public void ClearNodes()
+    public void FinalizePanel()
     {
-        TreeEditor.ClearNodes();
+        TreeEditor.FinalizeEditor();
     }
 }

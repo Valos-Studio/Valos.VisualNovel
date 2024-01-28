@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Godot;
 using Valos.VisualNovel.EditorNodes.Menus;
 using Valos.VisualNovel.GameNodes.BaseNodes;
-using Array = Godot.Collections.Array;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
@@ -17,14 +16,11 @@ public partial class GraphEditor : GraphEdit
         InitializeSignals();
     }
 
-    public void OnDeleteNodesRequest(Array nodeNames)
+    public void LoadNodes()
     {
-        foreach (StringName name in nodeNames)
-        {
-            DeleteNode(name);
-        }
+        
     }
-
+    
     public void ClearNodes()
     {
     }

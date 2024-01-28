@@ -28,6 +28,16 @@ public partial class TreeEditor : Control
         Graph.AddNewGraphNode(node, data.GridLocation);
     }
 
+    public void InitializeEditor()
+    {
+        Graph.LoadNodes();
+    }
+    
+    public void FinalizeEditor()
+    {
+        Graph.ClearNodes();
+    }
+
     public void OnNodeSelected(Node node)
     {
         String type = node.GetType().Name;
@@ -43,8 +53,5 @@ public partial class TreeEditor : Control
         }
     }
 
-    public void ClearNodes()
-    {
-        Graph.ClearNodes();
-    }
+   
 }
