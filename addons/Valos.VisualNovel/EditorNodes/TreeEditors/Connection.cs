@@ -37,15 +37,20 @@ public class Connection
 
     public override int GetHashCode()
     {
+        return HashCode(this.FromNode, this.FromPort, this.ToNode, this.ToPort);
+    }
+
+    public static int HashCode(StringName fromNode, long fromPort, StringName toNode, long toPort)
+    {
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.Append(this.FromNode);
-        stringBuilder.Append(this.FromPort);
-        stringBuilder.Append(this.ToNode);
-        stringBuilder.Append(this.ToNode);
+        stringBuilder.Append(fromNode);
+        stringBuilder.Append(fromPort);
+        stringBuilder.Append(toNode);
+        stringBuilder.Append(toPort);
 
         string result = stringBuilder.ToString();
-        
+
         return result.GetHashCode();
     }
 }

@@ -19,4 +19,13 @@ public class ConnectionList
 
         return true;
     }
+
+    public bool TryDelete(int hashCode)
+    {
+        if (this.list.ContainsKey(hashCode) == false) return false;
+
+        this.list.Remove(hashCode);
+
+        return true;
+    }
 }
