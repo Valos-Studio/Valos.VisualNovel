@@ -11,6 +11,13 @@ public partial class StartNode : GraphNode
     public override void _Ready()
     {
         Dragged += OnDragged;
+        
+        SlotUpdated += OnSlotUpdated;
+    }
+
+    public void OnSlotUpdated(long slotIndex)
+    {
+        GD.Print(slotIndex);
     }
 
     public void OnDragged(Vector2 from, Vector2 to)
