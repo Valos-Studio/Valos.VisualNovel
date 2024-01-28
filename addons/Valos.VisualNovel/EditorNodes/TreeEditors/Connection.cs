@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using System.Text;
+using Godot;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
@@ -32,5 +33,19 @@ public class Connection
         if (this.ToPort != obj.ToPort) return false;
 
         return true;
+    }
+
+    public override int GetHashCode()
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.Append(this.FromNode);
+        stringBuilder.Append(this.FromPort);
+        stringBuilder.Append(this.ToNode);
+        stringBuilder.Append(this.ToNode);
+
+        string result = stringBuilder.ToString();
+        
+        return result.GetHashCode();
     }
 }
