@@ -6,4 +6,5 @@ namespace Valos.VisualNovel.DataNodes;
 [GodotClassName(nameof(StartData))]
 public partial class StartData : DataNode
 {
+    
 }
