@@ -1,5 +1,6 @@
 using Godot;
 using Valos.VisualNovel.DataNodes;
+using Valos.VisualNovel.EditorNodes.TreeEditors;
 
 namespace Valos.VisualNovel.GameNodes;
 
@@ -10,6 +11,13 @@ public partial class NovelPanelCode : Node
     public Node DialogueNodes { get; set; }
     public Node ResponseNodes { get; set; }
     public Node LocationNodes { get; set; }
+    
+    public ConnectionList ConnectionList { get;}
+    
+    public NovelPanelCode()
+    {
+        ConnectionList = new ConnectionList();
+    }
 
     public override void _Ready()
     {
