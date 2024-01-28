@@ -16,14 +16,7 @@ public partial class GraphEditor : GraphEdit
         InitializeSignals();
     }
 
-    public void LoadNodes()
-    {
-        
-    }
-    
-    public void ClearNodes()
-    {
-    }
+
 
     private void DeleteNode(StringName nodeName)
     {
