@@ -1,5 +1,4 @@
 ﻿using Godot;
-using Godot.Collections;
 
 namespace Valos.VisualNovel.DataNodes;
 
@@ -7,7 +6,8 @@ namespace Valos.VisualNovel.DataNodes;
 [GodotClassName(nameof(DataNode))]
 public partial class DataNode : Node
 {
-    [Export()]public Vector2 GridLocation { get; set; }
+    [Export()] public Vector2 GridLocation { get; set; }
+    [Export()] public Vector2 NodeName { get; set; }
 
     public DataNode()
     {
