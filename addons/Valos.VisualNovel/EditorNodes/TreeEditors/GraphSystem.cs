@@ -9,9 +9,11 @@ public partial class GraphEditor
 {
     public void LoadNodes()
     {
-        NovelPanel panel = EditorInterface.Singleton.GetEditedSceneRoot() as NovelPanel;
+        novelPanel = EditorInterface.Singleton.GetEditedSceneRoot() as NovelPanel;
+        
+        if(novelPanel == null) return;
 
-        AddStartNode(panel.StartData);
+        AddStartNode(novelPanel.StartData);
     }
 
     private void AddStartNode(StartData data)
@@ -25,5 +27,6 @@ public partial class GraphEditor
 
     public void ClearNodes()
     {
+        novelPanel = null;
     }
 }

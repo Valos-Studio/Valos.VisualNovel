@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Godot;
 using Valos.VisualNovel.EditorNodes.Menus;
+using Valos.VisualNovel.GameNodes;
 using Valos.VisualNovel.GameNodes.BaseNodes;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
@@ -12,6 +13,8 @@ public partial class GraphEditor : GraphEdit
     [Export()] public PackedScene StartPackedScene { get; set; }
     [Export()] public GraphMenu GraphMenu { get; set; }
 
+    private NovelPanel novelPanel;
+    
     public override void _Ready()
     {
         InitializeSignals();
