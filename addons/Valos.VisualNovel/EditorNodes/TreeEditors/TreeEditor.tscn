@@ -16,7 +16,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_36ex1")
 Graph = NodePath("HSplitContainer/Container/GraphEditor")
-StartPackedScene = ExtResource("2_03ueg")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
 layout_mode = 1
@@ -35,8 +34,10 @@ layout_mode = 2
 size_flags_vertical = 3
 right_disconnects = true
 script = ExtResource("2_rq7cl")
+StartPackedScene = ExtResource("2_03ueg")
 GraphMenu = NodePath("GraphMenu")
 
 [node name="GraphMenu" parent="HSplitContainer/Container/GraphEditor" instance=ExtResource("3_g7wyo")]
+visible = false
 
 [connection signal="AddNode" from="HSplitContainer/Container/GraphEditor/GraphMenu" to="HSplitContainer/Container/GraphEditor" method="OnAddNode"]

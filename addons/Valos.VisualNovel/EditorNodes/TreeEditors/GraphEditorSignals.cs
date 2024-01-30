@@ -5,7 +5,6 @@ namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
 public partial class GraphEditor
 {
-
     private void InitializeSignals()
     {
         PopupRequest += OnPopupRequest;

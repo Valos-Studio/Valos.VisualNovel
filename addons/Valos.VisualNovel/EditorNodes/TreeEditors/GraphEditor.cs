@@ -9,14 +9,13 @@ namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 [Tool]
 public partial class GraphEditor : GraphEdit
 {
+    [Export()] public PackedScene StartPackedScene { get; set; }
     [Export()] public GraphMenu GraphMenu { get; set; }
 
     public override void _Ready()
     {
         InitializeSignals();
     }
-
-
 
     private void DeleteNode(StringName nodeName)
     {
