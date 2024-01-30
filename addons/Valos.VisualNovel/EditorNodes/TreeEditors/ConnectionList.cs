@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Godot;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
@@ -30,16 +31,24 @@ public class ConnectionList
 
     public bool TryAdd(Connection connection)
     {
+        GD.PrintErr("Try Add");
+        
         if (this.list.ContainsKey(connection.GetHashCode()) == true) return false;
 
         this.list.Add(connection.GetHashCode(), connection);
 
+        GD.PrintErr("Add Succeded");
+        
         return true;
     }
     
     public bool TryRemove(int key)
     {
+        GD.PrintErr("Try Remove");
+        
         if (this.list.ContainsKey(key) == false) return false;
+        
+        GD.PrintErr("Remove Succeded");
 
         this.list.Remove(key);
 

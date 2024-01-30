@@ -26,11 +26,19 @@ public partial class GraphEditor
     public void OnConnectionRequest(StringName fromNode, long fromPort, StringName toNode, long toPort)
     {
         this.ConnectNode(fromNode, (int)fromPort, toNode, (int)fromPort);
+        
+        Connection connection = new Connection(fromNode, fromPort, toNode, toPort);
+
+        novelPanel.ConnectionList.TryAdd(connection);
     }
     
     public void OnDisconnectionRequest(StringName fromNode, long fromPort, StringName toNode, long toPort)
     {
         this.DisconnectNode(fromNode, (int)fromPort, toNode, (int)fromPort);
+        
+        Connection connection = new Connection(fromNode, fromPort, toNode, toPort);
+
+        novelPanel.ConnectionList.TryRemove(connection.GetHashCode());
     }
 
     public async void OnConnectionToEmpty(StringName fromNode, long fromPort, Vector2 releasePosition)
