@@ -4,6 +4,23 @@ namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
 public class ConnectionList
 {
+    public ICollection<Connection> Values
+    {
+        get => this.list.Values;
+    }
+    public ICollection<int> Keys
+    {
+        get => this.list.Keys;
+    }
+    public Connection this[int key]
+    {
+        get => this.list[key];
+    }
+    public int Count
+    {
+        get => this.list.Count;
+    }
+
     private readonly Dictionary<int, Connection> list;
 
     public ConnectionList()
@@ -19,13 +36,23 @@ public class ConnectionList
 
         return true;
     }
-
-    public bool TryDelete(int hashCode)
+    
+    public bool TryRemove(int key)
     {
-        if (this.list.ContainsKey(hashCode) == false) return false;
+        if (this.list.ContainsKey(key) == false) return false;
 
-        this.list.Remove(hashCode);
+        this.list.Remove(key);
 
         return true;
+    }
+
+    public IEnumerator<KeyValuePair<int, Connection>> GetEnumerator()
+    {
+        return this.list.GetEnumerator();
+    }
+
+    public void Clear()
+    {
+        this.list.Clear();
     }
 }
