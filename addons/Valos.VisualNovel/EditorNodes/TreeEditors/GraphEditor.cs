@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Godot;
 using Valos.VisualNovel.EditorNodes.Menus;
@@ -14,7 +15,7 @@ public partial class GraphEditor : GraphEdit
     [Export()] public GraphMenu GraphMenu { get; set; }
 
     private NovelPanel novelPanel;
-    
+
     public override void _Ready()
     {
         InitializeSignals();
@@ -28,7 +29,13 @@ public partial class GraphEditor : GraphEdit
 
             if (Validator.IsValid(node) == true)
             {
-                // node.OnDeleteRequest();
+                IEnumerable<Connection> connections = novelPanel.ConnectionList.GetListWhereName(nodeName);
+
+                foreach (Connection connection in connections)
+                {
+                    OnDisconnectionRequest(connection.FromNode, connection.FromPort,
+                        connection.ToNode, connection.ToPort);
+                }
 
                 RemoveChild(node);
             }
