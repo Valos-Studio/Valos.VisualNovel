@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg7oko73dfon6"]
+[gd_scene load_steps=3 format=3 uid="uid://b7gbpppd6yt4a"]
 
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/GameNodes/NovelPanel.cs" id="1_kl6nm"]
-[ext_resource type="Script" path="res://addons/Valos.VisualNovel/DataNodes/StartData.cs" id="2_pcom0"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/DataNodes/StartData.cs" id="2_quo6b"]
 
 [node name="NovelPanel" type="Node"]
 script = ExtResource("1_kl6nm")
 
 [node name="StartData" type="Node" parent="."]
-script = ExtResource("2_pcom0")
-GridLocation = Vector2(120, -400)
+script = ExtResource("2_quo6b")
+GridLocation = Vector2(500, 480)
 
 [node name="DialogueNodes" type="Node" parent="."]
 

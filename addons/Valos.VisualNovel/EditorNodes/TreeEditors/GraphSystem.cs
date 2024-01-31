@@ -10,8 +10,8 @@ public partial class GraphEditor
     public void LoadNodes()
     {
         novelPanel = EditorInterface.Singleton.GetEditedSceneRoot() as NovelPanel;
-        
-        if(novelPanel == null) return;
+
+        if (novelPanel == null) return;
 
         AddStartNode(novelPanel.StartData);
     }
@@ -21,12 +21,17 @@ public partial class GraphEditor
         StartNode node = StartPackedScene.Instantiate<StartNode>();
 
         node.Model = data;
-
+        
         AddNewGraphNode(node, data.GridLocation);
     }
 
     public void ClearNodes()
     {
-        novelPanel = null;
+        this.novelPanel = null;
+
+        foreach (Node child in GetChildren())
+        {
+            RemoveChild(child);
+        }
     }
 }
