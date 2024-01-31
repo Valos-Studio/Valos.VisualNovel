@@ -23,30 +23,38 @@ public partial class NovelPanelCode : Node
     {
         if (Engine.IsEditorHint())
         {
-            StartData = GetNode<StartData>("StartData");
-            
-            if (Validator.IsValid(StartData) == false)
+            if (HasNode("StartData") == true)
+            {
+                StartData = GetNode<StartData>("StartData");
+            }
+            else
             {
                 InitStartData();
             }
-
-            DialogueNodes = GetNode<Node>(nameof(DialogueNodes));
-
-            if (Validator.IsValid(DialogueNodes) == false)
+            
+            if (HasNode(nameof(DialogueNodes)) == true)
+            {
+                DialogueNodes = GetNode<Node>(nameof(DialogueNodes));
+            }
+            else
             {
                 DialogueNodes = InitNode(nameof(DialogueNodes));
             }
-            
-            ResponseNodes = GetNode<Node>(nameof(ResponseNodes));
 
-            if (Validator.IsValid(ResponseNodes) == false)
+            if (HasNode(nameof(ResponseNodes)) == true)
+            {
+                ResponseNodes = GetNode<Node>(nameof(ResponseNodes));
+            }
+            else
             {
                 ResponseNodes = InitNode(nameof(ResponseNodes));
             }
-            
-            LocationNodes = GetNode<Node>(nameof(LocationNodes));
 
-            if (Validator.IsValid(LocationNodes) == false)
+            if (HasNode(nameof(LocationNodes)) == true)
+            {
+                LocationNodes = GetNode<Node>(nameof(LocationNodes));
+            }
+            else
             {
                 LocationNodes = InitNode(nameof(LocationNodes));
             }
