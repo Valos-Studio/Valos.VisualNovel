@@ -1,6 +1,7 @@
 ﻿using Godot;
 using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.GameNodes;
+using Valos.VisualNovel.GameNodes.BaseNodes;
 using Valos.VisualNovel.GameNodes.StartNodes;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
@@ -31,7 +32,17 @@ public partial class GraphEditor
 
         foreach (Node child in GetChildren())
         {
-            RemoveChild(child);
+            RemoveChildSafe(child);
         }
+    }
+
+    private void RemoveChildSafe(Node child)
+    {
+        if (child is ICleanable cleanable)
+        {
+            cleanable.Clean();
+        }
+        
+        RemoveChild(child);
     }
 }

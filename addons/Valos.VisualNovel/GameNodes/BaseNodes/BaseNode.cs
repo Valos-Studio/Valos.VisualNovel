@@ -4,7 +4,7 @@ using Valos.VisualNovel.DataNodes;
 namespace Valos.VisualNovel.GameNodes.BaseNodes;
 
 [Tool]
-public partial class BaseNode : GraphNode
+public partial class BaseNode : GraphNode, ICleanable
 {
     public DataNode Model { get; set; }
 
@@ -16,5 +16,12 @@ public partial class BaseNode : GraphNode
     public void OnDragged(Vector2 from, Vector2 to)
     {
         Model.GridLocation = to;
+    }
+    
+    public void Clean()
+    {
+        Dragged -= OnDragged;
+        
+        Model = null;
     }
 }
