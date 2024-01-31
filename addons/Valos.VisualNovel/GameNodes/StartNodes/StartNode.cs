@@ -11,7 +11,7 @@ public partial class StartNode : GraphNode
     public override void _Ready()
     {
         Dragged += OnDragged;
-        
+
         SlotUpdated += OnSlotUpdated;
     }
 
@@ -23,5 +23,12 @@ public partial class StartNode : GraphNode
     public void OnDragged(Vector2 from, Vector2 to)
     {
         Model.GridLocation = to;
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        Model = null;
+
+        base.Dispose(disposing);
     }
 }
