@@ -1,22 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bb4orjy3qv527"]
+[gd_scene load_steps=3 format=3 uid="uid://c4u4dhb2yrclg"]
 
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/GameNodes/NovelPanel.cs" id="1_bhe6i"]
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/DataNodes/StartData.cs" id="2_gaubq"]
 
 [node name="Test" type="Node"]
 script = ExtResource("1_bhe6i")
-StartData = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("2_gaubq"),"GridLocation":Vector2(240, 300),"NodeName":Vector2(0, 0))
-
-DialogueNodes = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":null)
-
-ResponseNodes = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":null)
-
-LocationNodes = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":null)
-
 
 [node name="StartData" type="Node" parent="."]
 script = ExtResource("2_gaubq")
-GridLocation = Vector2(240, 300)
+GridLocation = Vector2(240, -120)
 
 [node name="DialogueNodes" type="Node" parent="."]
 

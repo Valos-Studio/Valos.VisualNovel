@@ -41,8 +41,8 @@ public partial class GraphEditor
         if (child is ICleanable cleanable)
         {
             cleanable.Clean();
+            
+            RemoveChild(child);
         }
-        
-        RemoveChild(child);
     }
 }
