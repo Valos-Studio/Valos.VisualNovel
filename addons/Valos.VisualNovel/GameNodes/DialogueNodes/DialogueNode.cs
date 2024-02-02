@@ -1,4 +1,5 @@
 using Godot;
+using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.GameNodes.BaseNodes;
 
 namespace Valos.VisualNovel.GameNodes.DialogueNodes;
@@ -6,15 +7,26 @@ namespace Valos.VisualNovel.GameNodes.DialogueNodes;
 [Tool]
 public partial class DialogueNode : BaseNode
 {
-    public override void _Ready()
+    public DialogueData Model { get; private set; }
+    
+    public void SetModel(DialogueData data)
     {
-        base._Ready();
-        
-        SlotUpdated += OnSlotUpdated;
+        if (data == null) return;
+
+        Model = data;
+
+        Dragged += OnDragged;
     }
 
-    public void OnSlotUpdated(long slotIndex)
+    public void OnDragged(Vector2 from, Vector2 to)
     {
-        
+        Model.GridLocation = to;
+    }
+
+    public override void Clean()
+    {
+        Dragged -= OnDragged;
+
+        Model = null;
     }
 }
