@@ -6,9 +6,9 @@ namespace Valos.VisualNovel.GameNodes.Lists.Nodes;
 
 [Tool]
 [GlobalClass]
-public partial class DialogNodes : Node
+public partial class LocationList : Node
 {
-    public ICollection<DialogueData> Values
+    public ICollection<LocationData> Values
     {
         get => this.list.Values;
     }
@@ -18,7 +18,7 @@ public partial class DialogNodes : Node
         get => this.list.Keys;
     }
 
-    public DialogueData this[int key]
+    public LocationData this[int key]
     {
         get => this.list[key];
     }
@@ -28,19 +28,19 @@ public partial class DialogNodes : Node
         get => this.list.Count;
     }
 
-    private readonly Dictionary<int, DialogueData> list;
+    private readonly Dictionary<int, LocationData> list;
 
-    public DialogNodes()
+    public LocationList()
     {
-        this.list = new Dictionary<int, DialogueData>();
+        this.list = new Dictionary<int, LocationData>();
     }
 
-    public bool TryAdd(DialogueData dialogueData)
+    public bool TryAdd(LocationData locationData)
     {
         return true;
     }
 
-    public IEnumerator<KeyValuePair<int, DialogueData>> GetEnumerator()
+    public IEnumerator<KeyValuePair<int, LocationData>> GetEnumerator()
     {
         return this.list.GetEnumerator();
     }

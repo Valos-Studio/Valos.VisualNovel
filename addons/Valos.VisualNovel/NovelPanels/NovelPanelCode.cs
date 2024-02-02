@@ -1,5 +1,6 @@
 using Godot;
 using Valos.VisualNovel.DataNodes;
+using Valos.VisualNovel.GameNodes.Lists.Nodes;
 using Valos.VisualNovel.NovelPanels.Lists.Connections;
 
 namespace Valos.VisualNovel.GameNodes;
@@ -8,10 +9,9 @@ namespace Valos.VisualNovel.GameNodes;
 public partial class NovelPanelCode : Node
 {
     public StartData StartData { get; set; }
-    public Node DialogueNodes { get; set; }
-    public Node ResponseNodes { get; set; }
-    public Node LocationNodes { get; set; }
-    
+    public DialogueList Dialogues { get; set; }
+    public ResponseList Responses { get; set; }
+    public LocationList Locations { get; set; }
     public ConnectionList ConnectionList { get;}
     
     public NovelPanelCode()
@@ -32,31 +32,31 @@ public partial class NovelPanelCode : Node
                 InitStartData();
             }
             
-            if (HasNode(nameof(DialogueNodes)) == true)
+            if (HasNode(nameof(Dialogues)) == true)
             {
-                DialogueNodes = GetNode<Node>(nameof(DialogueNodes));
+                Dialogues = GetNode<DialogueList>(nameof(Dialogues));
             }
             else
             {
-                DialogueNodes = InitNode(nameof(DialogueNodes));
+                InitDialogueNode(nameof(Dialogues));
             }
 
-            if (HasNode(nameof(ResponseNodes)) == true)
+            if (HasNode(nameof(Responses)) == true)
             {
-                ResponseNodes = GetNode<Node>(nameof(ResponseNodes));
+                Responses = GetNode<ResponseList>(nameof(Responses));
             }
             else
             {
-                ResponseNodes = InitNode(nameof(ResponseNodes));
+                InitResponseNode(nameof(Responses));
             }
 
-            if (HasNode(nameof(LocationNodes)) == true)
+            if (HasNode(nameof(Locations)) == true)
             {
-                LocationNodes = GetNode<Node>(nameof(LocationNodes));
+                Locations = GetNode<LocationList>(nameof(Locations));
             }
             else
             {
-                LocationNodes = InitNode(nameof(LocationNodes));
+                InitLocationNode(nameof(Locations));
             }
         }
     }
@@ -67,16 +67,28 @@ public partial class NovelPanelCode : Node
 
         AddChildDeferred(StartData, nameof(StartData));
     }
-
-    private Node InitNode(string name)
+    
+    private void InitDialogueNode(string name)
     {
-        Node property = new Node();
+        Dialogues = new DialogueList();
 
-        AddChildDeferred(property, name);
-
-        return property;
+        AddChildDeferred(Locations, name);
     }
+    
+    private void InitResponseNode(string name)
+    {
+        Responses = new ResponseList();
 
+        AddChildDeferred(Locations, name);
+    }
+    
+    private void InitLocationNode(string name)
+    {
+        Locations = new LocationList();
+
+        AddChildDeferred(Locations, name);
+    }
+    
     private void AddChildDeferred(Node node, string name)
     {
         CallDeferred(Node.MethodName.AddChild, node);

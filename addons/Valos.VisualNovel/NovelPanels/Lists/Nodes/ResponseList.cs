@@ -6,7 +6,7 @@ namespace Valos.VisualNovel.GameNodes.Lists.Nodes;
 
 [Tool]
 [GlobalClass]
-public partial class ResponseNodes : Node
+public partial class ResponseList : Node
 {
     public ICollection<ResponseData> Values
     {
@@ -30,7 +30,7 @@ public partial class ResponseNodes : Node
 
     private readonly Dictionary<int, ResponseData> list;
 
-    public ResponseNodes()
+    public ResponseList()
     {
         this.list = new Dictionary<int, ResponseData>();
     }
