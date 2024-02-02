@@ -13,12 +13,12 @@ public partial class DialogueList : Node
         get => this.list.Values;
     }
 
-    public ICollection<int> Keys
+    public ICollection<string> Keys
     {
         get => this.list.Keys;
     }
 
-    public DialogueData this[int key]
+    public DialogueData this[string key]
     {
         get => this.list[key];
     }
@@ -28,11 +28,11 @@ public partial class DialogueList : Node
         get => this.list.Count;
     }
 
-    private readonly Dictionary<int, DialogueData> list;
+    private readonly Dictionary<string, DialogueData> list;
 
     public DialogueList()
     {
-        this.list = new Dictionary<int, DialogueData>();
+        this.list = new Dictionary<string, DialogueData>();
     }
 
     public bool TryAdd(DialogueData dialogueData)
@@ -40,7 +40,7 @@ public partial class DialogueList : Node
         return true;
     }
 
-    public IEnumerator<KeyValuePair<int, DialogueData>> GetEnumerator()
+    public IEnumerator<KeyValuePair<string, DialogueData>> GetEnumerator()
     {
         return this.list.GetEnumerator();
     }

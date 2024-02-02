@@ -13,12 +13,12 @@ public partial class LocationList : Node
         get => this.list.Values;
     }
 
-    public ICollection<int> Keys
+    public ICollection<string> Keys
     {
         get => this.list.Keys;
     }
 
-    public LocationData this[int key]
+    public LocationData this[string key]
     {
         get => this.list[key];
     }
@@ -28,11 +28,11 @@ public partial class LocationList : Node
         get => this.list.Count;
     }
 
-    private readonly Dictionary<int, LocationData> list;
+    private readonly Dictionary<string, LocationData> list;
 
     public LocationList()
     {
-        this.list = new Dictionary<int, LocationData>();
+        this.list = new Dictionary<string, LocationData>();
     }
 
     public bool TryAdd(LocationData locationData)
@@ -40,7 +40,7 @@ public partial class LocationList : Node
         return true;
     }
 
-    public IEnumerator<KeyValuePair<int, LocationData>> GetEnumerator()
+    public IEnumerator<KeyValuePair<string, LocationData>> GetEnumerator()
     {
         return this.list.GetEnumerator();
     }

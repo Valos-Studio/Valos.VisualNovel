@@ -13,12 +13,12 @@ public partial class ResponseList : Node
         get => this.list.Values;
     }
 
-    public ICollection<int> Keys
+    public ICollection<string> Keys
     {
         get => this.list.Keys;
     }
 
-    public ResponseData this[int key]
+    public ResponseData this[string key]
     {
         get => this.list[key];
     }
@@ -28,11 +28,11 @@ public partial class ResponseList : Node
         get => this.list.Count;
     }
 
-    private readonly Dictionary<int, ResponseData> list;
+    private readonly Dictionary<string, ResponseData> list;
 
     public ResponseList()
     {
-        this.list = new Dictionary<int, ResponseData>();
+        this.list = new Dictionary<string, ResponseData>();
     }
     
     public bool TryAdd(ResponseData responseData)
@@ -40,7 +40,7 @@ public partial class ResponseList : Node
         return true;
     }
     
-    public IEnumerator<KeyValuePair<int, ResponseData>> GetEnumerator()
+    public IEnumerator<KeyValuePair<string, ResponseData>> GetEnumerator()
     {
         return this.list.GetEnumerator();
     }
