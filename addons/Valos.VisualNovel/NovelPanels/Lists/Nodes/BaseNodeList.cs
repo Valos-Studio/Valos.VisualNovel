@@ -11,14 +11,17 @@ public partial class BaseNodeList : Node
     {
         get => this.list.Values;
     }
+
     public ICollection<int> Keys
     {
         get => this.list.Keys;
     }
+
     public DataNode this[int key]
     {
         get => this.list[key];
     }
+
     public int Count
     {
         get => this.list.Count;
@@ -29,5 +32,15 @@ public partial class BaseNodeList : Node
     public BaseNodeList()
     {
         this.list = new Dictionary<int, DataNode>();
+    }
+
+    public IEnumerator<KeyValuePair<int, DataNode>> GetEnumerator()
+    {
+        return this.list.GetEnumerator();
+    }
+
+    public virtual void Clear()
+    {
+        this.list.Clear();
     }
 }
