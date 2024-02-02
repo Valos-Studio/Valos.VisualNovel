@@ -37,11 +37,11 @@ public partial class DialogueList : Node
 
     public bool TryAdd(DialogueData dialogueData)
     {
-        if (this.list.ContainsKey(dialogueData.NodeName) == true) return false;
+        if (this.list.ContainsKey(dialogueData.Name) == true) return false;
 
-        this.list.Add(dialogueData.NodeName, dialogueData);
+        this.list.Add(dialogueData.Name, dialogueData);
         
-        this.AddChildDeferred(dialogueData, dialogueData.NodeName);
+        this.AddChildDeferred(dialogueData, dialogueData.Name);
 
         return true;
     }

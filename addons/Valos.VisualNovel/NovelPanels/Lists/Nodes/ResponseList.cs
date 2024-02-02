@@ -37,11 +37,11 @@ public partial class ResponseList : Node
     
     public bool TryAdd(ResponseData responseData)
     {
-        if (this.list.ContainsKey(responseData.NodeName) == true) return false;
+        if (this.list.ContainsKey(responseData.Name) == true) return false;
         
-        this.list.Add(responseData.NodeName, responseData);
+        this.list.Add(responseData.Name, responseData);
         
-        this.AddChildDeferred(responseData, responseData.NodeName);
+        this.AddChildDeferred(responseData, responseData.Name);
         
         return true;
     }
