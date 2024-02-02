@@ -5,23 +5,8 @@ namespace Valos.VisualNovel.GameNodes.BaseNodes;
 
 [Tool]
 public partial class BaseNode : GraphNode, ICleanable
-{
-    public DataNode Model { get; set; }
-
-    public override void _Ready()
+{ public virtual void Clean()
     {
-        Dragged += OnDragged;
-    }
-
-    public void OnDragged(Vector2 from, Vector2 to)
-    {
-        Model.GridLocation = to;
-    }
-    
-    public void Clean()
-    {
-        Dragged -= OnDragged;
         
-        Model = null;
     }
 }

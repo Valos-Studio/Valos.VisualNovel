@@ -93,6 +93,8 @@ public partial class GraphEditor : GraphEdit
     {
         LocationData locationData = new LocationData();
 
+        locationData.Name = node.Name;
+
         novelPanel.Locations.TryAdd(locationData);
     }
 }
