@@ -7,5 +7,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="addons\Valos.VisualNovel\GameNodes\BaseNodes" />
+    <Folder Include="addons\Valos.VisualNovel\NovelPanels" />
   </ItemGroup>
 </Project>

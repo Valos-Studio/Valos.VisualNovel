@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Godot;
+using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.EditorNodes.Menus;
 using Valos.VisualNovel.GameNodes;
 using Valos.VisualNovel.GameNodes.BaseNodes;
+using Valos.VisualNovel.GameNodes.LocationNodes;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
@@ -78,5 +80,20 @@ public partial class GraphEditor : GraphEdit
         graphNode.Owner = this.Owner;
 
         graphNode.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
+
+
+        if (graphNode is LocationNode locationNode)
+        {
+            AddNewDataNode(locationNode);
+        }
+
+        
+    }
+
+    private void AddNewDataNode(LocationNode node)
+    {
+        LocationData locationData = new LocationData();
+        
+        // novelPanel.LocationNodes.AddChild();
     }
 }
