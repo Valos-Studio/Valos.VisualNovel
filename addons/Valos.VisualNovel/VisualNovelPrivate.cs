@@ -40,7 +40,7 @@ public partial class VisualNovelPlugin
 
     private void AddCustomTypes()
     {
-        string scriptPath = GetBasePath("GameNodes/" + nameof(NovelPanel), Extensions.ScriptCs);
+        string scriptPath = GetBasePath("NovelPanels/" + nameof(NovelPanel), Extensions.ScriptCs);
         
         string iconPath = GetBasePath(IconName, Extensions.Icon);
 

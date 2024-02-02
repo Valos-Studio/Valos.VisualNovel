@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4u4dhb2yrclg"]
 
-[ext_resource type="Script" path="res://addons/Valos.VisualNovel/GameNodes/NovelPanel.cs" id="1_bhe6i"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/NovelPanel.cs" id="1_bhe6i"]
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/DataNodes/StartData.cs" id="2_gaubq"]
 
 [node name="Test" type="Node"]
