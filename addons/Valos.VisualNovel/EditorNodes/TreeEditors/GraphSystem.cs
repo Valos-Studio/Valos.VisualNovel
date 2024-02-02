@@ -21,7 +21,7 @@ public partial class GraphEditor
     {
         StartNode node = StartPackedScene.Instantiate<StartNode>();
 
-        node.Model = data;
+        node.SetModel(data);
         
         AddNewGraphNode(node, data.GridLocation);
     }

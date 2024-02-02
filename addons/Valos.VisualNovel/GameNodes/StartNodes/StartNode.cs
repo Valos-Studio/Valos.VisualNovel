@@ -7,10 +7,14 @@ namespace Valos.VisualNovel.GameNodes.StartNodes;
 [Tool]
 public partial class StartNode : GraphNode, ICleanable
 {
-    public StartData Model { get; set; }
+    public StartData Model { get; private set; }
 
-    public override void _Ready()
+    public void SetModel(StartData data)
     {
+        if (data == null) return;
+
+        Model = data;
+
         Dragged += OnDragged;
     }
 
@@ -18,11 +22,11 @@ public partial class StartNode : GraphNode, ICleanable
     {
         Model.GridLocation = to;
     }
-    
+
     public void Clean()
     {
         Dragged -= OnDragged;
-        
+
         Model = null;
     }
 }

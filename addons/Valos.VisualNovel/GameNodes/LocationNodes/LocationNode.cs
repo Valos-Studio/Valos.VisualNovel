@@ -9,11 +9,15 @@ public partial class LocationNode : BaseNode
 {
     public LocationData Model { get; set; }
 
-    public override void _Ready()
+    public void SetModel(LocationData data)
     {
+        if (data == null) return;
+
+        Model = data;
+
         Dragged += OnDragged;
     }
-
+    
     public void OnDragged(Vector2 from, Vector2 to)
     {
         Model.GridLocation = to;
