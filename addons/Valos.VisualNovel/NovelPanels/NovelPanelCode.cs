@@ -23,9 +23,9 @@ public partial class NovelPanelCode : Node
     {
         if (Engine.IsEditorHint())
         {
-            if (HasNode("StartData") == true)
+            if (HasNode(nameof(Dialogues)) == true)
             {
-                StartData = GetNode<StartData>("StartData");
+                StartData = GetNode<StartData>(nameof(Dialogues));
             }
             else
             {
