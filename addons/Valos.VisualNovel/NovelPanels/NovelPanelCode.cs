@@ -65,7 +65,7 @@ public partial class NovelPanelCode : Node
     {
         StartData = new StartData();
 
-        NodeExtension.AddChildDeferred(this,StartData, nameof(StartData));
+        this.AddChildDeferred(StartData, nameof(StartData));
     }
     
     private void InitDialogueNode(string name)
