@@ -40,7 +40,7 @@ public partial class LocationList : Node
         if (this.list.ContainsKey(locationData.Name) == true) return false;
         
         this.list.Add(locationData.Name, locationData);
-
+        
         this.AddChildDeferred(locationData, locationData.Name);
 
         return true;

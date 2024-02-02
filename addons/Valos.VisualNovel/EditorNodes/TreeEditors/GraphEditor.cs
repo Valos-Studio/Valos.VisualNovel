@@ -79,9 +79,8 @@ public partial class GraphEditor : GraphEdit
         this.AddChild(graphNode, true);
 
         graphNode.Owner = this.Owner;
-
+        
         graphNode.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
-
 
         if (graphNode is LocationNode locationNode)
         {
@@ -96,5 +95,7 @@ public partial class GraphEditor : GraphEdit
         locationData.Name = node.Name;
 
         novelPanel.Locations.TryAdd(locationData);
+        
+        node.SetModel(locationData);
     }
 }
