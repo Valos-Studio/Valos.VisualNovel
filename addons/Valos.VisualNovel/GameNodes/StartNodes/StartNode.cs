@@ -21,8 +21,6 @@ public partial class StartNode : GraphNode, ICleanable
     
     public void Clean()
     {
-        
-        GD.PrintErr("Clean Start Node");
         Dragged -= OnDragged;
         
         Model = null;
