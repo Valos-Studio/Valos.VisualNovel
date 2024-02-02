@@ -21,4 +21,4 @@ project/assembly_name="Valos.VisualNovel"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/Valos.VisualNovel/plugin.cfg")
