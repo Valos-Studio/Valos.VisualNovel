@@ -1,6 +1,6 @@
 using Godot;
 using Valos.VisualNovel.DataNodes;
-using Valos.VisualNovel.EditorNodes.TreeEditors;
+using Valos.VisualNovel.NovelPanels.Lists.Connections;
 
 namespace Valos.VisualNovel.GameNodes;
 

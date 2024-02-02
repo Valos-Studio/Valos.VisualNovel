@@ -2,7 +2,7 @@
 using System.Linq;
 using Godot;
 
-namespace Valos.VisualNovel.EditorNodes.TreeEditors;
+namespace Valos.VisualNovel.NovelPanels.Lists.Connections;
 
 public class ConnectionList
 {

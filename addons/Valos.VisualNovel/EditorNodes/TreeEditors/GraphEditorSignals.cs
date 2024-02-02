@@ -1,5 +1,6 @@
 ﻿using Godot;
 using Godot.Collections;
+using Valos.VisualNovel.NovelPanels.Lists.Connections;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 

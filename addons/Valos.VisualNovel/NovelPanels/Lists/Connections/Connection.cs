@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using Godot;
 
-namespace Valos.VisualNovel.EditorNodes.TreeEditors;
+namespace Valos.VisualNovel.NovelPanels.Lists.Connections;
 
 public class Connection
 {

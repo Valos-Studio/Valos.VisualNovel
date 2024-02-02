@@ -7,6 +7,7 @@ using Valos.VisualNovel.EditorNodes.Menus;
 using Valos.VisualNovel.GameNodes;
 using Valos.VisualNovel.GameNodes.BaseNodes;
 using Valos.VisualNovel.GameNodes.LocationNodes;
+using Valos.VisualNovel.NovelPanels.Lists.Connections;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
