@@ -5,7 +5,6 @@ using Valos.VisualNovel.DataNodes;
 namespace Valos.VisualNovel.GameNodes.Lists.Nodes;
 
 [Tool]
-[GlobalClass]
 public partial class LocationList : Node
 {
     public ICollection<LocationData> Values

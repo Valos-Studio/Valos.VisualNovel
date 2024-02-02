@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using System.Collections.Generic;
+using Godot;
 using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.GameNodes;
 using Valos.VisualNovel.GameNodes.BaseNodes;
@@ -15,6 +16,8 @@ public partial class GraphEditor
         if (novelPanel == null) return;
 
         AddStartNode(novelPanel.StartData);
+        
+        AddLocationNodes(novelPanel.Locations.Values);
     }
 
     private void AddStartNode(StartData data)
@@ -24,6 +27,18 @@ public partial class GraphEditor
         node.SetModel(data);
         
         AddNewGraphNode(node, data.GridLocation);
+    }
+    
+    private void AddLocationNodes(IEnumerable<LocationData> locations)
+    {
+        // foreach (LocationData location in locations)
+        // {
+        //     StartNode node = StartPackedScene.Instantiate<StartNode>();
+        //
+        //     node.SetModel(data);
+        //
+        //     AddNewGraphNode(node, data.GridLocation);
+        // }
     }
 
     public void ClearNodes()
