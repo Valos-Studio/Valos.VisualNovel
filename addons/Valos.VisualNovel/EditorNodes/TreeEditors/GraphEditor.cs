@@ -85,11 +85,11 @@ public partial class GraphEditor : GraphEdit
 
         if (graphNode is LocationNode locationNode)
         {
-            AddNewDataNode(locationNode);
+            AddLocationModel(locationNode);
         }
     }
 
-    private void AddNewDataNode(LocationNode node)
+    private void AddLocationModel(LocationNode node)
     {
         LocationData locationData = new LocationData();
 

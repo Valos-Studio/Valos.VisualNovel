@@ -72,14 +72,14 @@ public partial class NovelPanelCode : Node
     {
         Dialogues = new DialogueList();
 
-        this.AddChildDeferred(Locations, name);
+        this.AddChildDeferred(Dialogues, name);
     }
     
     private void InitResponseNode(string name)
     {
         Responses = new ResponseList();
 
-        this.AddChildDeferred(Locations, name);
+        this.AddChildDeferred(Responses, name);
     }
     
     private void InitLocationNode(string name)

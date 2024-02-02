@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3soccpeqnvmr"]
-
-[ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/NovelPanel.cs" id="1_83rbf"]
-
-[node name="Test" type="Node"]
-script = ExtResource("1_83rbf")
