@@ -2,6 +2,7 @@
 
 namespace Valos.VisualNovel.GameNodes;
 
+[Tool]
 public static class NodeExtension
 {
     public static void AddChildDeferred(this Node node, Node child, string name)

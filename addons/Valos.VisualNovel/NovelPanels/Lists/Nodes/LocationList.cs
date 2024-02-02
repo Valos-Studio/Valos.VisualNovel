@@ -38,9 +38,11 @@ public partial class LocationList : Node
     public bool TryAdd(LocationData locationData)
     {
         if (this.list.ContainsKey(locationData.Name) == true) return false;
-        
+
         this.list.Add(locationData.Name, locationData);
-        
+
+        GD.PrintErr("Some name =>" + locationData.Name);
+
         this.AddChildDeferred(locationData, locationData.Name);
 
         return true;
