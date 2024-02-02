@@ -37,6 +37,12 @@ public partial class LocationList : Node
 
     public bool TryAdd(LocationData locationData)
     {
+        if (this.list.ContainsKey(locationData.NodeName) == true) return false;
+        
+        this.list.Add(locationData.NodeName, locationData);
+
+        this.AddChildDeferred(locationData, locationData.NodeName);
+
         return true;
     }
 

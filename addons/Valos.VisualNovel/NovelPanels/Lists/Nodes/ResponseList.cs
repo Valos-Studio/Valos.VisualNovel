@@ -37,9 +37,15 @@ public partial class ResponseList : Node
     
     public bool TryAdd(ResponseData responseData)
     {
+        if (this.list.ContainsKey(responseData.NodeName) == true) return false;
+        
+        this.list.Add(responseData.NodeName, responseData);
+        
+        this.AddChildDeferred(responseData, responseData.NodeName);
+        
         return true;
     }
-    
+
     public IEnumerator<KeyValuePair<string, ResponseData>> GetEnumerator()
     {
         return this.list.GetEnumerator();

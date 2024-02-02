@@ -65,36 +65,27 @@ public partial class NovelPanelCode : Node
     {
         StartData = new StartData();
 
-        AddChildDeferred(StartData, nameof(StartData));
+        NodeExtension.AddChildDeferred(this,StartData, nameof(StartData));
     }
     
     private void InitDialogueNode(string name)
     {
         Dialogues = new DialogueList();
 
-        AddChildDeferred(Locations, name);
+        this.AddChildDeferred(Locations, name);
     }
     
     private void InitResponseNode(string name)
     {
         Responses = new ResponseList();
 
-        AddChildDeferred(Locations, name);
+        this.AddChildDeferred(Locations, name);
     }
     
     private void InitLocationNode(string name)
     {
         Locations = new LocationList();
 
-        AddChildDeferred(Locations, name);
-    }
-    
-    private void AddChildDeferred(Node node, string name)
-    {
-        CallDeferred(Node.MethodName.AddChild, node);
-
-        node.SetDeferred(Node.PropertyName.Owner, this);
-
-        node.SetDeferred(Node.PropertyName.Name, name);
+        this.AddChildDeferred(Locations, name);
     }
 }

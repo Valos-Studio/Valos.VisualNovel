@@ -87,14 +87,12 @@ public partial class GraphEditor : GraphEdit
         {
             AddNewDataNode(locationNode);
         }
-
-        
     }
 
     private void AddNewDataNode(LocationNode node)
     {
         LocationData locationData = new LocationData();
-        
-        // novelPanel.LocationNodes.AddChild();
+
+        novelPanel.Locations.TryAdd(locationData);
     }
 }
