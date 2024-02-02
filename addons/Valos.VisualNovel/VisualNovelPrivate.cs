@@ -1,5 +1,6 @@
 ﻿using Godot;
 using Godot.Collections;
+using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.GameNodes;
 
 namespace Valos.VisualNovel;

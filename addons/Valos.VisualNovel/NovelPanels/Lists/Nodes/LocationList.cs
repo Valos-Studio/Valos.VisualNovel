@@ -7,6 +7,8 @@ namespace Valos.VisualNovel.GameNodes.Lists.Nodes;
 [Tool]
 public partial class LocationList : Node
 {
+    private Node parent;
+    
     public ICollection<LocationData> Values
     {
         get => this.list.Values;
@@ -34,15 +36,25 @@ public partial class LocationList : Node
         this.list = new Dictionary<string, LocationData>();
     }
 
+    public override void _Ready()
+    {
+        parent = GetParent();
+        
+        ChildEnteredTree += OnChildEnteredTree;
+    }
+
+    public void OnChildEnteredTree(Node node)
+    {
+        GD.PrintErr($"Child here: {node}");
+    }
+
     public bool TryAdd(LocationData locationData)
     {
         if (this.list.ContainsKey(locationData.Name) == true) return false;
 
         this.list.Add(locationData.Name, locationData);
-
-        GD.PrintErr("Some name =>" + locationData.Name);
-
-        this.AddChildDeferred(locationData, locationData.Name);
+        
+        this.AddChildDeferred(locationData, locationData.Name, parent);
 
         return true;
     }

@@ -13,4 +13,13 @@ public static class NodeExtension
 
         child.SetDeferred(Node.PropertyName.Name, name);
     }
+    
+    public static void AddChildDeferred(this Node node, Node child, string name, Node owner)
+    {
+        node.CallDeferred(Node.MethodName.AddChild, child);
+
+        child.SetDeferred(Node.PropertyName.Owner, owner);
+
+        child.SetDeferred(Node.PropertyName.Name, name);
+    }
 }
