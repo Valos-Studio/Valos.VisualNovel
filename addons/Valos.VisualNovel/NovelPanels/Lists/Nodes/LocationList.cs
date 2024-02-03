@@ -54,8 +54,6 @@ public partial class LocationList : Node
         else
         {
             RemoveChild(node);
-            
-            GD.PrintErr("Wrong Node Type, Only LocationData can be added as a child");
         }
     }
     

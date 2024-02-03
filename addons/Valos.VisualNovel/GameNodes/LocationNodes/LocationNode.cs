@@ -7,26 +7,42 @@ namespace Valos.VisualNovel.GameNodes.LocationNodes;
 [Tool]
 public partial class LocationNode : BaseNode
 {
-    public LocationData Model { get; set; }
+    public LocationData Model
+    {
+        get => model;
+    }
+
+    private LocationData model;
+
+    public override void _Ready()
+    {
+        Dragged += OnDragged;
+    }
 
     public void SetModel(LocationData data)
     {
-        if (data == null) return;
+        if (data == null)
+        {
+            base.Clean();
+        }
 
-        Model = data;
+        model = data;
 
-        Dragged += OnDragged;
+        isModelValid = true;
     }
-    
+
     public void OnDragged(Vector2 from, Vector2 to)
     {
-        Model.GridLocation = to;
+        if (isModelValid)
+        {
+            Model.GridLocation = to;
+        }
     }
-    
+
     public override void Clean()
     {
-        Dragged -= OnDragged;
-        
-        Model = null;
+        base.Clean();
+
+        model = null;
     }
 }
