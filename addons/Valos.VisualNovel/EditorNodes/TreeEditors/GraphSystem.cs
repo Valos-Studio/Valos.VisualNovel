@@ -36,10 +36,10 @@ public partial class GraphEditor
         foreach (LocationData data in locations)
         {
             LocationNode node = (LocationNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.LocationNode);
+            
+            AddNewGraphNode(node, data.GridLocation);
         
             node.SetModel(data);
-        
-            AddNewGraphNode(node, data.GridLocation);
         }
     }
 
