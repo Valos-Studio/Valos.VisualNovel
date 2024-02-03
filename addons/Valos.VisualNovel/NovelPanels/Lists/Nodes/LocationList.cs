@@ -41,19 +41,38 @@ public partial class LocationList : Node
         parent = GetParent();
         
         ChildEnteredTree += OnChildEnteredTree;
+        
+        ChildExitingTree += OnChildExitingTree;
     }
 
     public void OnChildEnteredTree(Node node)
     {
-        GD.PrintErr($"Child here: {node}");
+        if (node is LocationData data)
+        {
+            this.list.Add(data.Name, data);
+        }
+        else
+        {
+            RemoveChild(node);
+            
+            GD.PrintErr("Wrong Node Type, Only LocationData can be added as a child");
+        }
+    }
+    
+    public void OnChildExitingTree(Node node)
+    {
+        if (node is LocationData data)
+        {
+            if(list.ContainsKey(data.Name) == false) return;
+            
+            this.list.Remove(data.Name);
+        }
     }
 
     public bool TryAdd(LocationData locationData)
     {
         if (this.list.ContainsKey(locationData.Name) == true) return false;
 
-        this.list.Add(locationData.Name, locationData);
-        
         this.AddChildDeferred(locationData, locationData.Name, parent);
 
         return true;
