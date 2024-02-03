@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bu0m8i60ltqlx"]
+[gd_scene load_steps=5 format=3 uid="uid://bu0m8i60ltqlx"]
 
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/EditorNodes/TreeEditors/TreeEditor.cs" id="1_36ex1"]
 [ext_resource type="PackedScene" uid="uid://b0duvs34lg6w1" path="res://addons/Valos.VisualNovel/GameNodes/StartNodes/StartNode.tscn" id="2_03ueg"]
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/EditorNodes/TreeEditors/GraphEditor.cs" id="2_rq7cl"]
 [ext_resource type="PackedScene" uid="uid://cydum0boj06aq" path="res://addons/Valos.VisualNovel/EditorNodes/Menus/GraphMenu.tscn" id="3_g7wyo"]
-[ext_resource type="PackedScene" uid="uid://cn4hmto30r6wy" path="res://addons/Valos.VisualNovel/DataNodes/LocationData.tscn" id="4_0p1o4"]
 
 [node name="TreeEditor" type="Control" node_paths=PackedStringArray("Graph")]
 layout_mode = 3
@@ -37,7 +36,6 @@ right_disconnects = true
 script = ExtResource("2_rq7cl")
 StartPackedScene = ExtResource("2_03ueg")
 GraphMenu = NodePath("GraphMenu")
-Test = ExtResource("4_0p1o4")
 
 [node name="GraphMenu" parent="HSplitContainer/Container/GraphEditor" instance=ExtResource("3_g7wyo")]
 visible = false
