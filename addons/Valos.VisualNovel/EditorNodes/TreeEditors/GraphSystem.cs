@@ -4,7 +4,9 @@ using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.EditorNodes.Menus;
 using Valos.VisualNovel.GameNodes;
 using Valos.VisualNovel.GameNodes.BaseNodes;
+using Valos.VisualNovel.GameNodes.DialogueNodes;
 using Valos.VisualNovel.GameNodes.LocationNodes;
+using Valos.VisualNovel.GameNodes.ResponseNodes;
 using Valos.VisualNovel.GameNodes.StartNodes;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
@@ -19,6 +21,10 @@ public partial class GraphEditor
 
         AddStartNode(novelPanel.StartData);
         
+        AddDialogueNodes(novelPanel.Dialogues.Values);
+        
+        AddResponseNodes(novelPanel.Responses.Values);
+        
         AddLocationNodes(novelPanel.Locations.Values);
     }
 
@@ -29,6 +35,30 @@ public partial class GraphEditor
         node.SetModel(data);
         
         AddNewGraphNode(node, data.GridLocation);
+    }
+    
+    private void AddDialogueNodes(IEnumerable<DialogueData> dialogues)
+    {
+        foreach (DialogueData data in dialogues)
+        {
+            DialogueNode node = (DialogueNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.DialogueNode);
+            
+            AddNewGraphNode(node, data.GridLocation);
+        
+            node.SetModel(data);
+        }
+    }
+    
+    private void AddResponseNodes(IEnumerable<ResponseData> dialogues)
+    {
+        foreach (ResponseData data in dialogues)
+        {
+            ResponseNode node = (ResponseNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.DialogueNode);
+            
+            AddNewGraphNode(node, data.GridLocation);
+        
+            node.SetModel(data);
+        }
     }
     
     private void AddLocationNodes(IEnumerable<LocationData> locations)
