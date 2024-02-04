@@ -28,12 +28,12 @@ public partial class LocationNode : BaseNode
 
         model = data;
 
-        isModelValid = true;
+       SetModel();
     }
 
     public void OnDragged(Vector2 from, Vector2 to)
     {
-        if (isModelValid)
+        if (IsModelValid)
         {
             Model.GridLocation = to;
         }

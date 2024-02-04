@@ -5,15 +5,20 @@ namespace Valos.VisualNovel.GameNodes.BaseNodes;
 [Tool]
 public partial class BaseNode : GraphNode, ICleanable
 {
-    protected bool isModelValid;
-
+    protected bool IsModelValid { get; private set; }
+    
     public BaseNode()
     {
-        isModelValid = false;
+        IsModelValid = false;
+    }
+
+    protected virtual void SetModel()
+    {
+        IsModelValid = true;
     }
     
     public virtual void Clean()
     {
-        isModelValid = false;
+        IsModelValid = false;
     }
 }
