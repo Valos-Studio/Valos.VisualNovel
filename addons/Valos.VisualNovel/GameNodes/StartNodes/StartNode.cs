@@ -15,14 +15,17 @@ public partial class StartNode : GraphNode, ICleanable
         IsModelValid = false;
     }
 
-    protected virtual void SetModel()
-    {
-        IsModelValid = true;
-    }
-
     public override void _Ready()
     {
         Dragged += OnDragged;
+    }
+    
+    public void OnDragged(Vector2 from, Vector2 to)
+    {
+        if (IsModelValid)
+        {
+            Model.GridLocation = to;
+        }
     }
 
     public void SetModel(StartData data)
@@ -36,13 +39,10 @@ public partial class StartNode : GraphNode, ICleanable
 
         SetModel();
     }
-
-    public void OnDragged(Vector2 from, Vector2 to)
+    
+    protected virtual void SetModel()
     {
-        if (IsModelValid)
-        {
-            Model.GridLocation = to;
-        }
+        IsModelValid = true;
     }
 
     public virtual void Clean()
