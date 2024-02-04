@@ -86,29 +86,29 @@ public partial class GraphEditor : GraphEdit
 
         this.AddChildDeferred(graphNode, this.Owner);
 
+        gridPosition = (gridPosition + this.ScrollOffset) / this.Zoom;
+
         if (graphNode is DialogueNode dialogueNode)
         {
-            AddDialogueModel(dialogueNode);
+            AddDialogueModel(dialogueNode, gridPosition);
         }
 
         if (graphNode is ResponseNode responseNode)
         {
-            AddResponseModel(responseNode);
+            AddResponseModel(responseNode, gridPosition);
         }
 
         if (graphNode is LocationNode locationNode)
         {
-            AddLocationModel(locationNode);
+            AddLocationModel(locationNode, gridPosition);
         }
 
-        graphNode.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
-        
         return graphNode;
     }
 
-    private void AddDialogueModel(DialogueNode node)
+    private void AddDialogueModel(DialogueNode node, Vector2 gridPosition)
     {
-        DialogueData dialogueData = new DialogueData();
+        DialogueData dialogueData = new DialogueData() { GridLocation = gridPosition };
 
         dialogueData.Name = node.Name;
 
@@ -117,9 +117,9 @@ public partial class GraphEditor : GraphEdit
         node.SetModel(dialogueData);
     }
 
-    private void AddResponseModel(ResponseNode node)
+    private void AddResponseModel(ResponseNode node, Vector2 gridPosition)
     {
-        ResponseData responseData = new ResponseData();
+        ResponseData responseData = new ResponseData() { GridLocation = gridPosition };
 
         responseData.Name = node.Name;
 
@@ -128,9 +128,9 @@ public partial class GraphEditor : GraphEdit
         node.SetModel(responseData);
     }
 
-    private void AddLocationModel(LocationNode node)
+    private void AddLocationModel(LocationNode node, Vector2 gridPosition)
     {
-        LocationData locationData = new LocationData();
+        LocationData locationData = new LocationData() { GridLocation = gridPosition };
 
         locationData.Name = node.Name;
 
