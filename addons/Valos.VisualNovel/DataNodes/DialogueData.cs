@@ -6,5 +6,5 @@ namespace Valos.VisualNovel.DataNodes;
 [GodotClassName(nameof(DialogueData))]
 public partial class DialogueData : DataNode
 {
-    [Export()] public PackedScene Scene { get; set; }
+    [Export()] public PackedScene Character { get; set; }
 }

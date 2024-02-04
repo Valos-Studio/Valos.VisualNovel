@@ -7,5 +7,5 @@ namespace Valos.VisualNovel.DataNodes;
 [GodotClassName(nameof(ResponseData))]
 public partial class ResponseData : DataNode
 {
-    [Export()] public PackedScene Scene { get; set; }
+    [Export()] public PackedScene Player { get; set; }
 }
