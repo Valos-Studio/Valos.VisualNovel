@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Godot;
 using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.EditorNodes.Menus;
@@ -15,12 +14,13 @@ namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
 public partial class GraphEditor
 {
-    public void LoadNodes()
+    public async void LoadNodes()
     {
         novelPanel = EditorInterface.Singleton.GetEditedSceneRoot() as NovelPanel;
-        
+
         if (Validator.IsValid(novelPanel) == false) return;
-        
+
+        // ReSharper disable once PossibleNullReferenceException
         AddStartNode(novelPanel.StartData);
 
         AddDialogueNodes(novelPanel.Dialogues.Values);
@@ -28,7 +28,9 @@ public partial class GraphEditor
         AddResponseNodes(novelPanel.Responses.Values);
 
         AddLocationNodes(novelPanel.Locations.Values);
-
+        
+        Variant[] result = await ToSignal(GetTree(), "process_frame");
+        
         AddConnections(novelPanel.ConnectionList.Values);
     }
 
@@ -36,7 +38,7 @@ public partial class GraphEditor
     {
         StartNode node = StartPackedScene.Instantiate<StartNode>();
 
-        this.AddChildDeferred(node, this.Owner);
+        this.AddChildDeferred(node, this.Owner, data.Name);
 
         node.SetModel(data);
     }
@@ -47,7 +49,7 @@ public partial class GraphEditor
         {
             DialogueNode node = (DialogueNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.DialogueNode);
 
-            this.AddChildDeferred(node, this.Owner);
+            this.AddChildDeferred(node, this.Owner, data.Name);
 
             node.SetModel(data);
         }
@@ -59,7 +61,7 @@ public partial class GraphEditor
         {
             ResponseNode node = (ResponseNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.ResponseNode);
 
-            this.AddChildDeferred(node, this.Owner);
+            this.AddChildDeferred(node, this.Owner, data.Name);
 
             node.SetModel(data);
         }
@@ -71,7 +73,7 @@ public partial class GraphEditor
         {
             LocationNode node = (LocationNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.LocationNode);
 
-            this.AddChildDeferred(node, this.Owner);
+            this.AddChildDeferred(node, this.Owner, data.Name);
 
             node.SetModel(data);
         }
@@ -81,7 +83,12 @@ public partial class GraphEditor
     {
         foreach (Connection connection in connections)
         {
-            this.ConnectNode(connection.FromNode, (int)connection.FromPort, connection.ToNode, (int)connection.ToPort);
+            var fromNode = HasNode(connection.FromNode.ToString());
+            var toNode = HasNode(connection.ToNode.ToString());
+            GD.PrintErr(
+                $"What happened with node names, FromNode: {connection.FromNode} ({fromNode}) , ToNode:{connection.ToNode} ({toNode})");
+            CallDeferred(GraphEdit.MethodName.ConnectNode, connection.FromNode, (int)connection.FromPort,
+                connection.ToNode, (int)connection.ToPort);
         }
     }
 
@@ -91,10 +98,11 @@ public partial class GraphEditor
         {
             foreach (Connection connection in novelPanel.ConnectionList.Values)
             {
-                this.ConnectNode(connection.FromNode, (int)connection.FromPort, connection.ToNode, (int)connection.ToPort);
+                this.ConnectNode(connection.FromNode, (int)connection.FromPort, connection.ToNode,
+                    (int)connection.ToPort);
             }
         }
-        
+
         foreach (Node child in GetChildren())
         {
             RemoveChildSafe(child);
