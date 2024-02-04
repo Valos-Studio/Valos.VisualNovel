@@ -7,26 +7,42 @@ namespace Valos.VisualNovel.GameNodes.DialogueNodes;
 [Tool]
 public partial class DialogueNode : BaseNode
 {
-    public DialogueData Model { get; private set; }
-    
+    public DialogueData Model
+    {
+        get => model;
+    }
+
+    private DialogueData model;
+
+    public override void _Ready()
+    {
+        Dragged += OnDragged;
+    }
+
     public void SetModel(DialogueData data)
     {
-        if (data == null) return;
+        if (data == null)
+        {
+            base.Clean();
+        }
 
-        Model = data;
+        model = data;
 
-        Dragged += OnDragged;
+        SetModel();
     }
 
     public void OnDragged(Vector2 from, Vector2 to)
     {
-        Model.GridLocation = to;
+        if (IsModelValid)
+        {
+            Model.GridLocation = to;
+        }
     }
 
     public override void Clean()
     {
-        Dragged -= OnDragged;
+        base.Clean();
 
-        Model = null;
+        model = null;
     }
 }

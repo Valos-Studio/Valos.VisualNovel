@@ -7,26 +7,42 @@ namespace Valos.VisualNovel.GameNodes.ResponseNodes;
 [Tool]
 public partial class ResponseNode : BaseNode
 {
-    public ResponseData Model { get; private set; }
-    
+    public ResponseData Model
+    {
+        get => model;
+    }
+
+    private ResponseData model;
+
+    public override void _Ready()
+    {
+        Dragged += OnDragged;
+    }
+
     public void SetModel(ResponseData data)
     {
-        if (data == null) return;
+        if (data == null)
+        {
+            base.Clean();
+        }
 
-        Model = data;
+        model = data;
 
-        Dragged += OnDragged;
+        SetModel();
     }
 
     public void OnDragged(Vector2 from, Vector2 to)
     {
-        Model.GridLocation = to;
+        if (IsModelValid)
+        {
+            Model.GridLocation = to;
+        }
     }
 
     public override void Clean()
     {
-        Dragged -= OnDragged;
+        base.Clean();
 
-        Model = null;
+        model = null;
     }
 }
