@@ -101,9 +101,8 @@ public partial class GraphEditor : GraphEdit
             AddLocationModel(locationNode);
         }
 
-        // graphNode.Position = (gridPosition + this.ScrollOffset) / this.Zoom;
-        graphNode.Position = gridPosition;
-
+        graphNode.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
+        
         return graphNode;
     }
 
