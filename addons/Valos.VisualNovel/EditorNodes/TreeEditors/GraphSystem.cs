@@ -8,6 +8,7 @@ using Valos.VisualNovel.GameNodes.DialogueNodes;
 using Valos.VisualNovel.GameNodes.LocationNodes;
 using Valos.VisualNovel.GameNodes.ResponseNodes;
 using Valos.VisualNovel.GameNodes.StartNodes;
+using Valos.VisualNovel.NovelPanels.Lists.Connections;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
@@ -20,12 +21,14 @@ public partial class GraphEditor
         if (novelPanel == null) return;
 
         AddStartNode(novelPanel.StartData);
-        
+
         AddDialogueNodes(novelPanel.Dialogues.Values);
-        
+
         AddResponseNodes(novelPanel.Responses.Values);
-        
+
         AddLocationNodes(novelPanel.Locations.Values);
+
+        AddConnections(novelPanel.ConnectionList.Values);
     }
 
     private void AddStartNode(StartData data)
@@ -33,46 +36,51 @@ public partial class GraphEditor
         StartNode node = StartPackedScene.Instantiate<StartNode>();
 
         node.SetModel(data);
-        
+
         AddNewGraphNode(node, data.GridLocation);
     }
-    
+
     private void AddDialogueNodes(IEnumerable<DialogueData> dialogues)
     {
         foreach (DialogueData data in dialogues)
         {
             DialogueNode node = (DialogueNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.DialogueNode);
-            
+
             AddNewGraphNode(node, data.GridLocation);
-        
+
             node.SetModel(data);
         }
     }
-    
+
     private void AddResponseNodes(IEnumerable<ResponseData> dialogues)
     {
         foreach (ResponseData data in dialogues)
         {
             ResponseNode node = (ResponseNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.ResponseNode);
-            
+
             AddNewGraphNode(node, data.GridLocation);
-        
+
             node.SetModel(data);
         }
     }
-    
+
     private void AddLocationNodes(IEnumerable<LocationData> locations)
     {
         foreach (LocationData data in locations)
         {
             LocationNode node = (LocationNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.LocationNode);
-            
+
             AddNewGraphNode(node, data.GridLocation);
-        
+
             node.SetModel(data);
         }
     }
 
+    private void AddConnections(IEnumerable<Connection> connections)
+    {
+        
+    }
+    
     public void ClearNodes()
     {
         this.novelPanel = null;
@@ -88,7 +96,7 @@ public partial class GraphEditor
         if (child is ICleanable cleanable)
         {
             cleanable.Clean();
-            
+
             RemoveChild(child);
         }
     }
