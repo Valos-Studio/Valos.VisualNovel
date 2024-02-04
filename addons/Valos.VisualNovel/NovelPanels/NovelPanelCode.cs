@@ -8,7 +8,7 @@ namespace Valos.VisualNovel.GameNodes;
 [Tool]
 public partial class NovelPanelCode : Node
 {
-    public StartData StartData { get; set; }
+    public StartData StartNode { get; set; }
     public DialogueList Dialogues { get; set; }
     public ResponseList Responses { get; set; }
     public LocationList Locations { get; set; }
@@ -35,15 +35,15 @@ public partial class NovelPanelCode : Node
 
     private void InitStartData()
     {
-        if (HasNode(nameof(StartData)) == true)
+        if (HasNode(nameof(StartNode)) == true)
         {
-            StartData = GetNode<StartData>(nameof(StartData));
+            StartNode = GetNode<StartData>(nameof(StartNode));
         }
         else
         {
-            StartData = new StartData();
+            StartNode = new StartData();
 
-            this.AddChildDeferred(StartData, nameof(StartData));
+            this.AddChildDeferred(StartNode, nameof(StartNode));
         }
     }
     

@@ -21,7 +21,7 @@ public partial class GraphEditor
         if (Validator.IsValid(novelPanel) == false) return;
 
         // ReSharper disable once PossibleNullReferenceException
-        AddStartNode(novelPanel.StartData);
+        AddStartNode(novelPanel.StartNode);
 
         AddDialogueNodes(novelPanel.Dialogues.Values);
 
