@@ -86,12 +86,17 @@ public partial class GraphEditor
 
     public void ClearNodes()
     {
-        this.novelPanel = null;
+        foreach (Connection connection in novelPanel.ConnectionList.Values)
+        {
+            this.ConnectNode(connection.FromNode, (int)connection.FromPort, connection.ToNode, (int)connection.ToPort);
+        }
 
         foreach (Node child in GetChildren())
         {
             RemoveChildSafe(child);
         }
+        
+        this.novelPanel = null;
     }
 
     private void RemoveChildSafe(Node child)
