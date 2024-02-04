@@ -8,25 +8,47 @@ namespace Valos.VisualNovel.GameNodes.StartNodes;
 public partial class StartNode : GraphNode, ICleanable
 {
     public StartData Model { get; private set; }
+    protected bool IsModelValid { get; private set; }
+
+    public StartNode()
+    {
+        IsModelValid = false;
+    }
+
+    protected virtual void SetModel()
+    {
+        IsModelValid = true;
+    }
+
+    public override void _Ready()
+    {
+        Dragged += OnDragged;
+    }
 
     public void SetModel(StartData data)
     {
-        if (data == null) return;
+        if (data == null)
+        {
+            Clean();
+        }
 
         Model = data;
 
-        Dragged += OnDragged;
+        SetModel();
     }
 
     public void OnDragged(Vector2 from, Vector2 to)
     {
-        Model.GridLocation = to;
+        if (IsModelValid)
+        {
+            Model.GridLocation = to;
+        }
     }
 
-    public void Clean()
+    public virtual void Clean()
     {
-        Dragged -= OnDragged;
-
         Model = null;
+
+        IsModelValid = false;
     }
 }
