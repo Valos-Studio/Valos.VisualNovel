@@ -83,10 +83,6 @@ public partial class GraphEditor
     {
         foreach (Connection connection in connections)
         {
-            var fromNode = HasNode(connection.FromNode.ToString());
-            var toNode = HasNode(connection.ToNode.ToString());
-            GD.PrintErr(
-                $"What happened with node names, FromNode: {connection.FromNode} ({fromNode}) , ToNode:{connection.ToNode} ({toNode})");
             CallDeferred(GraphEdit.MethodName.ConnectNode, connection.FromNode, (int)connection.FromPort,
                 connection.ToNode, (int)connection.ToPort);
         }

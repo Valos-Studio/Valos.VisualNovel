@@ -10,14 +10,17 @@ public class ConnectionList
     {
         get => this.list.Values;
     }
+
     public ICollection<int> Keys
     {
         get => this.list.Keys;
     }
+
     public Connection this[int key]
     {
         get => this.list[key];
     }
+
     public int Count
     {
         get => this.list.Count;
@@ -38,11 +41,11 @@ public class ConnectionList
 
         return true;
     }
-    
+
     public bool TryRemove(int key)
     {
         if (this.list.ContainsKey(key) == false) return false;
-        
+
         this.list.Remove(key);
 
         return true;
