@@ -9,6 +9,7 @@ using Valos.VisualNovel.GameNodes.LocationNodes;
 using Valos.VisualNovel.GameNodes.ResponseNodes;
 using Valos.VisualNovel.GameNodes.StartNodes;
 using Valos.VisualNovel.NovelPanels.Lists.Connections;
+// ReSharper disable PossibleNullReferenceException
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
@@ -20,7 +21,6 @@ public partial class GraphEditor
 
         if (Validator.IsValid(novelPanel) == false) return;
 
-        // ReSharper disable once PossibleNullReferenceException
         AddStartNode(novelPanel.StartNode);
 
         AddDialogueNodes(novelPanel.Dialogues.Values);
@@ -94,7 +94,7 @@ public partial class GraphEditor
         {
             foreach (Connection connection in novelPanel.ConnectionList.Values)
             {
-                this.ConnectNode(connection.FromNode, (int)connection.FromPort, connection.ToNode,
+                this.DisconnectNode(connection.FromNode, (int)connection.FromPort, connection.ToNode,
                     (int)connection.ToPort);
             }
         }

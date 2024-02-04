@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://jdqmpx2xx8wf"]
+[gd_scene load_steps=6 format=3 uid="uid://jdqmpx2xx8wf"]
 
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/NovelPanel.cs" id="1_ufxka"]
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/DataNodes/StartData.cs" id="2_3uadr"]
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/Lists/Nodes/DialogueList.cs" id="3_7wdbq"]
-[ext_resource type="Script" path="res://addons/Valos.VisualNovel/DataNodes/DialogueData.cs" id="4_pxwry"]
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/Lists/Nodes/ResponseList.cs" id="5_88nt1"]
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/Lists/Nodes/LocationList.cs" id="6_7kakd"]
-[ext_resource type="Script" path="res://addons/Valos.VisualNovel/DataNodes/ResponseData.cs" id="6_8j0ci"]
 
 [node name="Test" type="Node"]
 script = ExtResource("1_ufxka")
@@ -18,15 +16,8 @@ GridLocation = Vector2(280, 120)
 [node name="Dialogues" type="Node" parent="."]
 script = ExtResource("3_7wdbq")
 
-[node name="DialogueNode" type="Node" parent="Dialogues"]
-script = ExtResource("4_pxwry")
-GridLocation = Vector2(600, 0)
-
 [node name="Responses" type="Node" parent="."]
 script = ExtResource("5_88nt1")
-
-[node name="ResponseNode" type="Node" parent="Responses"]
-script = ExtResource("6_8j0ci")
 
 [node name="Locations" type="Node" parent="."]
 script = ExtResource("6_7kakd")
