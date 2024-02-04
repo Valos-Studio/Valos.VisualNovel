@@ -53,7 +53,7 @@ public partial class GraphEditor
     {
         foreach (ResponseData data in dialogues)
         {
-            ResponseNode node = (ResponseNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.DialogueNode);
+            ResponseNode node = (ResponseNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.ResponseNode);
             
             AddNewGraphNode(node, data.GridLocation);
         
