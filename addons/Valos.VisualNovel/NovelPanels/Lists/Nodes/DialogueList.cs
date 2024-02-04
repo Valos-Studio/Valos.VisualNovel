@@ -43,12 +43,19 @@ public partial class DialogueList : Node
         ChildEnteredTree += OnChildEnteredTree;
 
         ChildExitingTree += OnChildExitingTree;
+
+        foreach (Node child in GetChildren())
+        {
+            OnChildEnteredTree(child);
+        }
     }
 
     public void OnChildEnteredTree(Node node)
     {
         if (node is DialogueData data)
         {
+            if (this.list.ContainsKey(data.Name) == true) return;
+
             this.list.Add(data.Name, data);
         }
         else

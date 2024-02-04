@@ -9,6 +9,7 @@ using Valos.VisualNovel.GameNodes.LocationNodes;
 using Valos.VisualNovel.GameNodes.ResponseNodes;
 using Valos.VisualNovel.GameNodes.StartNodes;
 using Valos.VisualNovel.NovelPanels.Lists.Connections;
+
 // ReSharper disable PossibleNullReferenceException
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
@@ -22,15 +23,15 @@ public partial class GraphEditor
         if (Validator.IsValid(novelPanel) == false) return;
 
         AddStartNode(novelPanel.StartNode);
-
+        
         AddDialogueNodes(novelPanel.Dialogues.Values);
 
         AddResponseNodes(novelPanel.Responses.Values);
 
         AddLocationNodes(novelPanel.Locations.Values);
-        
-        Variant[] result = await ToSignal(GetTree(), "process_frame");
-        
+
+        await ToSignal(GetTree(), "process_frame");
+
         AddConnections(novelPanel.ConnectionList.Values);
     }
 

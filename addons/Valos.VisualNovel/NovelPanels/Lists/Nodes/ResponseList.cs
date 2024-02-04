@@ -49,6 +49,8 @@ public partial class ResponseList : Node
     {
         if (node is ResponseData data)
         {
+            if (this.list.ContainsKey(data.Name) == true) return;
+            
             this.list.Add(data.Name, data);
         }
         else

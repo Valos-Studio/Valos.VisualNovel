@@ -49,6 +49,8 @@ public partial class LocationList : Node
     {
         if (node is LocationData data)
         {
+            if (this.list.ContainsKey(data.Name) == true) return;
+            
             this.list.Add(data.Name, data);
         }
         else
