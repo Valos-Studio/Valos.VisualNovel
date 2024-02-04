@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b0duvs34lg6w1"]
 
-[ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/Lists/Connections/StartNodes/StartNode.cs" id="1_4low4"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/GameNodes/StartNodes/StartNode.cs" id="1_4low4"]
 
 [node name="StartNode" type="GraphNode"]
 anchors_preset = -1
