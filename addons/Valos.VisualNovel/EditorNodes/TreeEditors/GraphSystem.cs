@@ -18,7 +18,7 @@ public partial class GraphEditor
     {
         novelPanel = EditorInterface.Singleton.GetEditedSceneRoot() as NovelPanel;
 
-        if (novelPanel == null) return;
+        if (Validator.IsValid(novelPanel) == false) return;
 
         AddStartNode(novelPanel.StartData);
 
@@ -86,6 +86,8 @@ public partial class GraphEditor
 
     public void ClearNodes()
     {
+        if (Validator.IsValid(novelPanel) == false) return;
+        
         foreach (Connection connection in novelPanel.ConnectionList.Values)
         {
             this.ConnectNode(connection.FromNode, (int)connection.FromPort, connection.ToNode, (int)connection.ToPort);

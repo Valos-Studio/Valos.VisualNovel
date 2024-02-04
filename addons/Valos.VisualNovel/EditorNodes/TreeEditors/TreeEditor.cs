@@ -19,6 +19,8 @@ public partial class TreeEditor : Control
 
     public void InitializeEditor()
     {
+        Graph.ClearNodes();
+        
         Graph.LoadNodes();
     }
     
