@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bu0m8i60ltqlx"]
 
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/EditorNodes/TreeEditors/TreeEditor.cs" id="1_36ex1"]
-[ext_resource type="PackedScene" uid="uid://b0duvs34lg6w1" path="res://addons/Valos.VisualNovel/GameNodes/StartNodes/StartNode.tscn" id="2_03ueg"]
+[ext_resource type="PackedScene" uid="uid://b0duvs34lg6w1" path="res://addons/Valos.VisualNovel/NovelPanels/Lists/Connections/StartNodes/StartNode.tscn" id="2_03ueg"]
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/EditorNodes/TreeEditors/GraphEditor.cs" id="2_rq7cl"]
 [ext_resource type="PackedScene" uid="uid://cydum0boj06aq" path="res://addons/Valos.VisualNovel/EditorNodes/Menus/GraphMenu.tscn" id="3_g7wyo"]
 
