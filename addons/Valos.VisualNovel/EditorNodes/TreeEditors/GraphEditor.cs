@@ -6,7 +6,9 @@ using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.EditorNodes.Menus;
 using Valos.VisualNovel.GameNodes;
 using Valos.VisualNovel.GameNodes.BaseNodes;
+using Valos.VisualNovel.GameNodes.DialogueNodes;
 using Valos.VisualNovel.GameNodes.LocationNodes;
+using Valos.VisualNovel.GameNodes.ResponseNodes;
 using Valos.VisualNovel.NovelPanels.Lists.Connections;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
@@ -82,12 +84,44 @@ public partial class GraphEditor : GraphEdit
 
         graphNode.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
 
+        if (graphNode is DialogueNode dialogueNode)
+        {
+            AddDialogueModel(dialogueNode);
+        }
+        
+        if (graphNode is ResponseNode responseNode)
+        {
+            AddResponseModel(responseNode);
+        }
+        
         if (graphNode is LocationNode locationNode)
         {
             AddLocationModel(locationNode);
         }
     }
 
+    private void AddDialogueModel(DialogueNode node)
+    {
+        DialogueData dialogueData = new DialogueData();
+
+        dialogueData.Name = node.Name;
+
+        novelPanel.Dialogues.TryAddChild(dialogueData);
+
+        node.SetModel(dialogueData);
+    }
+    
+    private void AddResponseModel(ResponseNode node)
+    {
+        ResponseData responseData = new ResponseData();
+
+        responseData.Name = node.Name;
+
+        novelPanel.Responses.TryAddChild(responseData);
+
+        node.SetModel(responseData);
+    }
+    
     private void AddLocationModel(LocationNode node)
     {
         LocationData locationData = new LocationData();
