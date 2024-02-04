@@ -28,7 +28,7 @@ public partial class DialogueList : Node
     }
 
     private readonly Dictionary<string, DialogueData> list;
-    
+
     private Node parent;
 
     public DialogueList()
@@ -39,9 +39,9 @@ public partial class DialogueList : Node
     public override void _Ready()
     {
         parent = GetParent();
-        
+
         ChildEnteredTree += OnChildEnteredTree;
-        
+
         ChildExitingTree += OnChildExitingTree;
     }
 
@@ -56,13 +56,13 @@ public partial class DialogueList : Node
             RemoveChild(node);
         }
     }
-    
+
     public void OnChildExitingTree(Node node)
     {
         if (node is DialogueData data)
         {
-            if(list.ContainsKey(data.Name) == false) return;
-            
+            if (list.ContainsKey(data.Name) == false) return;
+
             this.list.Remove(data.Name);
         }
     }
@@ -75,7 +75,7 @@ public partial class DialogueList : Node
 
         return true;
     }
-    
+
     public bool TryRemoveChild(string name)
     {
         if (this.list.ContainsKey(name) == false) return false;
