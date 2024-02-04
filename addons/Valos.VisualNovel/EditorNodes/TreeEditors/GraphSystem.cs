@@ -78,7 +78,10 @@ public partial class GraphEditor
 
     private void AddConnections(IEnumerable<Connection> connections)
     {
-        
+        foreach (Connection connection in connections)
+        {
+            this.ConnectNode(connection.FromNode, (int)connection.FromPort, connection.ToNode, (int)connection.ToPort);
+        }   
     }
     
     public void ClearNodes()
