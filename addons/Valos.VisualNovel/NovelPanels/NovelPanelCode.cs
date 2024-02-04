@@ -23,69 +23,69 @@ public partial class NovelPanelCode : Node
     {
         if (Engine.IsEditorHint())
         {
-            if (HasNode(nameof(StartData)) == true)
-            {
-                StartData = GetNode<StartData>(nameof(StartData));
-            }
-            else
-            {
-                InitStartData();
-            }
+            InitStartData();
             
-            if (HasNode(nameof(Dialogues)) == true)
-            {
-                Dialogues = GetNode<DialogueList>(nameof(Dialogues));
-            }
-            else
-            {
-                InitDialogueNode(nameof(Dialogues));
-            }
+            InitDialogueNode();
+            
+            InitResponseNode();
 
-            if (HasNode(nameof(Responses)) == true)
-            {
-                Responses = GetNode<ResponseList>(nameof(Responses));
-            }
-            else
-            {
-                InitResponseNode(nameof(Responses));
-            }
-
-            if (HasNode(nameof(Locations)) == true)
-            {
-                Locations = GetNode<LocationList>(nameof(Locations));
-            }
-            else
-            {
-                InitLocationNode(nameof(Locations));
-            }
+            InitLocationNode();
         }
     }
 
     private void InitStartData()
     {
-        StartData = new StartData();
+        if (HasNode(nameof(StartData)) == true)
+        {
+            StartData = GetNode<StartData>(nameof(StartData));
+        }
+        else
+        {
+            StartData = new StartData();
 
-        this.AddChildDeferred(StartData, nameof(StartData));
+            this.AddChildDeferred(StartData, nameof(StartData));
+        }
     }
     
-    private void InitDialogueNode(string name)
+    private void InitDialogueNode()
     {
-        Dialogues = new DialogueList();
+        if (HasNode(nameof(Dialogues)) == true)
+        {
+            Dialogues = GetNode<DialogueList>(nameof(Dialogues));
+        }
+        else
+        {
+            Dialogues = new DialogueList();
 
-        this.AddChildDeferred(Dialogues, name);
+            this.AddChildDeferred(Dialogues, nameof(Dialogues));
+        }
     }
     
-    private void InitResponseNode(string name)
+    private void InitResponseNode()
     {
-        Responses = new ResponseList();
+        if (HasNode(nameof(Responses)) == true)
+        {
+            Responses = GetNode<ResponseList>(nameof(Responses));
+        }
+        else
+        {
+            Responses = new ResponseList();
 
-        this.AddChildDeferred(Responses, name);
+            this.AddChildDeferred(Responses, nameof(Responses));  
+        }
     }
     
-    private void InitLocationNode(string name)
+    private void InitLocationNode()
     {
-        Locations = new LocationList();
+        if (HasNode(nameof(Locations)) == true)
+        {
+            Locations = GetNode<LocationList>(nameof(Locations));
+        }
+        else
+        {
+            Locations = new LocationList();
 
-        this.AddChildDeferred(Locations, name);
+            this.AddChildDeferred(Locations, nameof(Locations));
+        }
     }
 }
