@@ -36,6 +36,8 @@ public partial class StartNode : GraphNode, ICleanable
         }
 
         Model = data;
+        
+        Position = data.GridLocation;
 
         SetModel();
     }

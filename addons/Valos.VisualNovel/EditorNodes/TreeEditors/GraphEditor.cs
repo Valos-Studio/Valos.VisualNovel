@@ -82,20 +82,9 @@ public partial class GraphEditor : GraphEdit
 
     private GraphNode AddSelectionNode(long selection, Vector2 gridPosition)
     {
-        GraphNode node = this.GraphMenu.GetGraphNode((GraphMenuSelection)selection);
+        GraphNode graphNode = this.GraphMenu.GetGraphNode((GraphMenuSelection)selection);
 
-        AddNewGraphNode(node, gridPosition);
-
-        return node;
-    }
-
-    public void AddNewGraphNode(GraphNode graphNode, Vector2 gridPosition)
-    {
-        this.AddChild(graphNode, true);
-
-        graphNode.Owner = this.Owner;
-
-        graphNode.PositionOffset = (gridPosition + this.ScrollOffset) / this.Zoom;
+        this.AddChildDeferred(graphNode, this.Owner);
 
         if (graphNode is DialogueNode dialogueNode)
         {
@@ -111,6 +100,11 @@ public partial class GraphEditor : GraphEdit
         {
             AddLocationModel(locationNode);
         }
+
+        // graphNode.Position = (gridPosition + this.ScrollOffset) / this.Zoom;
+        graphNode.Position = gridPosition;
+
+        return graphNode;
     }
 
     private void AddDialogueModel(DialogueNode node)

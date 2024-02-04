@@ -28,7 +28,9 @@ public partial class LocationNode : BaseNode
 
         model = data;
 
-       SetModel();
+        Position = data.GridLocation;
+
+        SetModel();
     }
 
     public void OnDragged(Vector2 from, Vector2 to)

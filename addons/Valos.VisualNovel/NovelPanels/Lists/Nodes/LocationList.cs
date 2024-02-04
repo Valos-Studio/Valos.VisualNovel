@@ -71,7 +71,7 @@ public partial class LocationList : Node
     {
         if (this.list.ContainsKey(locationData.Name) == true) return false;
 
-        this.AddChildDeferred(locationData, locationData.Name, parent);
+        this.AddChildDeferred(locationData, parent, locationData.Name);
 
         return true;
     }

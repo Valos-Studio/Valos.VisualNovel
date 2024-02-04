@@ -27,6 +27,8 @@ public partial class ResponseNode : BaseNode
         }
 
         model = data;
+        
+        Position = data.GridLocation;
 
         SetModel();
     }

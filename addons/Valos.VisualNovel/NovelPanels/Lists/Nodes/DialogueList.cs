@@ -71,7 +71,7 @@ public partial class DialogueList : Node
     {
         if (this.list.ContainsKey(dialogueData.Name) == true) return false;
 
-        this.AddChildDeferred(dialogueData, dialogueData.Name, parent);
+        this.AddChildDeferred(dialogueData, parent, dialogueData.Name);
 
         return true;
     }

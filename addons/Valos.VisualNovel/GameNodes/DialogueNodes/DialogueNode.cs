@@ -28,6 +28,8 @@ public partial class DialogueNode : BaseNode
 
         model = data;
 
+        Position = data.GridLocation;
+
         SetModel();
     }
 

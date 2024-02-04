@@ -35,9 +35,9 @@ public partial class GraphEditor
     {
         StartNode node = StartPackedScene.Instantiate<StartNode>();
 
-        node.SetModel(data);
+        this.AddChildDeferred(node, this.Owner);
 
-        AddNewGraphNode(node, data.GridLocation);
+        node.SetModel(data);
     }
 
     private void AddDialogueNodes(IEnumerable<DialogueData> dialogues)
@@ -46,7 +46,7 @@ public partial class GraphEditor
         {
             DialogueNode node = (DialogueNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.DialogueNode);
 
-            AddNewGraphNode(node, data.GridLocation);
+            this.AddChildDeferred(node, this.Owner);
 
             node.SetModel(data);
         }
@@ -58,7 +58,7 @@ public partial class GraphEditor
         {
             ResponseNode node = (ResponseNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.ResponseNode);
 
-            AddNewGraphNode(node, data.GridLocation);
+            this.AddChildDeferred(node, this.Owner);
 
             node.SetModel(data);
         }
@@ -70,7 +70,7 @@ public partial class GraphEditor
         {
             LocationNode node = (LocationNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.LocationNode);
 
-            AddNewGraphNode(node, data.GridLocation);
+            this.AddChildDeferred(node, this.Owner);
 
             node.SetModel(data);
         }
@@ -81,9 +81,9 @@ public partial class GraphEditor
         foreach (Connection connection in connections)
         {
             this.ConnectNode(connection.FromNode, (int)connection.FromPort, connection.ToNode, (int)connection.ToPort);
-        }   
+        }
     }
-    
+
     public void ClearNodes()
     {
         this.novelPanel = null;
