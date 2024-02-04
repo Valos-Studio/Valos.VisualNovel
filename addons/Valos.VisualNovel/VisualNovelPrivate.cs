@@ -63,11 +63,6 @@ public partial class VisualNovelPlugin
 
         editorSelection.SelectionChanged += OnSelectionChanged;
     }
-    
-    private void RemoveNodeSelector()
-    {
-        editorSelection.SelectionChanged -= OnSelectionChanged;
-    }
 
     private bool IsSelectedNodeTypeNovelPanel()
     {

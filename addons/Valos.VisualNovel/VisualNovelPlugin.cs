@@ -20,8 +20,6 @@ public partial class VisualNovelPlugin : EditorPlugin
 
     public override void _ExitTree()
     {
-        // RemoveNodeSelector();
-
         RemoveEditorFromEngine();
 
         RemoveCustomTypes();

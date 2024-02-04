@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Godot;
 using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.EditorNodes.Menus;
@@ -17,9 +18,9 @@ public partial class GraphEditor
     public void LoadNodes()
     {
         novelPanel = EditorInterface.Singleton.GetEditedSceneRoot() as NovelPanel;
-
+        
         if (Validator.IsValid(novelPanel) == false) return;
-
+        
         AddStartNode(novelPanel.StartData);
 
         AddDialogueNodes(novelPanel.Dialogues.Values);
@@ -86,18 +87,19 @@ public partial class GraphEditor
 
     public void ClearNodes()
     {
+        if (Validator.IsValid(novelPanel) == true)
+        {
+            foreach (Connection connection in novelPanel.ConnectionList.Values)
+            {
+                this.ConnectNode(connection.FromNode, (int)connection.FromPort, connection.ToNode, (int)connection.ToPort);
+            }
+        }
+        
         foreach (Node child in GetChildren())
         {
             RemoveChildSafe(child);
         }
-        
-        if (Validator.IsValid(novelPanel) == false) return;
-        
-        foreach (Connection connection in novelPanel.ConnectionList.Values)
-        {
-            this.ConnectNode(connection.FromNode, (int)connection.FromPort, connection.ToNode, (int)connection.ToPort);
-        }
-        
+
         this.novelPanel = null;
     }
 
