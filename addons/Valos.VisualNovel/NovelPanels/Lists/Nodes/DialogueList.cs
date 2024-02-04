@@ -28,19 +28,50 @@ public partial class DialogueList : Node
     }
 
     private readonly Dictionary<string, DialogueData> list;
+    
+    private Node parent;
 
     public DialogueList()
     {
         this.list = new Dictionary<string, DialogueData>();
     }
 
-    public bool TryAdd(DialogueData dialogueData)
+    public override void _Ready()
+    {
+        parent = GetParent();
+        
+        ChildEnteredTree += OnChildEnteredTree;
+        
+        ChildExitingTree += OnChildExitingTree;
+    }
+
+    public void OnChildEnteredTree(Node node)
+    {
+        if (node is DialogueData data)
+        {
+            this.list.Add(data.Name, data);
+        }
+        else
+        {
+            RemoveChild(node);
+        }
+    }
+    
+    public void OnChildExitingTree(Node node)
+    {
+        if (node is DialogueData data)
+        {
+            if(list.ContainsKey(data.Name) == false) return;
+            
+            this.list.Remove(data.Name);
+        }
+    }
+
+    public bool TryAddChild(DialogueData dialogueData)
     {
         if (this.list.ContainsKey(dialogueData.Name) == true) return false;
 
-        this.list.Add(dialogueData.Name, dialogueData);
-        
-        this.AddChildDeferred(dialogueData, dialogueData.Name);
+        this.AddChildDeferred(dialogueData, dialogueData.Name, parent);
 
         return true;
     }

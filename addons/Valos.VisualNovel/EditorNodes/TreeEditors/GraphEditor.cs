@@ -94,7 +94,7 @@ public partial class GraphEditor : GraphEdit
 
         locationData.Name = node.Name;
 
-        novelPanel.Locations.TryAdd(locationData);
+        novelPanel.Locations.TryAddChild(locationData);
 
         node.SetModel(locationData);
     }

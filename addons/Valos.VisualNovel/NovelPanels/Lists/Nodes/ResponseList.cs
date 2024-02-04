@@ -28,20 +28,51 @@ public partial class ResponseList : Node
     }
 
     private readonly Dictionary<string, ResponseData> list;
+    
+    private Node parent;
 
     public ResponseList()
     {
         this.list = new Dictionary<string, ResponseData>();
     }
+
+    public override void _Ready()
+    {
+        parent = GetParent();
+        
+        ChildEnteredTree += OnChildEnteredTree;
+        
+        ChildExitingTree += OnChildExitingTree;
+    }
+
+    public void OnChildEnteredTree(Node node)
+    {
+        if (node is ResponseData data)
+        {
+            this.list.Add(data.Name, data);
+        }
+        else
+        {
+            RemoveChild(node);
+        }
+    }
     
-    public bool TryAdd(ResponseData responseData)
+    public void OnChildExitingTree(Node node)
+    {
+        if (node is ResponseData data)
+        {
+            if(list.ContainsKey(data.Name) == false) return;
+            
+            this.list.Remove(data.Name);
+        }
+    }
+
+    public bool TryAddChild(ResponseData responseData)
     {
         if (this.list.ContainsKey(responseData.Name) == true) return false;
-        
-        this.list.Add(responseData.Name, responseData);
-        
-        this.AddChildDeferred(responseData, responseData.Name);
-        
+
+        this.AddChildDeferred(responseData, responseData.Name, parent);
+
         return true;
     }
 

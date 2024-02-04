@@ -67,7 +67,7 @@ public partial class LocationList : Node
         }
     }
 
-    public bool TryAdd(LocationData locationData)
+    public bool TryAddChild(LocationData locationData)
     {
         if (this.list.ContainsKey(locationData.Name) == true) return false;
 
