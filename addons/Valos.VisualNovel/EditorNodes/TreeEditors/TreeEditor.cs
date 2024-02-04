@@ -41,6 +41,4 @@ public partial class TreeEditor : Control
                 break;
         }
     }
-
-   
 }

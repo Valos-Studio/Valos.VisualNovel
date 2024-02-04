@@ -8,7 +8,7 @@ namespace Valos.VisualNovel.GameNodes.Lists.Nodes;
 public partial class LocationList : Node
 {
     private Node parent;
-    
+
     public ICollection<LocationData> Values
     {
         get => this.list.Values;
@@ -39,9 +39,9 @@ public partial class LocationList : Node
     public override void _Ready()
     {
         parent = GetParent();
-        
+
         ChildEnteredTree += OnChildEnteredTree;
-        
+
         ChildExitingTree += OnChildExitingTree;
     }
 
@@ -56,13 +56,13 @@ public partial class LocationList : Node
             RemoveChild(node);
         }
     }
-    
+
     public void OnChildExitingTree(Node node)
     {
         if (node is LocationData data)
         {
-            if(list.ContainsKey(data.Name) == false) return;
-            
+            if (list.ContainsKey(data.Name) == false) return;
+
             this.list.Remove(data.Name);
         }
     }
@@ -72,6 +72,15 @@ public partial class LocationList : Node
         if (this.list.ContainsKey(locationData.Name) == true) return false;
 
         this.AddChildDeferred(locationData, locationData.Name, parent);
+
+        return true;
+    }
+
+    public bool TryRemoveChild(string name)
+    {
+        if (this.list.ContainsKey(name) == false) return false;
+
+        this.RemoveChild(this.list[name]);
 
         return true;
     }

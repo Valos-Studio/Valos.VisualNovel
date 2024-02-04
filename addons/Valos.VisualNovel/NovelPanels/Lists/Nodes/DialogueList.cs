@@ -75,6 +75,15 @@ public partial class DialogueList : Node
 
         return true;
     }
+    
+    public bool TryRemoveChild(string name)
+    {
+        if (this.list.ContainsKey(name) == false) return false;
+
+        this.RemoveChild(this.list[name]);
+
+        return true;
+    }
 
     public IEnumerator<KeyValuePair<string, DialogueData>> GetEnumerator()
     {

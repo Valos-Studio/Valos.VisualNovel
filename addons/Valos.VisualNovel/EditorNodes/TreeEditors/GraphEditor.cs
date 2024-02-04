@@ -42,6 +42,19 @@ public partial class GraphEditor : GraphEdit
                         connection.ToNode, connection.ToPort);
                 }
 
+                if (node is DialogueNode)
+                {
+                    novelPanel.Dialogues.TryRemoveChild(nodeName.ToString());
+                }
+                else if (node is ResponseNode)
+                {
+                    novelPanel.Responses.TryRemoveChild(nodeName.ToString());
+                }
+                else if (node is LocationNode)
+                {
+                    novelPanel.Locations.TryRemoveChild(nodeName.ToString());
+                }
+
                 RemoveChild(node);
             }
         }
@@ -88,12 +101,12 @@ public partial class GraphEditor : GraphEdit
         {
             AddDialogueModel(dialogueNode);
         }
-        
+
         if (graphNode is ResponseNode responseNode)
         {
             AddResponseModel(responseNode);
         }
-        
+
         if (graphNode is LocationNode locationNode)
         {
             AddLocationModel(locationNode);
@@ -110,7 +123,7 @@ public partial class GraphEditor : GraphEdit
 
         node.SetModel(dialogueData);
     }
-    
+
     private void AddResponseModel(ResponseNode node)
     {
         ResponseData responseData = new ResponseData();
@@ -121,7 +134,7 @@ public partial class GraphEditor : GraphEdit
 
         node.SetModel(responseData);
     }
-    
+
     private void AddLocationModel(LocationNode node)
     {
         LocationData locationData = new LocationData();

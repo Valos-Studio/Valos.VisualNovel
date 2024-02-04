@@ -28,7 +28,7 @@ public partial class ResponseList : Node
     }
 
     private readonly Dictionary<string, ResponseData> list;
-    
+
     private Node parent;
 
     public ResponseList()
@@ -39,9 +39,9 @@ public partial class ResponseList : Node
     public override void _Ready()
     {
         parent = GetParent();
-        
+
         ChildEnteredTree += OnChildEnteredTree;
-        
+
         ChildExitingTree += OnChildExitingTree;
     }
 
@@ -56,13 +56,13 @@ public partial class ResponseList : Node
             RemoveChild(node);
         }
     }
-    
+
     public void OnChildExitingTree(Node node)
     {
         if (node is ResponseData data)
         {
-            if(list.ContainsKey(data.Name) == false) return;
-            
+            if (list.ContainsKey(data.Name) == false) return;
+
             this.list.Remove(data.Name);
         }
     }
@@ -72,6 +72,15 @@ public partial class ResponseList : Node
         if (this.list.ContainsKey(responseData.Name) == true) return false;
 
         this.AddChildDeferred(responseData, responseData.Name, parent);
+
+        return true;
+    }
+
+    public bool TryRemoveChild(string name)
+    {
+        if (this.list.ContainsKey(name) == false) return false;
+
+        this.RemoveChild(this.list[name]);
 
         return true;
     }
