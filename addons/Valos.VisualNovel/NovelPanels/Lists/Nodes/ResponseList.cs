@@ -43,6 +43,11 @@ public partial class ResponseList : Node
         ChildEnteredTree += OnChildEnteredTree;
 
         ChildExitingTree += OnChildExitingTree;
+        
+        foreach (Node child in GetChildren())
+        {
+            OnChildEnteredTree(child);
+        }
     }
 
     public void OnChildEnteredTree(Node node)
