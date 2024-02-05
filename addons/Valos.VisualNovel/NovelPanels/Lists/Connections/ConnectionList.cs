@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿// using System.Collections.Generic;
+
+using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using Godot.Collections;
 
 namespace Valos.VisualNovel.NovelPanels.Lists.Connections;
 
@@ -27,11 +30,18 @@ public partial class ConnectionList : Node
         get => this.list.Count;
     }
 
-    private readonly Dictionary<int, Connection> list;
+    private Godot.Collections.Dictionary<int, Connection> list;
 
     public ConnectionList()
     {
-        this.list = new Dictionary<int, Connection>();
+        this.list = new Godot.Collections.Dictionary<int, Connection>();
+    }
+
+    public override void _Ready()
+    {
+        base._Ready();
+
+        GD.PrintErr(list.Count);
     }
 
     public bool TryAdd(Connection connection)
@@ -65,5 +75,16 @@ public partial class ConnectionList : Node
     public void Clear()
     {
         this.list.Clear();
+    }
+
+    public override Array<Dictionary> _GetPropertyList()
+    {
+        return new Array<Dictionary>()
+        {
+            new Dictionary()
+            {
+                { "list", list.GetType().ToString() }
+            }
+        };
     }
 }

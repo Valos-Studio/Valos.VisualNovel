@@ -3,15 +3,15 @@ using Godot;
 
 namespace Valos.VisualNovel.NovelPanels.Lists.Connections;
 
-public class Connection
+[Tool]
+public partial class Connection : Resource
 {
-    public StringName FromNode { get; }
-    public long FromPort { get; }
-    public StringName ToNode { get; }
-    public long ToPort { get; }
+    public StringName FromNode { get; set; }
+    public long FromPort { get; set; }
+    public StringName ToNode { get; set; }
+    public long ToPort { get; set; }
 
-
-    public Connection(StringName fromNode, long fromPort, StringName toNode, long toPort)
+    public void AddProperties(StringName fromNode, long fromPort, StringName toNode, long toPort)
     {
         this.FromNode = fromNode;
 

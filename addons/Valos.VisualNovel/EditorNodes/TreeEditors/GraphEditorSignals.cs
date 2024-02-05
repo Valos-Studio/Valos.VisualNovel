@@ -28,7 +28,9 @@ public partial class GraphEditor
     {
         this.ConnectNode(fromNode, (int)fromPort, toNode, (int)fromPort);
         
-        Connection connection = new Connection(fromNode, fromPort, toNode, toPort);
+        Connection connection = new Connection();
+        
+        connection.AddProperties(fromNode, fromPort, toNode, toPort);
 
         novelPanel.Connections.TryAdd(connection);
     }
