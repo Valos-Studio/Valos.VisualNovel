@@ -2,6 +2,8 @@ using System;
 using Godot;
 using Valos.VisualNovel.EditorNodes.NodeEditors;
 using Valos.VisualNovel.GameNodes.DialogueNodes;
+using Valos.VisualNovel.GameNodes.LocationNodes;
+using Valos.VisualNovel.GameNodes.ResponseNodes;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
@@ -37,6 +39,12 @@ public partial class TreeEditor : Control
         {
             case nameof(DialogueNode):
                 Panels.CurrentTab = 1;
+                break;
+            case nameof(ResponseNode):
+                Panels.CurrentTab = 2;
+                break;
+            case nameof(LocationNode):
+                Panels.CurrentTab = 3;
                 break;
             default:
                 Panels.CurrentTab = 0;

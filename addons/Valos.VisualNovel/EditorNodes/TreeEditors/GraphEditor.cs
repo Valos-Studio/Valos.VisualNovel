@@ -10,6 +10,7 @@ using Valos.VisualNovel.GameNodes.DialogueNodes;
 using Valos.VisualNovel.GameNodes.LocationNodes;
 using Valos.VisualNovel.GameNodes.ResponseNodes;
 using Valos.VisualNovel.NovelPanels.Lists.Connections;
+using ResponseNode = Valos.VisualNovel.addons.Valos.VisualNovel.EditorNodes.NodeEditors.ResponseNode;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 

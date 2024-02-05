@@ -21,11 +21,15 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="NameEditor" parent="VBoxContainer/Control" instance=ExtResource("2_5sdw8")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.26
 offset_right = 0.47998
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3

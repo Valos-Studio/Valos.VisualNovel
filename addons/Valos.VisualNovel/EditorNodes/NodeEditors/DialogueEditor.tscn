@@ -22,11 +22,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="Control" parent="VBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="NameEditor" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_eamga")]
+[node name="NameEditor" parent="VBoxContainer/Control" instance=ExtResource("2_eamga")]
 layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.26
@@ -60,4 +60,4 @@ text = "+"
 layout_mode = 2
 text = "-"
 
-[editable path="VBoxContainer/HBoxContainer/NameEditor"]
+[editable path="VBoxContainer/Control/NameEditor"]
