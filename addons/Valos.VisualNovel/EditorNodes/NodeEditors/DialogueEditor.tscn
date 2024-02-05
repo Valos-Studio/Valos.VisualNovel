@@ -22,12 +22,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="NameEditor" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_eamga")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.26
+offset_right = 0.47998
 size_flags_horizontal = 3
 
 [node name="CodeEdit" type="CodeEdit" parent="VBoxContainer"]
