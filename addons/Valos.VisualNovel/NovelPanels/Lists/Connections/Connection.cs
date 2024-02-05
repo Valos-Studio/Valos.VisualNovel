@@ -6,10 +6,10 @@ namespace Valos.VisualNovel.NovelPanels.Lists.Connections;
 [Tool]
 public partial class Connection : Resource
 {
-    public StringName FromNode { get; set; }
-    public long FromPort { get; set; }
-    public StringName ToNode { get; set; }
-    public long ToPort { get; set; }
+    [Export()]public StringName FromNode { get; set; }
+    [Export()]public long FromPort { get; set; }
+    [Export()]public StringName ToNode { get; set; }
+    [Export()]public long ToPort { get; set; }
 
     public void AddProperties(StringName fromNode, long fromPort, StringName toNode, long toPort)
     {

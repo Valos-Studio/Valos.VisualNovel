@@ -1,6 +1,4 @@
-﻿// using System.Collections.Generic;
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using Godot.Collections;
@@ -12,79 +10,79 @@ public partial class ConnectionList : Node
 {
     public ICollection<Connection> Values
     {
-        get => this.list.Values;
+        get => this.List.Values;
     }
 
     public ICollection<int> Keys
     {
-        get => this.list.Keys;
+        get => this.List.Keys;
     }
 
     public Connection this[int key]
     {
-        get => this.list[key];
+        get => this.List[key];
     }
 
     public int Count
     {
-        get => this.list.Count;
+        get => this.List.Count;
     }
 
-    private Godot.Collections.Dictionary<int, Connection> list;
+    [Export()] public Godot.Collections.Dictionary<int, Connection> List { get; set; }
 
     public ConnectionList()
     {
-        this.list = new Godot.Collections.Dictionary<int, Connection>();
+        this.List = new Godot.Collections.Dictionary<int, Connection>();
     }
 
     public override void _Ready()
     {
         base._Ready();
 
-        GD.PrintErr(list.Count);
+        GD.PrintErr(List.Count);
     }
 
     public bool TryAdd(Connection connection)
     {
-        if (this.list.ContainsKey(connection.GetHashCode()) == true) return false;
+        if (this.List.ContainsKey(connection.GetHashCode()) == true) return false;
 
-        this.list.Add(connection.GetHashCode(), connection);
+        this.List.Add(connection.GetHashCode(), connection);
 
         return true;
     }
 
     public bool TryRemove(int key)
     {
-        if (this.list.ContainsKey(key) == false) return false;
+        if (this.List.ContainsKey(key) == false) return false;
 
-        this.list.Remove(key);
+        this.List.Remove(key);
 
         return true;
     }
 
     public IEnumerable<Connection> GetListWhereName(StringName name)
     {
-        return this.list.Values.Where(p => p.FromNode == name || p.ToNode == name);
+        return this.List.Values.Where(p => p.FromNode == name || p.ToNode == name);
     }
 
     public IEnumerator<KeyValuePair<int, Connection>> GetEnumerator()
     {
-        return this.list.GetEnumerator();
+        return this.List.GetEnumerator();
     }
 
     public void Clear()
     {
-        this.list.Clear();
+        this.List.Clear();
     }
 
-    public override Array<Dictionary> _GetPropertyList()
-    {
-        return new Array<Dictionary>()
-        {
-            new Dictionary()
-            {
-                { "list", list.GetType().ToString() }
-            }
-        };
-    }
+    // public override Array<Dictionary> _GetPropertyList()
+    // {
+    //     return new Array<Dictionary>()
+    //     {
+    //         new Dictionary()
+    //         {
+    //             { "List", List.GetType().ToString() }
+    //         }
+    //     };
+    // }
 }
