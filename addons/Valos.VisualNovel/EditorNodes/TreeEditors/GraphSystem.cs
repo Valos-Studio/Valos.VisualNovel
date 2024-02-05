@@ -32,7 +32,7 @@ public partial class GraphEditor
 
         await ToSignal(GetTree(), "process_frame");
 
-        AddConnections(novelPanel.ConnectionList.Values);
+        AddConnections(novelPanel.Connections.Values);
     }
 
     private void AddStartNode(StartData data)
@@ -93,7 +93,7 @@ public partial class GraphEditor
     {
         if (Validator.IsValid(novelPanel) == true)
         {
-            foreach (Connection connection in novelPanel.ConnectionList.Values)
+            foreach (Connection connection in novelPanel.Connections.Values)
             {
                 this.DisconnectNode(connection.FromNode, (int)connection.FromPort, connection.ToNode,
                     (int)connection.ToPort);

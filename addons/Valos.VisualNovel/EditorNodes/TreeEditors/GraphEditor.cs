@@ -34,7 +34,7 @@ public partial class GraphEditor : GraphEdit
 
             if (Validator.IsValid(node) == true)
             {
-                IEnumerable<Connection> connections = novelPanel.ConnectionList.GetListWhereName(nodeName);
+                IEnumerable<Connection> connections = novelPanel.Connections.GetListWhereName(nodeName);
 
                 foreach (Connection connection in connections)
                 {

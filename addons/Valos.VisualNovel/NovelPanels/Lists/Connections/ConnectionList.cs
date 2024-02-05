@@ -4,7 +4,7 @@ using Godot;
 
 namespace Valos.VisualNovel.NovelPanels.Lists.Connections;
 
-public class ConnectionList
+public class ConnectionList : Node
 {
     public ICollection<Connection> Values
     {

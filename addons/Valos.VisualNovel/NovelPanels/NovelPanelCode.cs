@@ -12,80 +12,39 @@ public partial class NovelPanelCode : Node
     public DialogueList Dialogues { get; set; }
     public ResponseList Responses { get; set; }
     public LocationList Locations { get; set; }
-    public ConnectionList ConnectionList { get;}
-    
-    public NovelPanelCode()
-    {
-        ConnectionList = new ConnectionList();
-    }
+    public ConnectionList Connections { get; set; }
 
     public override void _Ready()
     {
         if (Engine.IsEditorHint())
         {
-            InitStartData();
-            
-            InitDialogueNode();
-            
-            InitResponseNode();
+            StartNode = NodeInitializer<StartData>(nameof(StartNode));
 
-            InitLocationNode();
+            Dialogues = NodeInitializer<DialogueList>(nameof(Dialogues));
+
+            Responses = NodeInitializer<ResponseList>(nameof(Responses));
+
+            Locations = NodeInitializer<LocationList>(nameof(Locations));
+
+            Connections = NodeInitializer<ConnectionList>(nameof(Connections));
         }
     }
 
-    private void InitStartData()
+    private T NodeInitializer<T>(string name) where T : Node, new()
     {
-        if (HasNode(nameof(StartNode)) == true)
+        T node;
+
+        if (HasNode(name) == true)
         {
-            StartNode = GetNode<StartData>(nameof(StartNode));
+            node = GetNode<T>(name);
         }
         else
         {
-            StartNode = new StartData();
+            node = new T();
 
-            this.AddChildDeferred(StartNode, nameof(StartNode));
+            this.AddChildDeferred(node, name);
         }
-    }
-    
-    private void InitDialogueNode()
-    {
-        if (HasNode(nameof(Dialogues)) == true)
-        {
-            Dialogues = GetNode<DialogueList>(nameof(Dialogues));
-        }
-        else
-        {
-            Dialogues = new DialogueList();
 
-            this.AddChildDeferred(Dialogues, nameof(Dialogues));
-        }
-    }
-    
-    private void InitResponseNode()
-    {
-        if (HasNode(nameof(Responses)) == true)
-        {
-            Responses = GetNode<ResponseList>(nameof(Responses));
-        }
-        else
-        {
-            Responses = new ResponseList();
-
-            this.AddChildDeferred(Responses, nameof(Responses));  
-        }
-    }
-    
-    private void InitLocationNode()
-    {
-        if (HasNode(nameof(Locations)) == true)
-        {
-            Locations = GetNode<LocationList>(nameof(Locations));
-        }
-        else
-        {
-            Locations = new LocationList();
-
-            this.AddChildDeferred(Locations, nameof(Locations));
-        }
+        return node;
     }
 }

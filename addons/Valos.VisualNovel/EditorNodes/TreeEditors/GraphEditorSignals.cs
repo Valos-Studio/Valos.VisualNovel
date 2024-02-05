@@ -30,7 +30,7 @@ public partial class GraphEditor
         
         Connection connection = new Connection(fromNode, fromPort, toNode, toPort);
 
-        novelPanel.ConnectionList.TryAdd(connection);
+        novelPanel.Connections.TryAdd(connection);
     }
     
     public void OnDisconnectionRequest(StringName fromNode, long fromPort, StringName toNode, long toPort)
@@ -39,7 +39,7 @@ public partial class GraphEditor
         
         int connectionHash = Connection.HashCode(fromNode, fromPort, toNode, toPort);
 
-        novelPanel.ConnectionList.TryRemove(connectionHash);
+        novelPanel.Connections.TryRemove(connectionHash);
     }
 
     public async void OnConnectionToEmpty(StringName fromNode, long fromPort, Vector2 releasePosition)
