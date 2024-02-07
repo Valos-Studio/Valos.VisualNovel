@@ -25,4 +25,5 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="NameEditor" parent="VBoxContainer/Control" instance=ExtResource("2_hlxjl")]
+unique_name_in_owner = true
 layout_mode = 1

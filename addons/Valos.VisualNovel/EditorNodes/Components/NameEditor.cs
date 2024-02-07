@@ -13,6 +13,6 @@ public partial class NameEditor : Control
 
     public override void _Ready()
     {
-        value = GetNode<LineEdit>("LineEdit");
+        value = GetNode<LineEdit>("%LineEdit");
     }
 }

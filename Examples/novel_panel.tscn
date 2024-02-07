@@ -1,0 +1,124 @@
+[gd_scene load_steps=21 format=3 uid="uid://bkkg254w7tclv"]
+
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/NovelPanel.cs" id="1_yojf8"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/DataNodes/StartData.cs" id="2_v5g0m"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/Lists/Nodes/DialogueList.cs" id="3_1eaxt"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/DataNodes/DialogueData.cs" id="4_ren01"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/Lists/Nodes/ResponseList.cs" id="5_85der"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/DataNodes/ResponseData.cs" id="6_alxgj"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/Lists/Nodes/LocationList.cs" id="6_gaeyp"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/Lists/Connections/ConnectionList.cs" id="7_65jcy"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/Lists/Connections/Connection.cs" id="8_l8qt4"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/DataNodes/LocationData.cs" id="8_rmibu"]
+
+[sub_resource type="Resource" id="Resource_k2hpv"]
+script = ExtResource("8_l8qt4")
+FromNode = &"StartNode"
+FromPort = 0
+ToNode = &"DialogueNode"
+ToPort = 0
+
+[sub_resource type="Resource" id="Resource_4odln"]
+script = ExtResource("8_l8qt4")
+FromNode = &"ResponseNode"
+FromPort = 0
+ToNode = &"LocationNode"
+ToPort = 0
+
+[sub_resource type="Resource" id="Resource_dugqa"]
+script = ExtResource("8_l8qt4")
+FromNode = &"DialogueNode"
+FromPort = 0
+ToNode = &"ResponseNode"
+ToPort = 0
+
+[sub_resource type="Resource" id="Resource_klpis"]
+script = ExtResource("8_l8qt4")
+FromNode = &"StartNode"
+FromPort = 0
+ToNode = &"DialogueNode"
+ToPort = 0
+
+[sub_resource type="Resource" id="Resource_wpvlc"]
+script = ExtResource("8_l8qt4")
+FromNode = &"DialogueNode"
+FromPort = 0
+ToNode = &"DialogueNode2"
+ToPort = 0
+
+[sub_resource type="Resource" id="Resource_5je4m"]
+script = ExtResource("8_l8qt4")
+FromNode = &"DialogueNode2"
+FromPort = 0
+ToNode = &"ResponseNode"
+ToPort = 0
+
+[sub_resource type="Resource" id="Resource_fh8vc"]
+script = ExtResource("8_l8qt4")
+FromNode = &"ResponseNode"
+FromPort = 0
+ToNode = &"DialogueNode3"
+ToPort = 0
+
+[sub_resource type="Resource" id="Resource_u06l6"]
+script = ExtResource("8_l8qt4")
+FromNode = &"ResponseNode"
+FromPort = 0
+ToNode = &"DialogueNode4"
+ToPort = 0
+
+[sub_resource type="Resource" id="Resource_ph0vr"]
+script = ExtResource("8_l8qt4")
+FromNode = &"DialogueNode4"
+FromPort = 0
+ToNode = &"LocationNode"
+ToPort = 0
+
+[sub_resource type="Resource" id="Resource_6gcl0"]
+script = ExtResource("8_l8qt4")
+FromNode = &"DialogueNode3"
+FromPort = 0
+ToNode = &"LocationNode2"
+ToPort = 0
+
+[node name="NovelPanel" type="Node"]
+script = ExtResource("1_yojf8")
+
+[node name="StartNode" type="Node" parent="."]
+script = ExtResource("2_v5g0m")
+
+[node name="Dialogues" type="Node" parent="."]
+script = ExtResource("3_1eaxt")
+
+[node name="DialogueNode" type="Node" parent="Dialogues"]
+script = ExtResource("4_ren01")
+GridLocation = Vector2(183.782, -1.62431)
+
+[node name="Responses" type="Node" parent="."]
+script = ExtResource("5_85der")
+
+[node name="ResponseNode" type="Node" parent="Responses"]
+script = ExtResource("6_alxgj")
+GridLocation = Vector2(620, 0)
+
+[node name="Locations" type="Node" parent="."]
+script = ExtResource("6_gaeyp")
+
+[node name="LocationNode" type="Node" parent="Locations"]
+script = ExtResource("8_rmibu")
+GridLocation = Vector2(1210.31, 167.413)
+
+[node name="Connections" type="Node" parent="."]
+script = ExtResource("7_65jcy")
+List = {
+-1973435176: SubResource("Resource_ph0vr"),
+-1637560745: SubResource("Resource_wpvlc"),
+-1278655660: SubResource("Resource_k2hpv"),
+-1099302769: SubResource("Resource_5je4m"),
+-950359371: SubResource("Resource_fh8vc"),
+476139009: SubResource("Resource_4odln"),
+835177896: SubResource("Resource_u06l6"),
+1129002756: SubResource("Resource_6gcl0"),
+1286373018: SubResource("Resource_dugqa"),
+1712815577: SubResource("Resource_klpis")
+}
