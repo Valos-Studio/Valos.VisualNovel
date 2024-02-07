@@ -1,4 +1,3 @@
-using System;
 using Godot;
 using Valos.VisualNovel.EditorNodes.NodeEditors;
 using Valos.VisualNovel.GameNodes.DialogueNodes;
