@@ -11,5 +11,17 @@ public partial class NodeEditor : TabContainer
     public override void _Ready()
     {
         nameEditor = GetNode<NameEditor>("%NameEditor");
+
+        TabSelected += OnTabSelected;
+    }
+
+
+    public void OnTabSelected(long tab)
+    {
+        if (tab > 0)
+        {
+            Control tabControl = GetCurrentTabControl();
+            // tabControl.e
+        }
     }
 }
