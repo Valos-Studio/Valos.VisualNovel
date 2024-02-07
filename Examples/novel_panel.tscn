@@ -11,32 +11,11 @@
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/Lists/Connections/Connection.cs" id="8_l8qt4"]
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/DataNodes/LocationData.cs" id="8_rmibu"]
 
-[sub_resource type="Resource" id="Resource_k2hpv"]
+[sub_resource type="Resource" id="Resource_ph0vr"]
 script = ExtResource("8_l8qt4")
-FromNode = &"StartNode"
-FromPort = 0
-ToNode = &"DialogueNode"
-ToPort = 0
-
-[sub_resource type="Resource" id="Resource_4odln"]
-script = ExtResource("8_l8qt4")
-FromNode = &"ResponseNode"
+FromNode = &"DialogueNode4"
 FromPort = 0
 ToNode = &"LocationNode"
-ToPort = 0
-
-[sub_resource type="Resource" id="Resource_dugqa"]
-script = ExtResource("8_l8qt4")
-FromNode = &"DialogueNode"
-FromPort = 0
-ToNode = &"ResponseNode"
-ToPort = 0
-
-[sub_resource type="Resource" id="Resource_klpis"]
-script = ExtResource("8_l8qt4")
-FromNode = &"StartNode"
-FromPort = 0
-ToNode = &"DialogueNode"
 ToPort = 0
 
 [sub_resource type="Resource" id="Resource_wpvlc"]
@@ -44,6 +23,13 @@ script = ExtResource("8_l8qt4")
 FromNode = &"DialogueNode"
 FromPort = 0
 ToNode = &"DialogueNode2"
+ToPort = 0
+
+[sub_resource type="Resource" id="Resource_k2hpv"]
+script = ExtResource("8_l8qt4")
+FromNode = &"StartNode"
+FromPort = 0
+ToNode = &"DialogueNode"
 ToPort = 0
 
 [sub_resource type="Resource" id="Resource_5je4m"]
@@ -60,6 +46,13 @@ FromPort = 0
 ToNode = &"DialogueNode3"
 ToPort = 0
 
+[sub_resource type="Resource" id="Resource_4odln"]
+script = ExtResource("8_l8qt4")
+FromNode = &"ResponseNode"
+FromPort = 0
+ToNode = &"LocationNode"
+ToPort = 0
+
 [sub_resource type="Resource" id="Resource_u06l6"]
 script = ExtResource("8_l8qt4")
 FromNode = &"ResponseNode"
@@ -67,18 +60,25 @@ FromPort = 0
 ToNode = &"DialogueNode4"
 ToPort = 0
 
-[sub_resource type="Resource" id="Resource_ph0vr"]
-script = ExtResource("8_l8qt4")
-FromNode = &"DialogueNode4"
-FromPort = 0
-ToNode = &"LocationNode"
-ToPort = 0
-
 [sub_resource type="Resource" id="Resource_6gcl0"]
 script = ExtResource("8_l8qt4")
 FromNode = &"DialogueNode3"
 FromPort = 0
 ToNode = &"LocationNode2"
+ToPort = 0
+
+[sub_resource type="Resource" id="Resource_dugqa"]
+script = ExtResource("8_l8qt4")
+FromNode = &"DialogueNode"
+FromPort = 0
+ToNode = &"ResponseNode"
+ToPort = 0
+
+[sub_resource type="Resource" id="Resource_klpis"]
+script = ExtResource("8_l8qt4")
+FromNode = &"StartNode"
+FromPort = 0
+ToNode = &"DialogueNode"
 ToPort = 0
 
 [node name="NovelPanel" type="Node"]

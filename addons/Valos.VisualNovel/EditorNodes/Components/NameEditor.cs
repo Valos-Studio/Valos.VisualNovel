@@ -2,6 +2,7 @@ using Godot;
 
 namespace Valos.VisualNovel.EditorNodes.Components;
 
+[Tool]
 public partial class NameEditor : Control
 {
     public string Value

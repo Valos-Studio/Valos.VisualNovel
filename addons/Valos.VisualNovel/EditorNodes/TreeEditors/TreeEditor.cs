@@ -22,10 +22,10 @@ public partial class TreeEditor : Control
     public void InitializeEditor()
     {
         Graph.ClearNodes();
-        
+
         Graph.LoadNodes();
     }
-    
+
     public void FinalizeEditor()
     {
         Graph.ClearNodes();
@@ -33,22 +33,21 @@ public partial class TreeEditor : Control
 
     public void OnNodeSelected(Node node)
     {
-        String type = node.GetType().Name;
-
-        switch (type)
+        if (node is DialogueNode)
         {
-            case nameof(DialogueNode):
-                Panels.CurrentTab = 1;
-                break;
-            case nameof(ResponseNode):
-                Panels.CurrentTab = 2;
-                break;
-            case nameof(LocationNode):
-                Panels.CurrentTab = 3;
-                break;
-            default:
-                Panels.CurrentTab = 0;
-                break;
+            Panels.CurrentTab = 1;
+        }
+        else if (node is ResponseNode)
+        {
+            Panels.CurrentTab = 2;
+        }
+        else if (node is LocationNode)
+        {
+            Panels.CurrentTab = 3;
+        }
+        else
+        {
+            Panels.CurrentTab = 0;
         }
     }
 }
