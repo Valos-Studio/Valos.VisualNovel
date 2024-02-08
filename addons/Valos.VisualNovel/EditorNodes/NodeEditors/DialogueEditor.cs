@@ -1,13 +1,13 @@
 using Godot;
-using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.EditorNodes.Components;
+using Valos.VisualNovel.GameNodes.DialogueNodes;
 
 namespace Valos.VisualNovel.EditorNodes.NodeEditors;
 
 [Tool]
 public partial class DialogueEditor : Control
 {
-    private DialogueData data;
+    private DialogueNode graphNode;
     private NameEditor nameEditor;
 
     public override void _Ready()
@@ -15,8 +15,8 @@ public partial class DialogueEditor : Control
         nameEditor = GetNode<NameEditor>("%NameEditor");
     }
 
-    public void SetModel(DialogueData data)
+    public void SetModel(DialogueNode node)
     {
-        this.data = data;
+        this.graphNode = node;
     }
 }

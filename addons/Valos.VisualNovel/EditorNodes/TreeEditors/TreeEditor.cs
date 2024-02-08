@@ -1,5 +1,6 @@
 using Godot;
 using Valos.VisualNovel.EditorNodes.NodeEditors;
+using Valos.VisualNovel.GameNodes.BaseNodes;
 using Valos.VisualNovel.GameNodes.DialogueNodes;
 using Valos.VisualNovel.GameNodes.LocationNodes;
 using Valos.VisualNovel.GameNodes.ResponseNodes;
@@ -48,5 +49,7 @@ public partial class TreeEditor : Control
         {
             Panels.CurrentTab = 0;
         }
+        
+        Panels.SetNodeForEdit((BaseNode)node);
     }
 }

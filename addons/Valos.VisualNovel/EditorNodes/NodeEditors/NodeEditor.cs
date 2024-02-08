@@ -1,27 +1,28 @@
 using Godot;
-using Valos.VisualNovel.EditorNodes.Components;
+using Valos.VisualNovel.GameNodes.BaseNodes;
+using Valos.VisualNovel.GameNodes.DialogueNodes;
 
 namespace Valos.VisualNovel.EditorNodes.NodeEditors;
 
 [Tool]
 public partial class NodeEditor : TabContainer
 {
-    private NameEditor nameEditor;
-
-    public override void _Ready()
+    public void SetNodeForEdit(BaseNode node)
     {
-        nameEditor = GetNode<NameEditor>("%NameEditor");
+        Control tabControl = GetCurrentTabControl();
 
-        TabSelected += OnTabSelected;
-    }
-
-
-    public void OnTabSelected(long tab)
-    {
-        if (tab > 0)
+        switch (CurrentTab)
         {
-            Control tabControl = GetCurrentTabControl();
-            // tabControl.e
+            case 1:
+                DialogueEditor editor = tabControl as DialogueEditor;
+                editor.SetModel(node as DialogueNode);
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                return;
         }
     }
 }
