@@ -18,9 +18,14 @@ public partial class LocationEditor : Control
     public void SetModel(LocationNode node)
     {
         this.graphNode = node;
+
+        nameEditor.NameValue = node.Model.Name;
     }
-    
+
     public void ClearEditor()
     {
+        nameEditor.NameValue = null;
+
+        graphNode = null;
     }
 }
