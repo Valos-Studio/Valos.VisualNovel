@@ -1,6 +1,5 @@
 using Godot;
 using Valos.VisualNovel.EditorNodes.NodeEditors;
-using Valos.VisualNovel.GameNodes.BaseNodes;
 using Valos.VisualNovel.GameNodes.DialogueNodes;
 using Valos.VisualNovel.GameNodes.LocationNodes;
 using Valos.VisualNovel.GameNodes.ResponseNodes;
@@ -12,8 +11,7 @@ public partial class TreeEditor : Control
 {
     [Export()] public GraphEditor Graph { get; set; }
     [Export()] public NodeEditor Panels { get; set; }
-
-
+    
     public override void _Ready()
     {
         Graph.NodeSelected += OnNodeSelected;
@@ -21,35 +19,41 @@ public partial class TreeEditor : Control
 
     public void InitializeEditor()
     {
-        Graph.ClearNodes();
+        FinalizeEditor();
 
-        Graph.LoadNodes();
+        this.Graph.LoadNodes();
     }
 
     public void FinalizeEditor()
     {
-        Graph.ClearNodes();
+        this.Panels.ClearEditors();
+
+        this.Graph.ClearNodes();
     }
 
     public void OnNodeSelected(Node node)
     {
-        if (node is DialogueNode)
+        if (node is DialogueNode dialogueNode)
         {
-            Panels.CurrentTab = 1;
+            this.Panels.CurrentTab = 1;
+            
+            this.Panels.DialogueEditor.SetModel(dialogueNode);
         }
-        else if (node is ResponseNode)
+        else if (node is ResponseNode responseNode)
         {
-            Panels.CurrentTab = 2;
+            this.Panels.CurrentTab = 2;
+            
+            this.Panels.ResponseEditor.SetModel(responseNode);
         }
-        else if (node is LocationNode)
+        else if (node is LocationNode locationNode)
         {
-            Panels.CurrentTab = 3;
+            this.Panels.CurrentTab = 3;
+            
+            this.Panels.LocationEditor.SetModel(locationNode);
         }
         else
         {
-            Panels.CurrentTab = 0;
+            this.Panels.CurrentTab = 0;
         }
-        
-        Panels.SetNodeForEdit((BaseNode)node);
     }
 }

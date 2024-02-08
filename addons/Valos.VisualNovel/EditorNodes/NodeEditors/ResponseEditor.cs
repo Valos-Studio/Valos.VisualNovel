@@ -19,4 +19,8 @@ public partial class ResponseEditor : Control
     {
         this.graphNode = node;
     }
+    
+    public void ClearEditor()
+    {
+    }
 }

@@ -19,4 +19,8 @@ public partial class DialogueEditor : Control
     {
         this.graphNode = node;
     }
+    
+    public void ClearEditor()
+    {
+    }
 }

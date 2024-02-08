@@ -7,22 +7,25 @@ namespace Valos.VisualNovel.EditorNodes.NodeEditors;
 [Tool]
 public partial class NodeEditor : TabContainer
 {
-    public void SetNodeForEdit(BaseNode node)
+    public DialogueEditor DialogueEditor { get; private set; }
+    public ResponseEditor ResponseEditor { get; private set; }
+    public LocationEditor LocationEditor { get; private set; }
+    
+    public override void _Ready()
     {
-        Control tabControl = GetCurrentTabControl();
+        this.DialogueEditor = GetNode<DialogueEditor>(nameof(DialogueEditor));
+        
+        this.ResponseEditor = GetNode<ResponseEditor>(nameof(ResponseEditor));
+        
+        this.LocationEditor = GetNode<LocationEditor>(nameof(LocationEditor));
+    }
 
-        switch (CurrentTab)
-        {
-            case 1:
-                DialogueEditor editor = tabControl as DialogueEditor;
-                editor.SetModel(node as DialogueNode);
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            default:
-                return;
-        }
+    public void ClearEditors()
+    {
+        DialogueEditor.ClearEditor();
+        
+        ResponseEditor.ClearEditor();
+        
+        LocationEditor.ClearEditor();
     }
 }

@@ -19,4 +19,8 @@ public partial class LocationEditor : Control
     {
         this.graphNode = node;
     }
+    
+    public void ClearEditor()
+    {
+    }
 }
