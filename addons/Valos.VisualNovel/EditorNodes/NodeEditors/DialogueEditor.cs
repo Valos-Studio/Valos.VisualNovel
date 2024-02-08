@@ -18,9 +18,14 @@ public partial class DialogueEditor : Control
     public void SetModel(DialogueNode node)
     {
         this.graphNode = node;
+
+        nameEditor.NameValue = node.Model.Name;
     }
-    
+
     public void ClearEditor()
     {
+        nameEditor.NameValue = null;
+
+        graphNode = null;
     }
 }

@@ -5,15 +5,16 @@ namespace Valos.VisualNovel.EditorNodes.Components;
 [Tool]
 public partial class NameEditor : Control
 {
-    public string Value
+    public string NameValue
     {
-        get => value.Text;
+        get => name.Text;
+        set => this.name.Text = value;
     }
 
-    private LineEdit value;
+    private LineEdit name;
 
     public override void _Ready()
     {
-        value = GetNode<LineEdit>("%LineEdit");
+        name = GetNode<LineEdit>("%LineEdit");
     }
 }
