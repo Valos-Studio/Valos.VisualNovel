@@ -28,9 +28,16 @@ public partial class DialogueNode : BaseNode
 
         model = data;
 
+        model.TitleChanged += ModelOnTitleChanged;
+
         PositionOffset = data.GridLocation;
 
         SetModel();
+    }
+
+    public void ModelOnTitleChanged(string newTitle)
+    {
+        Title = newTitle;
     }
 
     public void OnDragged(Vector2 from, Vector2 to)
@@ -44,6 +51,8 @@ public partial class DialogueNode : BaseNode
     public override void Clean()
     {
         base.Clean();
+        
+        model.TitleChanged -= ModelOnTitleChanged;
 
         model = null;
     }
