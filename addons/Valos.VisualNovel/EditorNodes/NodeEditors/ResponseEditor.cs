@@ -19,13 +19,14 @@ public partial class ResponseEditor : Control
     {
         this.graphNode = node;
 
-        nameEditor.NameValue = node.Model.Name;
+       
+        this.nameEditor.SetModel(node.Model);
     }
 
     public void ClearEditor()
     {
-        nameEditor.NameValue = null;
+        this.nameEditor.Clear();
 
-        graphNode = null;
+        this.graphNode = null;
     }
 }

@@ -12,20 +12,20 @@ public partial class DialogueEditor : Control
 
     public override void _Ready()
     {
-        nameEditor = GetNode<NameEditor>("%NameEditor");
+        this.nameEditor = GetNode<NameEditor>("%NameEditor");
     }
 
     public void SetModel(DialogueNode node)
     {
         this.graphNode = node;
 
-        nameEditor.NameValue = node.Model.Name;
+        this.nameEditor.SetModel(node.Model);
     }
 
     public void ClearEditor()
     {
-        nameEditor.NameValue = null;
+        this.nameEditor.Clear();
 
-        graphNode = null;
+        this.graphNode = null;
     }
 }
