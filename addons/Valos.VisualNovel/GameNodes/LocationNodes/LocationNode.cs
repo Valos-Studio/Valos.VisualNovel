@@ -27,6 +27,8 @@ public partial class LocationNode : BaseNode
         }
 
         model = data;
+        
+        model.TitleChanged += ModelOnTitleChanged;
 
         PositionOffset = data.GridLocation;
 
@@ -40,10 +42,17 @@ public partial class LocationNode : BaseNode
             Model.GridLocation = to;
         }
     }
+    
+    public void ModelOnTitleChanged(string newTitle)
+    {
+        Title = newTitle;
+    }
 
     public override void Clean()
     {
         base.Clean();
+        
+        model.TitleChanged -= ModelOnTitleChanged;
 
         model = null;
     }

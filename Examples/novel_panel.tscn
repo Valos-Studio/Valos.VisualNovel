@@ -92,13 +92,15 @@ script = ExtResource("3_1eaxt")
 
 [node name="DialogueNode" type="Node" parent="Dialogues"]
 script = ExtResource("4_ren01")
-GridLocation = Vector2(183.782, -1.62431)
+Title = "Some Node is here"
+GridLocation = Vector2(180, 0)
 
 [node name="Responses" type="Node" parent="."]
 script = ExtResource("5_85der")
 
 [node name="ResponseNode" type="Node" parent="Responses"]
 script = ExtResource("6_alxgj")
+Title = "sasa"
 GridLocation = Vector2(620, 0)
 
 [node name="Locations" type="Node" parent="."]

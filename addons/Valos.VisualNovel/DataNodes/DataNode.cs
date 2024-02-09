@@ -9,8 +9,23 @@ public partial class DataNode : Node
 {
     [Signal]
     public delegate void TitleChangedEventHandler(string newTitle);
-    [Export()] public String Title { get; set; }
+
+    [Export()]
+    public String Title
+    {
+        get => this.title;
+        set
+        {
+            this.title = value;
+            EmitSignal(nameof(TitleChanged), value);
+        }
+    }
+
+    private String title;
+
     [Export()] public Vector2 GridLocation { get; set; }
+
+
     public DataNode()
     {
         GridLocation = Vector2.Zero;

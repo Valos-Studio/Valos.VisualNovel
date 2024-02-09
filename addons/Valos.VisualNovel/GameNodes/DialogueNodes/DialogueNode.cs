@@ -34,18 +34,18 @@ public partial class DialogueNode : BaseNode
 
         SetModel();
     }
-
-    public void ModelOnTitleChanged(string newTitle)
-    {
-        Title = newTitle;
-    }
-
+    
     public void OnDragged(Vector2 from, Vector2 to)
     {
         if (IsModelValid)
         {
             Model.GridLocation = to;
         }
+    }
+    
+    public void ModelOnTitleChanged(string newTitle)
+    {
+        Title = newTitle;
     }
 
     public override void Clean()
