@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cie4roqinsrip"]
+[gd_scene load_steps=4 format=3 uid="uid://cie4roqinsrip"]
 
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/EditorNodes/NodeEditors/Responses/ResponseEditor.cs" id="1_gbqbd"]
 [ext_resource type="PackedScene" uid="uid://pmh6qo4j6dya" path="res://addons/Valos.VisualNovel/EditorNodes/Components/NameEditor.tscn" id="2_tdti6"]
+[ext_resource type="PackedScene" uid="uid://dgse7ld0bnop5" path="res://addons/Valos.VisualNovel/EditorNodes/NodeEditors/Responses/ResponsesPanel.tscn" id="3_88tw2"]
 
 [node name="ResponseEditor" type="Control"]
 layout_mode = 3
@@ -20,10 +21,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="VBoxContainer"]
+[node name="Toolbar" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="NameEditor" parent="VBoxContainer/Control" instance=ExtResource("2_tdti6")]
+[node name="NameEditor" parent="VBoxContainer/Toolbar" instance=ExtResource("2_tdti6")]
 unique_name_in_owner = true
 layout_mode = 1
+
+[node name="ResponsesPanel" parent="VBoxContainer" instance=ExtResource("3_88tw2")]
+layout_mode = 2
