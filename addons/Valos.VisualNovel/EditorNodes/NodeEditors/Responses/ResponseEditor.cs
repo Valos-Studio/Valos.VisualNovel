@@ -2,7 +2,7 @@ using Godot;
 using Valos.VisualNovel.EditorNodes.Components;
 using Valos.VisualNovel.GameNodes.ResponseNodes;
 
-namespace Valos.VisualNovel.EditorNodes.NodeEditors;
+namespace Valos.VisualNovel.EditorNodes.Responses.NodeEditors;
 
 [Tool]
 public partial class ResponseEditor : Control

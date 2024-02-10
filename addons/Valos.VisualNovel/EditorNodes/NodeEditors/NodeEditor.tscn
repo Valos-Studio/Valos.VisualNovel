@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ufy5loqddveh" path="res://addons/Valos.VisualNovel/EditorNodes/NodeEditors/DialogueEditor.tscn" id="1_hyi23"]
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/EditorNodes/NodeEditors/NodeEditor.cs" id="1_uvvjo"]
 [ext_resource type="PackedScene" uid="uid://d2gyof53hx4q2" path="res://addons/Valos.VisualNovel/EditorNodes/NodeEditors/LocationEditor.tscn" id="3_dnn32"]
-[ext_resource type="PackedScene" uid="uid://cie4roqinsrip" path="res://addons/Valos.VisualNovel/EditorNodes/NodeEditors/ResponseEditor.tscn" id="3_ohu4t"]
+[ext_resource type="PackedScene" uid="uid://cie4roqinsrip" path="res://addons/Valos.VisualNovel/EditorNodes/NodeEditors/Responses/ResponseEditor.tscn" id="3_ohu4t"]
 
 [node name="NodeEditor" type="TabContainer"]
 anchors_preset = 15
