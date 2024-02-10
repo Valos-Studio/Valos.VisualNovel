@@ -18,7 +18,6 @@ public partial class ResponseEditor : Control
     public void SetModel(ResponseNode node)
     {
         this.graphNode = node;
-
        
         this.nameEditor.SetModel(node.Model);
     }
