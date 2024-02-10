@@ -25,9 +25,8 @@ public partial class DataNode : Node
 
     [Export()] public Vector2 GridLocation { get; set; }
 
-
     public DataNode()
     {
-        GridLocation = Vector2.Zero;
+        this.GridLocation = Vector2.Zero;
     }
 }
