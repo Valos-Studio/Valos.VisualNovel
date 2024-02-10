@@ -28,10 +28,10 @@ public partial class ResponseNode : BaseNode
 
         model = data;
         
+        InitializeProperties(data);
+        
         model.TitleChanged += ModelOnTitleChanged;
         
-        PositionOffset = data.GridLocation;
-
         SetModel();
     }
 
@@ -55,5 +55,12 @@ public partial class ResponseNode : BaseNode
         model.TitleChanged -= ModelOnTitleChanged;
 
         model = null;
+    }
+    
+    private void InitializeProperties(ResponseData data)
+    {
+        PositionOffset = data.GridLocation;
+
+        Title = data.Title;
     }
 }
