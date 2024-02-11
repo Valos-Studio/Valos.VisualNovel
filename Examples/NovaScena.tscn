@@ -1,6 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwburiir0l6f0"]
+[gd_scene load_steps=7 format=3 uid="uid://bm0h470qh28ke"]
 
 [ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/NovelPanel.cs" id="1_vnku2"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/DataNodes/StartData.cs" id="2_md51n"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/Lists/Nodes/DialogueList.cs" id="3_87qq5"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/Lists/Nodes/ResponseList.cs" id="4_64eeu"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/Lists/Nodes/LocationList.cs" id="5_6gw3n"]
+[ext_resource type="Script" path="res://addons/Valos.VisualNovel/NovelPanels/Lists/Connections/ConnectionList.cs" id="6_ovaen"]
 
 [node name="NovaScena" type="Node"]
 script = ExtResource("1_vnku2")
+
+[node name="StartNode" type="Node" parent="."]
+script = ExtResource("2_md51n")
+
+[node name="Dialogues" type="Node" parent="."]
+script = ExtResource("3_87qq5")
+
+[node name="Responses" type="Node" parent="."]
+script = ExtResource("4_64eeu")
+
+[node name="Locations" type="Node" parent="."]
+script = ExtResource("5_6gw3n")
+
+[node name="Connections" type="Node" parent="."]
+script = ExtResource("6_ovaen")
+List = {}
