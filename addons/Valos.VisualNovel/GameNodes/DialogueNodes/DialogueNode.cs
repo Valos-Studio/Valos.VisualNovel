@@ -28,9 +28,9 @@ public partial class DialogueNode : BaseNode
 
         model = data;
 
-        InitializeProperties(data);
-        
         model.TitleChanged += ModelOnTitleChanged;
+        
+        InitializeProperties(data);
         
         SetModel();
     }
@@ -61,6 +61,6 @@ public partial class DialogueNode : BaseNode
     {
         PositionOffset = data.GridLocation;
 
-        Title = data.Title;
+        Title = data.Title ?? Name;
     }
 }
