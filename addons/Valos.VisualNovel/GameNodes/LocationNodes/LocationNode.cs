@@ -27,10 +27,10 @@ public partial class LocationNode : BaseNode
         }
 
         model = data;
-        
-        model.TitleChanged += ModelOnTitleChanged;
 
         InitializeProperties(data);
+        
+        model.TitleChanged += ModelOnTitleChanged;
 
         SetModel();
     }
@@ -61,6 +61,6 @@ public partial class LocationNode : BaseNode
     {
         PositionOffset = data.GridLocation;
 
-        Title = data.Title ?? Name;
+        Title = data.Title;
     }
 }
