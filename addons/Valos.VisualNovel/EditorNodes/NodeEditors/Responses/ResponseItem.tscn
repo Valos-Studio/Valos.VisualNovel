@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dl7vn")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="ResponseItemPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HSplitContainer" type="HSplitContainer" parent="Panel"]
+[node name="ResponseItemContainer" type="HSplitContainer" parent="ResponseItemPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,10 +27,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ResponseText" type="RichTextLabel" parent="Panel/HSplitContainer"]
+[node name="ResponseText" type="RichTextLabel" parent="ResponseItemPanel/ResponseItemContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DeleteButton" type="Button" parent="Panel/HSplitContainer"]
+[node name="DeleteButton" type="Button" parent="ResponseItemPanel/ResponseItemContainer"]
 layout_mode = 2
 text = "Delete"
