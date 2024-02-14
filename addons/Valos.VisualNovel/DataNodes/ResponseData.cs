@@ -1,5 +1,6 @@
 ﻿using Godot;
 using Godot.Collections;
+using Valos.VisualNovel.GameNodes.ResponseNodes;
 
 namespace Valos.VisualNovel.DataNodes;
 
@@ -13,5 +14,7 @@ public partial class ResponseData : DataNode
     public ResponseData() : base()
     {
         this.Responses = new Dictionary<int, string>();
+        
+        Title = nameof(ResponseNode);
     }
 }
