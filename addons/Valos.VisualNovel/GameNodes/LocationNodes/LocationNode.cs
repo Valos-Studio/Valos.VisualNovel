@@ -27,10 +27,10 @@ public partial class LocationNode : BaseNode
         }
 
         model = data;
-
-        InitializeProperties(data);
         
         model.TitleChanged += ModelOnTitleChanged;
+
+        InitializeProperties(data);
 
         SetModel();
     }

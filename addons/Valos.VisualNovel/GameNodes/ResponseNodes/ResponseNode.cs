@@ -29,9 +29,9 @@ public partial class ResponseNode : BaseNode
 
         model = data;
         
-        InitializeProperties(data);
-        
         model.TitleChanged += ModelOnTitleChanged;
+        
+        InitializeProperties(data);
         
         SetModel();
     }
