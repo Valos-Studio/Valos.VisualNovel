@@ -29,15 +29,12 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GraphEditor" type="GraphEdit" parent="HSplitContainer/Container" node_paths=PackedStringArray("GraphMenu")]
+[node name="GraphEditor" type="GraphEdit" parent="HSplitContainer/Container"]
 layout_mode = 2
 size_flags_vertical = 3
 right_disconnects = true
 script = ExtResource("2_rq7cl")
 StartPackedScene = ExtResource("3_ob3bn")
-GraphMenu = NodePath("GraphMenu")
 
 [node name="GraphMenu" parent="HSplitContainer/Container/GraphEditor" instance=ExtResource("3_g7wyo")]
 visible = false
-
-[connection signal="AddNode" from="HSplitContainer/Container/GraphEditor/GraphMenu" to="HSplitContainer/Container/GraphEditor" method="OnAddNode"]
