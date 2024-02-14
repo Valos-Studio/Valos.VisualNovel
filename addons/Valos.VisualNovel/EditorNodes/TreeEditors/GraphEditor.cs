@@ -74,17 +74,19 @@ public partial class GraphEditor : GraphEdit
 
         if (result.Length > 0)
         {
-            return AddSelectionNode((long)result[0].Obj, gridPosition);
+            return await AddSelectionNode((long)result[0].Obj, gridPosition);
         }
 
         return null;
     }
 
-    private GraphNode AddSelectionNode(long selection, Vector2 gridPosition)
+    private async Task<GraphNode> AddSelectionNode(long selection, Vector2 gridPosition)
     {
         GraphNode graphNode = this.GraphMenu.GetGraphNode((GraphMenuSelection)selection);
 
         this.AddChildDeferred(graphNode, this.Owner);
+        
+        await ToSignal(GetTree(), "process_frame");
 
         gridPosition = (gridPosition + this.ScrollOffset) / this.Zoom;
 

@@ -28,7 +28,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-scroll_offset = Vector2(-1920, -1080)
 right_disconnects = true
 script = ExtResource("2_rq7cl")
 StartPackedScene = ExtResource("3_ob3bn")
