@@ -14,9 +14,9 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_ds45j")
-TreeEditor = NodePath("HSplitContainer/TreeEditor")
+TreeEditor = NodePath("MainPanelSplit/TreeEditor")
 
-[node name="HSplitContainer" type="HSplitContainer" parent="."]
+[node name="MainPanelSplit" type="HSplitContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,9 +24,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TreeEditor" parent="HSplitContainer" node_paths=PackedStringArray("Panels") instance=ExtResource("2_gcron")]
+[node name="TreeEditor" parent="MainPanelSplit" node_paths=PackedStringArray("Panels") instance=ExtResource("2_gcron")]
 layout_mode = 2
 Panels = NodePath("../NodeEditor")
 
-[node name="NodeEditor" parent="HSplitContainer" instance=ExtResource("3_yfelp")]
+[node name="NodeEditor" parent="MainPanelSplit" instance=ExtResource("3_yfelp")]
 layout_mode = 2

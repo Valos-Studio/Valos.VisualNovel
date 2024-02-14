@@ -15,26 +15,21 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_36ex1")
-Graph = NodePath("HSplitContainer/Container/GraphEditor")
+Graph = NodePath("GraphEditor")
 
-[node name="HSplitContainer" type="HSplitContainer" parent="."]
+[node name="GraphMenu" parent="." instance=ExtResource("3_g7wyo")]
+visible = false
+
+[node name="GraphEditor" type="GraphEdit" parent="." node_paths=PackedStringArray("GraphMenu")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Container" type="VBoxContainer" parent="HSplitContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="GraphEditor" type="GraphEdit" parent="HSplitContainer/Container"]
-layout_mode = 2
 size_flags_vertical = 3
+scroll_offset = Vector2(-1920, -1080)
 right_disconnects = true
 script = ExtResource("2_rq7cl")
 StartPackedScene = ExtResource("3_ob3bn")
-
-[node name="GraphMenu" parent="HSplitContainer/Container/GraphEditor" instance=ExtResource("3_g7wyo")]
-visible = false
+GraphMenu = NodePath("../GraphMenu")
