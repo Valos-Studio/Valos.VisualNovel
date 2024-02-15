@@ -42,15 +42,16 @@ public partial class GraphEditor : GraphEdit
                         connection.ToNode, connection.ToPort);
                 }
 
-                if (node is DialogueNode)
-                {
-                    novelPanel.Dialogues.TryRemoveChild(nodeName.ToString());
-                }
-                else if (node is ResponseNode)
-                {
-                    novelPanel.Responses.TryRemoveChild(nodeName.ToString());
-                }
-                else if (node is LocationNode)
+                // if (node is DialogueNode)
+                // {
+                //     novelPanel.Dialogues.TryRemoveChild(nodeName.ToString());
+                // }
+                // else if (node is ResponseNode)
+                // {
+                //     novelPanel.Responses.TryRemoveChild(nodeName.ToString());
+                // }
+                // else
+                if (node is LocationNode)
                 {
                     novelPanel.Locations.TryRemoveChild(nodeName.ToString());
                 }
@@ -90,15 +91,15 @@ public partial class GraphEditor : GraphEdit
 
         gridPosition = (gridPosition + this.ScrollOffset) / this.Zoom;
 
-        if (graphNode is DialogueNode dialogueNode)
-        {
-            AddDialogueModel(dialogueNode, gridPosition);
-        }
-
-        if (graphNode is ResponseNode responseNode)
-        {
-            AddResponseModel(responseNode, gridPosition);
-        }
+        // if (graphNode is DialogueNode dialogueNode)
+        // {
+        //     AddDialogueModel(dialogueNode, gridPosition);
+        // }
+        //
+        // if (graphNode is ResponseNode responseNode)
+        // {
+        //     AddResponseModel(responseNode, gridPosition);
+        // }
 
         if (graphNode is LocationNode locationNode)
         {
@@ -108,27 +109,27 @@ public partial class GraphEditor : GraphEdit
         return graphNode;
     }
 
-    private void AddDialogueModel(DialogueNode node, Vector2 gridPosition)
-    {
-        DialogueData dialogueData = new DialogueData() { GridLocation = gridPosition };
-
-        dialogueData.Name = node.Name;
-
-        novelPanel.Dialogues.TryAddChild(dialogueData);
-
-        node.SetModel(dialogueData);
-    }
-
-    private void AddResponseModel(ResponseNode node, Vector2 gridPosition)
-    {
-        ResponseData responseData = new ResponseData() { GridLocation = gridPosition };
-
-        responseData.Name = node.Name;
-
-        novelPanel.Responses.TryAddChild(responseData);
-
-        node.SetModel(responseData);
-    }
+    // private void AddDialogueModel(DialogueNode node, Vector2 gridPosition)
+    // {
+    //     DialogueData dialogueData = new DialogueData() { GridLocation = gridPosition };
+    //
+    //     dialogueData.Name = node.Name;
+    //
+    //     novelPanel.Dialogues.TryAddChild(dialogueData);
+    //
+    //     node.SetModel(dialogueData);
+    // }
+    //
+    // private void AddResponseModel(ResponseNode node, Vector2 gridPosition)
+    // {
+    //     ResponseData responseData = new ResponseData() { GridLocation = gridPosition };
+    //
+    //     responseData.Name = node.Name;
+    //
+    //     novelPanel.Responses.TryAddChild(responseData);
+    //
+    //     node.SetModel(responseData);
+    // }
 
     private void AddLocationModel(LocationNode node, Vector2 gridPosition)
     {

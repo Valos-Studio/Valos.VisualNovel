@@ -17,7 +17,6 @@ public partial class ResponseNode : BaseNode
     public override void _Ready()
     {
         Dragged += OnDragged;
-        
     }
 
     public void SetModel(ResponseData data)

@@ -8,8 +8,8 @@ public partial class GraphMenu : PopupMenu
     [Signal]
     public delegate void AddNodeEventHandler(GraphMenuSelection selection);
 
-    [Export()] public PackedScene DialogueNode { get; set; }
-    [Export()] public PackedScene ResponseNode { get; set; }
+    // [Export()] public PackedScene DialogueNode { get; set; }
+    // [Export()] public PackedScene ResponseNode { get; set; }
     [Export()] public PackedScene LocationNode { get; set; }
 
 
@@ -27,10 +27,10 @@ public partial class GraphMenu : PopupMenu
     {
         switch (selection)
         {
-            case GraphMenuSelection.DialogueNode:
-                return DialogueNode.Instantiate<GraphNode>();
-            case GraphMenuSelection.ResponseNode:
-                return ResponseNode.Instantiate<GraphNode>();
+            // case GraphMenuSelection.DialogueNode:
+            //     return DialogueNode.Instantiate<GraphNode>();
+            // case GraphMenuSelection.ResponseNode:
+            //     return ResponseNode.Instantiate<GraphNode>();
             case GraphMenuSelection.LocationNode:
                 return LocationNode.Instantiate<GraphNode>();
             default:

@@ -23,10 +23,6 @@ public partial class GraphEditor
         if (Validator.IsValid(novelPanel) == false) return;
 
         AddStartNode(novelPanel.StartNode);
-        
-        AddDialogueNodes(novelPanel.Dialogues.Values);
-
-        AddResponseNodes(novelPanel.Responses.Values);
 
         AddLocationNodes(novelPanel.Locations.Values);
 
@@ -44,29 +40,29 @@ public partial class GraphEditor
         node.SetModel(data);
     }
 
-    private void AddDialogueNodes(IEnumerable<DialogueData> dialogues)
-    {
-        foreach (DialogueData data in dialogues)
-        {
-            DialogueNode node = (DialogueNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.DialogueNode);
-
-            this.AddChildDeferred(node, this.Owner, data.Name);
-
-            node.SetModel(data);
-        }
-    }
-
-    private void AddResponseNodes(IEnumerable<ResponseData> dialogues)
-    {
-        foreach (ResponseData data in dialogues)
-        {
-            ResponseNode node = (ResponseNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.ResponseNode);
-
-            this.AddChildDeferred(node, this.Owner, data.Name);
-
-            node.SetModel(data);
-        }
-    }
+    // private void AddDialogueNodes(IEnumerable<DialogueData> dialogues)
+    // {
+    //     foreach (DialogueData data in dialogues)
+    //     {
+    //         DialogueNode node = (DialogueNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.DialogueNode);
+    //
+    //         this.AddChildDeferred(node, this.Owner, data.Name);
+    //
+    //         node.SetModel(data);
+    //     }
+    // }
+    //
+    // private void AddResponseNodes(IEnumerable<ResponseData> dialogues)
+    // {
+    //     foreach (ResponseData data in dialogues)
+    //     {
+    //         ResponseNode node = (ResponseNode)this.GraphMenu.GetGraphNode(GraphMenuSelection.ResponseNode);
+    //
+    //         this.AddChildDeferred(node, this.Owner, data.Name);
+    //
+    //         node.SetModel(data);
+    //     }
+    // }
 
     private void AddLocationNodes(IEnumerable<LocationData> locations)
     {

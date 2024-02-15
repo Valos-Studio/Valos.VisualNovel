@@ -2,7 +2,7 @@
 
 public enum GraphMenuSelection
 {
-    DialogueNode,
-    ResponseNode,
+    // DialogueNode,
+    // ResponseNode,
     LocationNode
 }

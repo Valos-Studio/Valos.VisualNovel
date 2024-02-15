@@ -1,22 +1,36 @@
 using Godot;
 using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.GameNodes.BaseNodes;
+using Valos.VisualNovel.GameNodes.Lists.Nodes;
 
 namespace Valos.VisualNovel.GameNodes.LocationNodes;
 
 [Tool]
 public partial class LocationNode : BaseNode
 {
+    public StartData StartNode { get; set; }
+    public DialogueList Dialogues { get; set; }
+    public ResponseList Responses { get; set; }
+    
     public LocationData Model
     {
         get => model;
     }
 
     private LocationData model;
-
+    
     public override void _Ready()
     {
-        Dragged += OnDragged;
+        if (Engine.IsEditorHint())
+        {
+            StartNode = this.NodeInitializer<StartData>(nameof(StartNode));
+
+            Dialogues = this.NodeInitializer<DialogueList>(nameof(Dialogues));
+
+            Responses = this.NodeInitializer<ResponseList>(nameof(Responses));
+            
+            Dragged += OnDragged;
+        }
     }
 
     public void SetModel(LocationData data)
@@ -24,6 +38,8 @@ public partial class LocationNode : BaseNode
         if (data == null)
         {
             base.Clean();
+            
+            return;
         }
 
         model = data;

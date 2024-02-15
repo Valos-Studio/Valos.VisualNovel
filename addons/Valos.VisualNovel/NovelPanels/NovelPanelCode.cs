@@ -9,8 +9,6 @@ namespace Valos.VisualNovel.GameNodes;
 public partial class NovelPanelCode : Node
 {
     public StartData StartNode { get; set; }
-    public DialogueList Dialogues { get; set; }
-    public ResponseList Responses { get; set; }
     public LocationList Locations { get; set; }
     public ConnectionList Connections { get; set; }
 
@@ -19,10 +17,6 @@ public partial class NovelPanelCode : Node
         if (Engine.IsEditorHint())
         {
             StartNode = NodeInitializer<StartData>(nameof(StartNode));
-
-            Dialogues = NodeInitializer<DialogueList>(nameof(Dialogues));
-
-            Responses = NodeInitializer<ResponseList>(nameof(Responses));
 
             Locations = NodeInitializer<LocationList>(nameof(Locations));
 
