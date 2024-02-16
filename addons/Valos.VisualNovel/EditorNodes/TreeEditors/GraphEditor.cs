@@ -83,7 +83,7 @@ public partial class GraphEditor : GraphEdit
 
     private async Task<GraphNode> AddSelectionNode(long selection, Vector2 gridPosition)
     {
-        GraphNode graphNode = this.GraphMenu.GetGraphNode((GraphMenuSelection)selection);
+        GraphNode graphNode = this.GraphMenu.GetGraphNode((LocationTreeSelection)selection);
 
         this.AddChildDeferred(graphNode, this.Owner);
         

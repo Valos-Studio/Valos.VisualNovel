@@ -6,7 +6,7 @@ namespace Valos.VisualNovel.EditorNodes.Menus;
 public partial class GraphMenu : PopupMenu
 {
     [Signal]
-    public delegate void AddNodeEventHandler(GraphMenuSelection selection);
+    public delegate void AddNodeEventHandler(LocationTreeSelection selection);
 
     // [Export()] public PackedScene DialogueNode { get; set; }
     // [Export()] public PackedScene ResponseNode { get; set; }
@@ -23,15 +23,15 @@ public partial class GraphMenu : PopupMenu
         EmitSignal(nameof(AddNode), id);
     }
 
-    public GraphNode GetGraphNode(GraphMenuSelection selection)
+    public GraphNode GetGraphNode(LocationTreeSelection selection)
     {
         switch (selection)
         {
-            // case GraphMenuSelection.DialogueNode:
+            // case LocationTreeSelection.DialogueNode:
             //     return DialogueNode.Instantiate<GraphNode>();
-            // case GraphMenuSelection.ResponseNode:
+            // case LocationTreeSelection.ResponseNode:
             //     return ResponseNode.Instantiate<GraphNode>();
-            case GraphMenuSelection.LocationNode:
+            case LocationTreeSelection.LocationNode:
                 return LocationNode.Instantiate<GraphNode>();
             default:
                 return null;
