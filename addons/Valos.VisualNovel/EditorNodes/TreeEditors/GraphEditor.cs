@@ -6,9 +6,7 @@ using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.EditorNodes.Menus;
 using Valos.VisualNovel.GameNodes;
 using Valos.VisualNovel.GameNodes.BaseNodes;
-using Valos.VisualNovel.GameNodes.DialogueNodes;
 using Valos.VisualNovel.GameNodes.LocationNodes;
-using Valos.VisualNovel.GameNodes.ResponseNodes;
 using Valos.VisualNovel.NovelPanels.Lists.Connections;
 
 namespace Valos.VisualNovel.EditorNodes.TreeEditors;
@@ -17,7 +15,7 @@ namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 public partial class GraphEditor : GraphEdit
 {
     [Export()] public PackedScene StartPackedScene { get; set; }
-    [Export()] public GraphMenu GraphMenu { get; set; }
+    [Export()] public LocationTreeMenu LocationTreeMenu { get; set; }
 
     private NovelPanel novelPanel;
 
@@ -67,11 +65,11 @@ public partial class GraphEditor : GraphEdit
 
     private async Task<GraphNode> ShowPopup(Vector2 gridPosition)
     {
-        this.GraphMenu.Position = (Vector2I)GetGlobalMousePosition() + GetWindow().Position;
+        this.LocationTreeMenu.Position = (Vector2I)GetGlobalMousePosition() + GetWindow().Position;
 
-        this.GraphMenu.Show();
+        this.LocationTreeMenu.Show();
 
-        Variant[] result = await ToSignal(this.GraphMenu, nameof(GraphMenu.AddNode));
+        Variant[] result = await ToSignal(this.LocationTreeMenu, nameof(LocationTreeMenu.AddNode));
 
         if (result.Length > 0)
         {
@@ -83,7 +81,7 @@ public partial class GraphEditor : GraphEdit
 
     private async Task<GraphNode> AddSelectionNode(long selection, Vector2 gridPosition)
     {
-        GraphNode graphNode = this.GraphMenu.GetGraphNode((LocationTreeSelection)selection);
+        GraphNode graphNode = this.LocationTreeMenu.GetGraphNode((LocationTreeSelection)selection);
 
         this.AddChildDeferred(graphNode, this.Owner);
         

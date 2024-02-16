@@ -44,7 +44,7 @@ public partial class GraphEditor
     // {
     //     foreach (DialogueData data in dialogues)
     //     {
-    //         DialogueNode node = (DialogueNode)this.GraphMenu.GetGraphNode(LocationTreeSelection.DialogueNode);
+    //         DialogueNode node = (DialogueNode)this.LocationTreeMenu.GetGraphNode(LocationTreeSelection.DialogueNode);
     //
     //         this.AddChildDeferred(node, this.Owner, data.Name);
     //
@@ -56,7 +56,7 @@ public partial class GraphEditor
     // {
     //     foreach (ResponseData data in dialogues)
     //     {
-    //         ResponseNode node = (ResponseNode)this.GraphMenu.GetGraphNode(LocationTreeSelection.ResponseNode);
+    //         ResponseNode node = (ResponseNode)this.LocationTreeMenu.GetGraphNode(LocationTreeSelection.ResponseNode);
     //
     //         this.AddChildDeferred(node, this.Owner, data.Name);
     //
@@ -68,7 +68,7 @@ public partial class GraphEditor
     {
         foreach (LocationData data in locations)
         {
-            LocationNode node = (LocationNode)this.GraphMenu.GetGraphNode(LocationTreeSelection.LocationNode);
+            LocationNode node = (LocationNode)this.LocationTreeMenu.GetGraphNode(LocationTreeSelection.LocationNode);
 
             this.AddChildDeferred(node, this.Owner, data.Name);
 

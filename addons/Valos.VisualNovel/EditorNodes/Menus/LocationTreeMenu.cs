@@ -3,7 +3,7 @@ using Godot;
 namespace Valos.VisualNovel.EditorNodes.Menus;
 
 [Tool]
-public partial class GraphMenu : PopupMenu
+public partial class LocationTreeMenu : PopupMenu
 {
     [Signal]
     public delegate void AddNodeEventHandler(LocationTreeSelection selection);
