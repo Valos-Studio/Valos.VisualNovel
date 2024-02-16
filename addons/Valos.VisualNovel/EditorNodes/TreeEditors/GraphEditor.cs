@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Godot;
 using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.EditorNodes.Menus;
+using Valos.VisualNovel.Extensions;
 using Valos.VisualNovel.GameNodes;
 using Valos.VisualNovel.GameNodes.BaseNodes;
 using Valos.VisualNovel.GameNodes.LocationNodes;

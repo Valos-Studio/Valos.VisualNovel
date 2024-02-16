@@ -18,9 +18,9 @@ public partial class VisualNovelPlugin
 
     private void AddEditorToEngine()
     {
-        string mainScenePath = GetBasePath(nameof(MainPanel), Extensions.Scene);
+        string mainScenePath = GetBasePath(nameof(MainPanel), FileExtension.Scene);
 
-        string iconPath = GetBasePath(IconName, Extensions.Icon);
+        string iconPath = GetBasePath(IconName, FileExtension.Icon);
 
         icon = GD.Load<Texture2D>(iconPath);
 
@@ -41,9 +41,9 @@ public partial class VisualNovelPlugin
 
     private void AddCustomTypes()
     {
-        string scriptPath = GetBasePath("NovelPanels/" + nameof(NovelPanel), Extensions.ScriptCs);
+        string scriptPath = GetBasePath("NovelPanels/" + nameof(NovelPanel), FileExtension.ScriptCs);
         
-        string iconPath = GetBasePath(IconName, Extensions.Icon);
+        string iconPath = GetBasePath(IconName, FileExtension.Icon);
 
         Script script = GD.Load<Script>(scriptPath);
         

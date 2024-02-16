@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Godot;
 using Valos.VisualNovel.DataNodes;
+using Valos.VisualNovel.Extensions;
 
 namespace Valos.VisualNovel.GameNodes.Lists.Nodes;
 

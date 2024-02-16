@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace Valos.VisualNovel.GameNodes;
+namespace Valos.VisualNovel.Extensions;
 
 [Tool]
 public static class NodeExtension
