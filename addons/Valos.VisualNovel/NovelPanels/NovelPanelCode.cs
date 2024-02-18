@@ -17,29 +17,11 @@ public partial class NovelPanelCode : Node
     {
         if (Engine.IsEditorHint())
         {
-            StartNode = NodeInitializer<StartData>(nameof(StartNode));
+            StartNode = this.NodeInitializer<StartData>(nameof(StartNode));
 
-            Locations = NodeInitializer<LocationList>(nameof(Locations));
+            Locations = this.NodeInitializer<LocationList>(nameof(Locations));
 
-            Connections = NodeInitializer<ConnectionList>(nameof(Connections));
+            Connections = this.NodeInitializer<ConnectionList>(nameof(Connections));
         }
-    }
-
-    private T NodeInitializer<T>(string name) where T : Node, new()
-    {
-        T node;
-
-        if (HasNode(name) == true)
-        {
-            node = GetNode<T>(name);
-        }
-        else
-        {
-            node = new T();
-
-            this.AddChildDeferred(node, name);
-        }
-
-        return node;
     }
 }
