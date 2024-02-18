@@ -40,15 +40,15 @@ public partial class LocationList : Node
     public override void _Ready()
     {
         parent = GetParent();
-
-        ChildEnteredTree += OnChildEnteredTree;
-
-        ChildExitingTree += OnChildExitingTree;
         
         foreach (Node child in GetChildren())
         {
             OnChildEnteredTree(child);
         }
+        
+        ChildEnteredTree += OnChildEnteredTree;
+
+        ChildExitingTree += OnChildExitingTree;
     }
 
     public void OnChildEnteredTree(Node node)
@@ -78,8 +78,12 @@ public partial class LocationList : Node
     public bool TryAddChild(LocationData locationData)
     {
         if (this.list.ContainsKey(locationData.Name) == true) return false;
+        
+        GD.PrintErr("TryAddChild LocationData");
 
         this.AddChildDeferred(locationData, parent, locationData.Name);
+        
+        GD.PrintErr("TryAddChild LocationData finished");
 
         return true;
     }

@@ -5,6 +5,11 @@ namespace Valos.VisualNovel.Extensions;
 [Tool]
 public static class NodeExtension
 {
+    public static async void WaitNextFrame(this Node node)
+    {
+        await node.ToSignal(node.GetTree(), "process_frame");
+    }
+    
     public static T NodeInitializer<T>(this Node main, string name) where T : Node, new()
     {
         T node;

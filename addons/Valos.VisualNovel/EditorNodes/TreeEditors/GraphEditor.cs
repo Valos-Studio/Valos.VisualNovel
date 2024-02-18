@@ -85,8 +85,8 @@ public partial class GraphEditor : GraphEdit
         GraphNode graphNode = this.LocationTreeMenu.GetGraphNode((LocationTreeSelection)selection);
 
         this.AddChildDeferred(graphNode, this.Owner);
-        
-        await ToSignal(GetTree(), "process_frame");
+
+        this.WaitNextFrame();
 
         gridPosition = (gridPosition + this.ScrollOffset) / this.Zoom;
 

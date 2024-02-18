@@ -5,9 +5,7 @@ using Valos.VisualNovel.EditorNodes.Menus;
 using Valos.VisualNovel.Extensions;
 using Valos.VisualNovel.GameNodes;
 using Valos.VisualNovel.GameNodes.BaseNodes;
-using Valos.VisualNovel.GameNodes.DialogueNodes;
 using Valos.VisualNovel.GameNodes.LocationNodes;
-using Valos.VisualNovel.GameNodes.ResponseNodes;
 using Valos.VisualNovel.GameNodes.StartNodes;
 using Valos.VisualNovel.NovelPanels.Lists.Connections;
 
@@ -17,7 +15,7 @@ namespace Valos.VisualNovel.EditorNodes.TreeEditors;
 
 public partial class GraphEditor
 {
-    public async void LoadNodes()
+    public void LoadNodes()
     {
         novelPanel = EditorInterface.Singleton.GetEditedSceneRoot() as NovelPanel;
 
@@ -27,7 +25,7 @@ public partial class GraphEditor
 
         AddLocationNodes(novelPanel.Locations.Values);
 
-        await ToSignal(GetTree(), "process_frame");
+        this.WaitNextFrame();
 
         AddConnections(novelPanel.Connections.Values);
     }
@@ -71,7 +69,11 @@ public partial class GraphEditor
         {
             LocationNode node = (LocationNode)this.LocationTreeMenu.GetGraphNode(LocationTreeSelection.LocationNode);
 
+            GD.PrintErr("AddLocationNodes");
+            
             this.AddChildDeferred(node, this.Owner, data.Name);
+            
+            GD.PrintErr("AddLocationNodes Finished");
 
             node.SetModel(data);
         }
