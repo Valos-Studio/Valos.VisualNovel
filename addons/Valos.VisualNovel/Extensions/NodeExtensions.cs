@@ -30,11 +30,11 @@ public static class NodeExtension
     
     private static void AddChildDeferred(this Node node, Node child, string name)
     {
-        node.CallDeferred(Node.MethodName.AddChild, child);
-
         child.SetDeferred(Node.PropertyName.Owner, node);
 
         child.SetDeferred(Node.PropertyName.Name, name);
+        
+        node.CallDeferred(Node.MethodName.AddChild, child);
     }
 
     public static void AddChildDeferred(this Node node, Node child, Node owner)

@@ -9,9 +9,9 @@ namespace Valos.VisualNovel.GameNodes;
 [Tool]
 public partial class NovelPanelCode : Node
 {
-    public StartData StartNode { get; set; }
-    public LocationList Locations { get; set; }
-    public ConnectionList Connections { get; set; }
+    [Export()]public StartData StartNode { get; set; }
+    [Export()]public LocationList Locations { get; set; }
+    [Export()]public ConnectionList Connections { get; set; }
 
     public override void _Ready()
     {
