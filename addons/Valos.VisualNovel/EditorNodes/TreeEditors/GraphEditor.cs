@@ -74,19 +74,25 @@ public partial class GraphEditor : GraphEdit
 
         if (result.Length > 0)
         {
-            return await AddSelectionNode((long)result[0].Obj, gridPosition);
+            return  AddSelectionNode((long)result[0].Obj, gridPosition);
         }
 
         return null;
     }
 
-    private async Task<GraphNode> AddSelectionNode(long selection, Vector2 gridPosition)
+    private GraphNode AddSelectionNode(long selection, Vector2 gridPosition)
     {
         GraphNode graphNode = this.LocationTreeMenu.GetGraphNode((LocationTreeSelection)selection);
 
+        GD.PrintErr("AddLocationNodes");
+        
         this.AddChildDeferred(graphNode, this.Owner);
+        
+        GD.PrintErr("AddLocationNodes Finished");
 
         this.WaitNextFrame();
+        
+        GD.PrintErr("AddLocationNodes Next Frame");
 
         gridPosition = (gridPosition + this.ScrollOffset) / this.Zoom;
 
@@ -100,9 +106,9 @@ public partial class GraphEditor : GraphEdit
         //     AddResponseModel(responseNode, gridPosition);
         // }
 
-        if (graphNode is LocationNode locationNode)
+        if (graphNode.GetType() == typeof(LocationNode))
         {
-            AddLocationModel(locationNode, gridPosition);
+            AddLocationModel((LocationNode)graphNode, gridPosition);
         }
 
         return graphNode;

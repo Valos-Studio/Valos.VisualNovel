@@ -69,12 +69,8 @@ public partial class GraphEditor
         {
             LocationNode node = (LocationNode)this.LocationTreeMenu.GetGraphNode(LocationTreeSelection.LocationNode);
 
-            GD.PrintErr("AddLocationNodes");
-            
             this.AddChildDeferred(node, this.Owner, data.Name);
             
-            GD.PrintErr("AddLocationNodes Finished");
-
             node.SetModel(data);
         }
     }
