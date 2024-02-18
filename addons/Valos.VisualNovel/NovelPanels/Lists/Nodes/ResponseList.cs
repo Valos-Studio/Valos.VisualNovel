@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Godot;
 using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.Extensions;
@@ -79,7 +79,7 @@ public partial class ResponseList : Node
     {
         if (this.list.ContainsKey(responseData.Name) == true) return false;
 
-        this.AddChildDeferred(responseData, parent, responseData.Name);
+        this.AddChildDeferred(responseData, parent.Owner, responseData.Name);
 
         return true;
     }

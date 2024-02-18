@@ -81,7 +81,7 @@ public partial class LocationList : Node
         
         GD.PrintErr("TryAddChild LocationData");
 
-        this.AddChildDeferred(locationData, parent, locationData.Name);
+        this.AddChildDeferred(locationData, parent.Owner, locationData.Name);
         
         GD.PrintErr("TryAddChild LocationData finished");
 

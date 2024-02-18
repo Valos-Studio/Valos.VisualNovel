@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Godot;
 using Valos.VisualNovel.DataNodes;
 using Valos.VisualNovel.Extensions;
@@ -79,7 +79,7 @@ public partial class DialogueList : Node
     {
         if (this.list.ContainsKey(dialogueData.Name) == true) return false;
 
-        this.AddChildDeferred(dialogueData, parent, dialogueData.Name);
+        this.AddChildDeferred(dialogueData, parent.Owner, dialogueData.Name);
 
         return true;
     }

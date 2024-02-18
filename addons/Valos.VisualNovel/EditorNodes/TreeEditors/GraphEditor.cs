@@ -74,7 +74,7 @@ public partial class GraphEditor : GraphEdit
 
         if (result.Length > 0)
         {
-            return  AddSelectionNode((long)result[0].Obj, gridPosition);
+            return AddSelectionNode((long)result[0].Obj, gridPosition);
         }
 
         return null;
