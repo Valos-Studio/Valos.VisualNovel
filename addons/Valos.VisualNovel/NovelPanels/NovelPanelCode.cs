@@ -9,9 +9,9 @@ namespace Valos.VisualNovel.GameNodes;
 [Tool]
 public partial class NovelPanelCode : Node
 {
-    [Export()]public StartData StartNode { get; set; }
-    [Export()]public LocationList Locations { get; set; }
-    [Export()]public ConnectionList Connections { get; set; }
+    [Export()] public StartData StartNode { get; set; }
+    [Export()] public LocationList Locations { get; set; }
+    [Export()] public ConnectionList Connections { get; set; }
 
     public override void _Ready()
     {
@@ -20,7 +20,7 @@ public partial class NovelPanelCode : Node
             StartNode = this.NodeInitializer<StartData>(nameof(StartNode));
 
             Locations = this.NodeInitializer<LocationList>(nameof(Locations));
-
+            
             Connections = this.NodeInitializer<ConnectionList>(nameof(Connections));
         }
     }

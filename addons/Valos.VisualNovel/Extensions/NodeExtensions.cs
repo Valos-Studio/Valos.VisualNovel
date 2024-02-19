@@ -7,7 +7,7 @@ public static class NodeExtension
 {
     public static async void WaitNextFrame(this Node node)
     {
-        // await node.ToSignal(node.GetTree(), "process_frame");
+        await node.ToSignal(node.GetTree(), "process_frame");
     }
     
     public static T NodeInitializer<T>(this Node main, string name) where T : Node, new()
@@ -22,7 +22,7 @@ public static class NodeExtension
         {
             node = new T();
 
-            node.AddChildDeferred(node, name);
+            main.AddChildDeferred(node, name);
         }
 
         return node;
@@ -30,11 +30,11 @@ public static class NodeExtension
     
     private static void AddChildDeferred(this Node node, Node child, string name)
     {
+        node.CallDeferred(Node.MethodName.AddChild, child);
+        
         child.SetDeferred(Node.PropertyName.Owner, node);
 
         child.SetDeferred(Node.PropertyName.Name, name);
-        
-        node.CallDeferred(Node.MethodName.AddChild, child);
     }
 
     public static void AddChildDeferred(this Node node, Node child, Node owner)
