@@ -8,33 +8,33 @@ namespace Valos.VisualNovel.GameNodes.Lists.Nodes;
 [Tool]
 public partial class LocationList : Node
 {
-    private Node parent;
+    [Export()] public Dictionary<string, LocationData> List { get; set; }
 
     public ICollection<LocationData> Values
     {
-        get => this.list.Values;
+        get => this.List.Values;
     }
 
     public ICollection<string> Keys
     {
-        get => this.list.Keys;
+        get => this.List.Keys;
     }
 
     public LocationData this[string key]
     {
-        get => this.list[key];
+        get => this.List[key];
     }
 
     public int Count
     {
-        get => this.list.Count;
+        get => this.List.Count;
     }
 
-    private readonly Dictionary<string, LocationData> list;
+    private Node parent;
 
     public LocationList()
     {
-        this.list = new Dictionary<string, LocationData>();
+        this.List = new Dictionary<string, LocationData>();
     }
 
     public override void _Ready()
@@ -57,14 +57,14 @@ public partial class LocationList : Node
         {
             LocationData data = (LocationData)child;
 
-            if (this.list.ContainsKey(data.Name) == true)
+            if (this.List.ContainsKey(data.Name) == true)
             {
                 GD.PrintErr("LocationList: Added child has duplicated name");
 
                 return;
             }
 
-            this.list.Add(data.Name, data);
+            this.List.Add(data.Name, data);
         }
         else
         {
@@ -76,15 +76,15 @@ public partial class LocationList : Node
     {
         if (node is LocationData data)
         {
-            if (list.ContainsKey(data.Name) == false) return;
+            if (List.ContainsKey(data.Name) == false) return;
 
-            this.list.Remove(data.Name);
+            this.List.Remove(data.Name);
         }
     }
 
     public bool TryAddChild(LocationData locationData)
     {
-        if (this.list.ContainsKey(locationData.Name) == true) return false;
+        if (this.List.ContainsKey(locationData.Name) == true) return false;
 
         this.AddChildDeferred(locationData, parent.Owner, locationData.Name);
 
@@ -93,20 +93,20 @@ public partial class LocationList : Node
 
     public bool TryRemoveChild(string name)
     {
-        if (this.list.ContainsKey(name) == false) return false;
+        if (this.List.ContainsKey(name) == false) return false;
 
-        this.RemoveChild(this.list[name]);
+        this.RemoveChild(this.List[name]);
 
         return true;
     }
 
     public IEnumerator<KeyValuePair<string, LocationData>> GetEnumerator()
     {
-        return this.list.GetEnumerator();
+        return this.List.GetEnumerator();
     }
 
     public virtual void Clear()
     {
-        this.list.Clear();
+        this.List.Clear();
     }
 }
