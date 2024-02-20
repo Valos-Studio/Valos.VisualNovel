@@ -40,28 +40,35 @@ public partial class LocationList : Node
     public override void _Ready()
     {
         parent = GetParent();
-        
+
         foreach (Node child in GetChildren())
         {
             OnChildEnteredTree(child);
         }
-        
+
         ChildEnteredTree += OnChildEnteredTree;
 
         ChildExitingTree += OnChildExitingTree;
     }
 
-    public void OnChildEnteredTree(Node node)
+    public void OnChildEnteredTree(Node child)
     {
-        if (node is LocationData data)
+        if (child.GetType() == typeof(NovelPanel))
         {
-            if (this.list.ContainsKey(data.Name) == true) return;
-            
+            LocationData data = (LocationData)child;
+
+            if (this.list.ContainsKey(data.Name) == true)
+            {
+                GD.PrintErr("LocationList: Added child has duplicated name");
+
+                return;
+            }
+
             this.list.Add(data.Name, data);
         }
         else
         {
-            RemoveChild(node);
+            CallDeferred(Node.MethodName.RemoveChild, child);
         }
     }
 
@@ -78,12 +85,8 @@ public partial class LocationList : Node
     public bool TryAddChild(LocationData locationData)
     {
         if (this.list.ContainsKey(locationData.Name) == true) return false;
-        
-        GD.PrintErr("TryAddChild LocationData");
 
         this.AddChildDeferred(locationData, parent.Owner, locationData.Name);
-        
-        GD.PrintErr("TryAddChild LocationData finished");
 
         return true;
     }

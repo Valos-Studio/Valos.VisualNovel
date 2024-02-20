@@ -84,16 +84,10 @@ public partial class GraphEditor : GraphEdit
     {
         GraphNode graphNode = this.LocationTreeMenu.GetGraphNode((LocationTreeSelection)selection);
 
-        GD.PrintErr("AddLocationNodes");
-        
         this.AddChildDeferred(graphNode, this.Owner);
         
-        GD.PrintErr("AddLocationNodes Finished");
-
         this.WaitNextFrame();
         
-        GD.PrintErr("AddLocationNodes Next Frame");
-
         gridPosition = (gridPosition + this.ScrollOffset) / this.Zoom;
 
         // if (graphNode is DialogueNode dialogueNode)
