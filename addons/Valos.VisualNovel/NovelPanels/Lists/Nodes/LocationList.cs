@@ -8,7 +8,7 @@ namespace Valos.VisualNovel.GameNodes.Lists.Nodes;
 [Tool]
 public partial class LocationList : Node
 {
-    [Export()] public Dictionary<string, LocationData> List { get; set; }
+    [Export()] public Godot.Collections.Dictionary<string, LocationData> List { get; set; }
 
     public ICollection<LocationData> Values
     {
@@ -34,7 +34,7 @@ public partial class LocationList : Node
 
     public LocationList()
     {
-        this.List = new Dictionary<string, LocationData>();
+        this.List = new Godot.Collections.Dictionary<string, LocationData>();
     }
 
     public override void _Ready()
@@ -53,7 +53,7 @@ public partial class LocationList : Node
 
     public void OnChildEnteredTree(Node child)
     {
-        if (child.GetType() == typeof(NovelPanel))
+        if (child.GetType() == typeof(LocationData))
         {
             LocationData data = (LocationData)child;
 
@@ -72,10 +72,12 @@ public partial class LocationList : Node
         }
     }
 
-    public void OnChildExitingTree(Node node)
+    public void OnChildExitingTree(Node child)
     {
-        if (node is LocationData data)
+        if (child.GetType() == typeof(LocationData))
         {
+            LocationData data = (LocationData)child;
+            
             if (List.ContainsKey(data.Name) == false) return;
 
             this.List.Remove(data.Name);
